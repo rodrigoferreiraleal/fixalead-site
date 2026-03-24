@@ -6,7 +6,1097 @@
 <title>FixaLead</title>
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx<!DOCTYPE html>
+<html lang="pt">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FixaLead — Nunca Percas um Lead</title>
+<meta name="description" content="Capta, gere e converte leads para o teu negócio local. Funil de vendas, mensagens personalizadas e relatórios automáticos.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;1,9..144,300;1,9..144,400&family=Geist:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --cream: #faf8f4;
+  --cream2: #f4f1ea;
+  --cream3: #ede9df;
+  --warm: #e8e2d5;
+  --stone: #c8c0b0;
+  --ink: #1a1814;
+  --ink2: #3d3830;
+  --ink3: #7a7268;
+  --ink4: #a89f94;
+  --green: #1a6b3c;
+  --green2: #145530;
+  --green-soft: #e8f5ee;
+  --green-mid: #2d8a53;
+  --accent: #c8873a;
+  --accent-soft: #fdf3e8;
+  --border: rgba(26,24,20,0.08);
+  --border2: rgba(26,24,20,0.12);
+  --shadow: 0 1px 3px rgba(26,24,20,0.06), 0 4px 16px rgba(26,24,20,0.04);
+  --shadow-lg: 0 4px 24px rgba(26,24,20,0.08), 0 16px 48px rgba(26,24,20,0.06);
+  --f-display: 'Fraunces', Georgia, serif;
+  --f-body: 'Geist', system-ui, sans-serif;
+  --r: 10px;
+  --r-lg: 16px;
+  --r-xl: 24px;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { font-size: 16px; scroll-behavior: smooth; }
+body { font-family: var(--f-body); background: var(--cream); color: var(--ink); -webkit-font-smoothing: antialiased; overflow-x: hidden; }
+img, button, input { font-family: var(--f-body); }
+
+/* ── NAV ── */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  padding: 0 48px;
+  height: 64px;
+  display: flex; align-items: center; justify-content: space-between;
+  transition: all .3s;
+}
+nav.solid {
+  background: rgba(250,248,244,0.92);
+  backdrop-filter: blur(16px);
+  border-bottom: 1px solid var(--border);
+}
+.nav-logo {
+  font-family: var(--f-display);
+  font-size: 20px; font-weight: 400; color: var(--ink);
+  letter-spacing: -0.3px; font-style: italic;
+}
+.nav-logo em { color: var(--green); font-style: normal; }
+.nav-links { display: flex; align-items: center; gap: 28px; }
+.nav-links a {
+  font-size: 14px; color: var(--ink3); text-decoration: none;
+  font-weight: 400; transition: color .2s; letter-spacing: -0.1px;
+}
+.nav-links a:hover { color: var(--ink); }
+.nav-cta {
+  background: var(--ink); color: var(--cream);
+  padding: 9px 20px; border-radius: 8px;
+  font-size: 13px; font-weight: 500; text-decoration: none;
+  transition: all .2s; letter-spacing: -0.1px;
+}
+.nav-cta:hover { background: var(--ink2); transform: translateY(-1px); }
+
+/* ── HERO ── */
+.hero {
+  min-height: 100vh;
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  text-align: center;
+  padding: 130px 48px 80px;
+  position: relative;
+  background:
+    radial-gradient(ellipse 80% 60% at 50% -10%, rgba(26,107,60,0.06), transparent),
+    radial-gradient(ellipse 50% 40% at 80% 100%, rgba(200,135,58,0.04), transparent),
+    var(--cream);
+}
+
+.hero-eyebrow {
+  display: inline-flex; align-items: center; gap: 8px;
+  font-size: 12px; font-weight: 500; color: var(--green);
+  letter-spacing: 0.8px; text-transform: uppercase;
+  margin-bottom: 28px;
+  opacity: 0; animation: reveal .7s ease .1s forwards;
+}
+.hero-eyebrow::before, .hero-eyebrow::after {
+  content: ''; display: block; width: 24px; height: 1px; background: var(--green);
+}
+
+.hero h1 {
+  font-family: var(--f-display);
+  font-size: clamp(52px, 8vw, 104px);
+  font-weight: 300;
+  line-height: 1.0;
+  letter-spacing: -3px;
+  color: var(--ink);
+  max-width: 840px;
+  opacity: 0; animation: reveal .8s ease .2s forwards;
+}
+.hero h1 em { font-style: italic; color: var(--green); }
+.hero h1 .stroke {
+  -webkit-text-stroke: 1px var(--stone);
+  color: transparent;
+  font-style: italic;
+}
+
+.hero-sub {
+  font-size: 18px; font-weight: 300;
+  color: var(--ink3);
+  max-width: 480px;
+  line-height: 1.65;
+  margin-top: 28px;
+  letter-spacing: -0.2px;
+  opacity: 0; animation: reveal .9s ease .3s forwards;
+}
+
+.hero-actions {
+  display: flex; align-items: center; gap: 12px;
+  margin-top: 40px;
+  opacity: 0; animation: reveal 1s ease .4s forwards;
+}
+.btn-primary {
+  background: var(--green); color: #fff;
+  padding: 13px 28px; border-radius: var(--r);
+  font-size: 15px; font-weight: 500; text-decoration: none;
+  transition: all .2s; letter-spacing: -0.2px;
+  display: inline-flex; align-items: center; gap: 8px;
+  border: none; cursor: pointer;
+}
+.btn-primary:hover { background: var(--green2); transform: translateY(-1px); box-shadow: 0 8px 24px rgba(26,107,60,.2); }
+.btn-secondary {
+  color: var(--ink3); font-size: 15px; font-weight: 400;
+  text-decoration: none; letter-spacing: -0.2px;
+  display: inline-flex; align-items: center; gap: 6px;
+  transition: color .2s; padding: 13px 20px;
+}
+.btn-secondary:hover { color: var(--ink); }
+
+/* HERO METRICS */
+.hero-metrics {
+  display: flex; align-items: center; gap: 0;
+  margin-top: 64px;
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: var(--r-lg);
+  overflow: hidden;
+  box-shadow: var(--shadow);
+  opacity: 0; animation: reveal 1.1s ease .5s forwards;
+}
+.metric {
+  padding: 20px 32px;
+  border-right: 1px solid var(--border);
+  text-align: center;
+}
+.metric:last-child { border-right: none; }
+.metric-n {
+  font-family: var(--f-display);
+  font-size: 32px; font-weight: 300; font-style: italic;
+  color: var(--green); letter-spacing: -1px; line-height: 1;
+}
+.metric-l { font-size: 12px; color: var(--ink4); margin-top: 4px; letter-spacing: -0.1px; }
+
+/* HERO CARD STACK */
+.hero-visual {
+  margin-top: 72px; width: 100%; max-width: 880px;
+  position: relative;
+  opacity: 0; animation: reveal 1.2s ease .6s forwards;
+}
+.dashboard-card {
+  background: #fff;
+  border: 1px solid var(--border2);
+  border-radius: var(--r-xl);
+  overflow: hidden;
+  box-shadow: var(--shadow-lg);
+}
+.dc-topbar {
+  display: flex; align-items: center; gap: 0;
+  background: var(--cream2);
+  border-bottom: 1px solid var(--border);
+  padding: 0;
+}
+.dc-tab {
+  padding: 12px 20px;
+  font-size: 12px; font-weight: 500; color: var(--ink4);
+  border-right: 1px solid var(--border);
+  letter-spacing: -0.1px;
+}
+.dc-tab.active { color: var(--ink); background: #fff; }
+.dc-body {
+  display: grid; grid-template-columns: 200px 1fr;
+}
+.dc-sidebar {
+  background: var(--cream2);
+  border-right: 1px solid var(--border);
+  padding: 20px 12px;
+}
+.dc-nav-item {
+  height: 30px; border-radius: 6px;
+  display: flex; align-items: center; gap: 8px;
+  padding: 0 10px; margin-bottom: 3px;
+  font-size: 12px; color: var(--ink4);
+}
+.dc-nav-item.active {
+  background: #fff;
+  color: var(--green);
+  font-weight: 500;
+  box-shadow: 0 1px 3px rgba(0,0,0,.06);
+}
+.dc-nav-dot { width: 6px; height: 6px; border-radius: 50%; background: currentColor; flex-shrink: 0; }
+.dc-main { padding: 20px; }
+.dc-stats { display: grid; grid-template-columns: repeat(4,1fr); gap: 10px; margin-bottom: 16px; }
+.dc-stat {
+  background: var(--cream); border: 1px solid var(--border);
+  border-radius: 10px; padding: 14px;
+}
+.dc-stat-n {
+  font-family: var(--f-display);
+  font-size: 26px; font-weight: 300; font-style: italic;
+  line-height: 1; letter-spacing: -0.5px;
+}
+.dc-stat-l { font-size: 10px; color: var(--ink4); margin-top: 3px; text-transform: uppercase; letter-spacing: .4px; }
+.dc-table { border: 1px solid var(--border); border-radius: 10px; overflow: hidden; }
+.dc-thead { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; background: var(--cream2); border-bottom: 1px solid var(--border); padding: 8px 14px; gap: 8px; }
+.dc-th { height: 7px; border-radius: 4px; background: var(--warm); }
+.dc-row { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; padding: 10px 14px; border-bottom: 1px solid var(--border); gap: 8px; align-items: center; }
+.dc-row:last-child { border-bottom: none; }
+.dc-name { display: flex; align-items: center; gap: 8px; }
+.dc-av { width: 22px; height: 22px; border-radius: 6px; flex-shrink: 0; }
+.dc-name-bar { height: 7px; border-radius: 4px; flex: 1; }
+.dc-chip { height: 18px; border-radius: 100px; padding: 0 8px; font-size: 10px; font-weight: 600; display: inline-flex; align-items: center; }
+.chip-q { background: #fff3e0; color: #c8873a; }
+.chip-n { background: #e8f5ee; color: var(--green); }
+.chip-p { background: #f3e8ff; color: #7c3aed; }
+.dc-score { font-family: var(--f-display); font-style: italic; font-size: 14px; font-weight: 400; }
+
+/* FADE ON SCROLL */
+@keyframes reveal { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: translateY(0); } }
+.reveal { opacity: 0; transform: translateY(24px); transition: opacity .7s ease, transform .7s ease; }
+.reveal.visible { opacity: 1; transform: translateY(0); }
+
+/* ── LOGO STRIP ── */
+.strip {
+  background: var(--cream2);
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  padding: 24px 48px;
+  display: flex; align-items: center; justify-content: center; gap: 0;
+}
+.strip-label { font-size: 12px; color: var(--ink4); font-weight: 500; letter-spacing: .3px; margin-right: 32px; white-space: nowrap; }
+.strip-items { display: flex; align-items: center; gap: 0; flex-wrap: wrap; justify-content: center; }
+.strip-item {
+  padding: 8px 20px;
+  font-size: 13px; font-weight: 500; color: var(--ink3);
+  border-right: 1px solid var(--border);
+  white-space: nowrap;
+  display: flex; align-items: center; gap: 6px;
+}
+.strip-item:last-child { border-right: none; }
+
+/* ── SECTIONS ── */
+section { padding: 100px 48px; }
+.container { max-width: 1080px; margin: 0 auto; }
+.section-label {
+  display: inline-flex; align-items: center; gap: 6px;
+  font-size: 11px; font-weight: 600; color: var(--green);
+  text-transform: uppercase; letter-spacing: 1px; margin-bottom: 18px;
+}
+.section-label::before { content: ''; width: 16px; height: 1px; background: var(--green); }
+h2 {
+  font-family: var(--f-display);
+  font-size: clamp(36px, 4.5vw, 60px);
+  font-weight: 300; line-height: 1.1;
+  letter-spacing: -2px; color: var(--ink);
+}
+h2 em { font-style: italic; color: var(--green); }
+h2 .muted { color: var(--stone); }
+.section-sub {
+  font-size: 17px; color: var(--ink3); line-height: 1.65;
+  margin-top: 16px; font-weight: 300; letter-spacing: -0.2px;
+  max-width: 480px;
+}
+
+/* ── HOW IT WORKS ── */
+.how-grid {
+  display: grid; grid-template-columns: repeat(4,1fr);
+  gap: 1px; background: var(--border);
+  border: 1px solid var(--border); border-radius: var(--r-xl);
+  overflow: hidden; margin-top: 56px;
+}
+.how-step { background: #fff; padding: 36px 28px; position: relative; }
+.step-num {
+  font-family: var(--f-display);
+  font-size: 64px; font-weight: 300; font-style: italic;
+  color: var(--cream3); line-height: 1; margin-bottom: 20px;
+  letter-spacing: -2px;
+}
+.step-icon { font-size: 26px; margin-bottom: 16px; display: block; }
+.step-title { font-size: 16px; font-weight: 500; color: var(--ink); margin-bottom: 10px; letter-spacing: -0.3px; }
+.step-desc { font-size: 14px; color: var(--ink3); line-height: 1.6; font-weight: 300; }
+.step-pill {
+  display: inline-block; margin-top: 18px;
+  font-size: 11px; font-weight: 600; letter-spacing: .3px;
+  padding: 4px 12px; border-radius: 100px;
+  background: var(--green-soft); color: var(--green);
+}
+
+/* ── FEATURES BENTO ── */
+.bento { display: grid; grid-template-columns: 1fr 1fr 1fr; grid-template-rows: auto auto; gap: 12px; margin-top: 56px; }
+.bento-card {
+  background: #fff; border: 1px solid var(--border);
+  border-radius: var(--r-xl); padding: 32px;
+  transition: box-shadow .2s, transform .2s;
+  overflow: hidden; position: relative;
+}
+.bento-card:hover { box-shadow: var(--shadow-lg); transform: translateY(-2px); }
+.bento-card.wide { grid-column: span 2; }
+.bento-card.tall { grid-row: span 2; }
+.bento-icon { font-size: 28px; margin-bottom: 20px; display: block; }
+.bento-title { font-family: var(--f-display); font-size: 22px; font-weight: 300; font-style: italic; color: var(--ink); margin-bottom: 10px; letter-spacing: -0.5px; }
+.bento-desc { font-size: 14px; color: var(--ink3); line-height: 1.6; font-weight: 300; }
+.bento-tag { font-size: 11px; font-weight: 600; color: var(--green); margin-top: 16px; letter-spacing: .3px; }
+
+/* BENTO MINI CHART */
+.mini-chart { margin-top: 20px; display: flex; align-items: flex-end; gap: 5px; height: 48px; }
+.mini-bar { border-radius: 4px 4px 0 0; flex: 1; transition: height .3s; }
+
+/* BENTO PIPELINE */
+.pipeline-preview { margin-top: 20px; display: flex; flex-direction: column; gap: 6px; }
+.pip-row { display: flex; align-items: center; gap: 10px; }
+.pip-label { font-size: 11px; color: var(--ink4); width: 80px; flex-shrink: 0; }
+.pip-bar { flex: 1; height: 5px; background: var(--cream3); border-radius: 3px; overflow: hidden; }
+.pip-fill { height: 100%; border-radius: 3px; }
+.pip-val { font-size: 11px; font-weight: 600; color: var(--ink); width: 28px; text-align: right; }
+
+/* BENTO IA PREVIEW */
+.ia-preview {
+  margin-top: 20px; background: var(--cream2);
+  border: 1px solid var(--border); border-radius: var(--r);
+  padding: 14px; font-size: 13px; color: var(--ink3);
+  line-height: 1.6; font-weight: 300;
+}
+.ia-preview-label {
+  font-size: 10px; font-weight: 600; color: var(--green);
+  text-transform: uppercase; letter-spacing: .6px; margin-bottom: 8px;
+  display: flex; align-items: center; gap: 5px;
+}
+.ia-dot { width: 5px; height: 5px; border-radius: 50%; background: var(--green); animation: blink 1.5s ease infinite; }
+@keyframes blink { 0%,100%{opacity:1} 50%{opacity:.2} }
+
+/* ── SECTORS ── */
+.sectors-section { background: var(--cream2); }
+.sectors-tabs { display: flex; gap: 6px; margin-top: 44px; margin-bottom: 32px; flex-wrap: wrap; }
+.sec-btn {
+  padding: 8px 18px; border-radius: 100px;
+  border: 1px solid var(--border2);
+  font-size: 13px; font-weight: 400; color: var(--ink3);
+  cursor: pointer; transition: all .2s;
+  background: #fff; font-family: var(--f-body);
+  letter-spacing: -0.1px;
+}
+.sec-btn:hover { color: var(--ink); border-color: var(--stone); }
+.sec-btn.on { background: var(--ink); color: var(--cream); border-color: var(--ink); }
+.sec-panel { display: none; }
+.sec-panel.on {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 32px; align-items: start;
+}
+.sec-left h3 {
+  font-family: var(--f-display);
+  font-size: 32px; font-weight: 300; font-style: italic;
+  letter-spacing: -1px; margin-bottom: 14px;
+}
+.sec-left p { font-size: 15px; color: var(--ink3); line-height: 1.7; font-weight: 300; margin-bottom: 24px; }
+.sec-fields { display: flex; flex-direction: column; gap: 8px; }
+.sec-field {
+  display: flex; align-items: center; gap: 10px;
+  background: #fff; border: 1px solid var(--border);
+  border-radius: 8px; padding: 10px 14px; font-size: 13px; color: var(--ink2);
+}
+.sec-field::before { content: '↳'; color: var(--green); font-size: 12px; flex-shrink: 0; }
+.sec-right {
+  background: #fff; border: 1px solid var(--border);
+  border-radius: var(--r-xl); padding: 28px;
+}
+.sec-right-title { font-size: 11px; font-weight: 600; color: var(--ink4); text-transform: uppercase; letter-spacing: .8px; margin-bottom: 20px; }
+.sec-stat { display: flex; justify-content: space-between; align-items: center; padding: 11px 0; border-bottom: 1px solid var(--border); font-size: 13px; }
+.sec-stat:last-child { border-bottom: none; }
+.sec-stat-k { color: var(--ink3); font-weight: 300; }
+.sec-stat-v { font-weight: 600; color: var(--green); font-family: var(--f-display); font-style: italic; font-size: 15px; }
+
+/* ── PRICING ── */
+.pricing-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px; margin-top: 52px; }
+.price-card {
+  background: #fff; border: 1px solid var(--border);
+  border-radius: var(--r-xl); padding: 36px 32px;
+  transition: box-shadow .2s;
+}
+.price-card:hover { box-shadow: var(--shadow-lg); }
+.price-card.featured {
+  background: var(--ink); color: var(--cream);
+  border-color: var(--ink);
+}
+.price-badge {
+  font-size: 11px; font-weight: 600; letter-spacing: .5px;
+  text-transform: uppercase; padding: 4px 12px;
+  border-radius: 100px; margin-bottom: 24px; display: inline-block;
+}
+.price-card:not(.featured) .price-badge { background: var(--green-soft); color: var(--green); }
+.price-card.featured .price-badge { background: rgba(255,255,255,.1); color: rgba(255,255,255,.8); }
+.price-name { font-size: 15px; font-weight: 500; letter-spacing: -0.2px; margin-bottom: 6px; }
+.price-amount {
+  font-family: var(--f-display); font-size: 52px; font-weight: 300;
+  font-style: italic; letter-spacing: -2px; line-height: 1; margin: 18px 0 4px;
+}
+.price-amount span { font-size: 20px; font-style: normal; font-weight: 300; }
+.price-period { font-size: 13px; margin-bottom: 28px; }
+.price-card:not(.featured) .price-period { color: var(--ink4); }
+.price-card.featured .price-period { color: rgba(255,255,255,.5); }
+.price-items { list-style: none; display: flex; flex-direction: column; gap: 10px; margin-bottom: 32px; }
+.price-items li { font-size: 14px; display: flex; align-items: flex-start; gap: 8px; font-weight: 300; }
+.price-items li::before { content: '✓'; font-weight: 600; flex-shrink: 0; color: var(--green); margin-top: 1px; }
+.price-card.featured .price-items li::before { color: #7de2a8; }
+.price-items li.off { opacity: .35; }
+.price-items li.off::before { content: '—'; }
+.btn-plan {
+  width: 100%; padding: 13px; border-radius: 10px;
+  font-size: 14px; font-weight: 500; cursor: pointer;
+  transition: all .2s; display: block; text-align: center;
+  text-decoration: none; letter-spacing: -0.2px; border: none;
+  font-family: var(--f-body);
+}
+.btn-plan-dark { background: var(--ink); color: #fff; }
+.btn-plan-dark:hover { background: var(--ink2); transform: translateY(-1px); }
+.btn-plan-light { background: #fff; color: var(--ink); }
+.btn-plan-light:hover { background: var(--cream2); transform: translateY(-1px); }
+.btn-plan-outline { background: transparent; color: var(--ink); border: 1px solid var(--border2); }
+.btn-plan-outline:hover { background: var(--cream2); }
+
+/* ── TESTIMONIALS ── */
+.test-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 16px; margin-top: 52px; }
+.test-card {
+  background: #fff; border: 1px solid var(--border);
+  border-radius: var(--r-xl); padding: 32px;
+}
+.test-stars { color: var(--accent); font-size: 13px; letter-spacing: 3px; margin-bottom: 18px; }
+.test-quote {
+  font-family: var(--f-display); font-size: 18px; font-weight: 300;
+  font-style: italic; color: var(--ink); line-height: 1.55;
+  letter-spacing: -0.3px; margin-bottom: 24px;
+}
+.test-author { display: flex; align-items: center; gap: 12px; padding-top: 20px; border-top: 1px solid var(--border); }
+.test-av {
+  width: 38px; height: 38px; border-radius: 10px;
+  background: var(--green-soft); display: flex; align-items: center; justify-content: center;
+  font-family: var(--f-display); font-style: italic; font-size: 15px; color: var(--green);
+  font-weight: 300; flex-shrink: 0;
+}
+.test-name { font-size: 14px; font-weight: 500; color: var(--ink); letter-spacing: -0.2px; }
+.test-role { font-size: 12px; color: var(--ink4); margin-top: 2px; }
+
+/* ── FAQ ── */
+.faq-wrap { max-width: 680px; margin: 52px auto 0; }
+.faq-item { border-bottom: 1px solid var(--border); }
+.faq-q {
+  padding: 22px 0; cursor: pointer;
+  display: flex; align-items: center; justify-content: space-between;
+  font-size: 16px; font-weight: 400; color: var(--ink);
+  letter-spacing: -0.3px; transition: color .2s;
+}
+.faq-q:hover { color: var(--green); }
+.faq-icon {
+  width: 24px; height: 24px; border-radius: 50%;
+  background: var(--cream3); border: 1px solid var(--border);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 14px; color: var(--ink3); flex-shrink: 0;
+  transition: all .2s;
+}
+.faq-item.open .faq-icon { background: var(--green); color: #fff; border-color: var(--green); transform: rotate(45deg); }
+.faq-a { display: none; padding-bottom: 22px; font-size: 15px; color: var(--ink3); line-height: 1.7; font-weight: 300; }
+.faq-item.open .faq-a { display: block; }
+
+/* ── CTA ── */
+.cta-wrap {
+  margin: 0 48px 80px;
+  background: var(--ink);
+  border-radius: var(--r-xl);
+  padding: 88px 60px;
+  text-align: center;
+  position: relative; overflow: hidden;
+}
+.cta-wrap::before {
+  content: '';
+  position: absolute; top: -60%; left: 50%; transform: translateX(-50%);
+  width: 500px; height: 300px;
+  background: radial-gradient(ellipse, rgba(26,107,60,0.35), transparent 70%);
+  pointer-events: none;
+}
+.cta-wrap h2 {
+  color: var(--cream); letter-spacing: -2px; max-width: 640px; margin: 0 auto;
+}
+.cta-wrap h2 em { color: #7de2a8; }
+.cta-sub { font-size: 17px; color: rgba(255,255,255,.5); margin-top: 14px; margin-bottom: 36px; font-weight: 300; }
+.cta-actions { display: flex; align-items: center; justify-content: center; gap: 12px; }
+.btn-cta-p {
+  background: #fff; color: var(--ink);
+  padding: 13px 28px; border-radius: var(--r);
+  font-size: 15px; font-weight: 500; text-decoration: none;
+  transition: all .2s; letter-spacing: -0.2px;
+}
+.btn-cta-p:hover { background: var(--cream2); transform: translateY(-1px); }
+.btn-cta-s {
+  color: rgba(255,255,255,.5); font-size: 15px; font-weight: 300;
+  text-decoration: none; letter-spacing: -0.2px; transition: color .2s;
+  padding: 13px 20px;
+}
+.btn-cta-s:hover { color: rgba(255,255,255,.8); }
+
+/* ── FOOTER ── */
+footer {
+  border-top: 1px solid var(--border);
+  padding: 56px 48px 40px;
+}
+.footer-inner { max-width: 1080px; margin: 0 auto; }
+.footer-top { display: grid; grid-template-columns: 1.5fr 1fr 1fr 1fr; gap: 48px; margin-bottom: 48px; }
+.footer-logo { font-family: var(--f-display); font-size: 22px; font-weight: 300; font-style: italic; color: var(--ink); }
+.footer-logo em { color: var(--green); font-style: normal; }
+.footer-tagline { font-size: 14px; color: var(--ink4); margin-top: 10px; line-height: 1.6; font-weight: 300; }
+.footer-col h4 { font-size: 11px; font-weight: 600; color: var(--ink); text-transform: uppercase; letter-spacing: .8px; margin-bottom: 16px; }
+.footer-col a { display: block; font-size: 14px; color: var(--ink3); text-decoration: none; margin-bottom: 8px; transition: color .2s; font-weight: 300; }
+.footer-col a:hover { color: var(--ink); }
+.footer-bottom {
+  border-top: 1px solid var(--border); padding-top: 24px;
+  display: flex; align-items: center; justify-content: space-between;
+  font-size: 13px; color: var(--ink4); font-weight: 300;
+}
+
+@media (max-width: 900px) {
+  nav { padding: 0 20px; }
+  .nav-links { display: none; }
+  .hero { padding: 100px 20px 60px; }
+  section { padding: 64px 20px; }
+  h2 { font-size: 36px; letter-spacing: -1.5px; }
+  .hero h1 { font-size: 48px; letter-spacing: -2px; }
+  .hero-metrics { display: grid; grid-template-columns: 1fr 1fr; }
+  .metric { border-right: none; border-bottom: 1px solid var(--border); }
+  .metric:nth-child(even) { border-right: none; }
+  .how-grid { grid-template-columns: 1fr 1fr; }
+  .bento { grid-template-columns: 1fr; }
+  .bento-card.wide { grid-column: span 1; }
+  .pricing-grid, .test-grid { grid-template-columns: 1fr; }
+  .sec-panel.on { grid-template-columns: 1fr; }
+  .footer-top { grid-template-columns: 1fr 1fr; gap: 32px; }
+  .cta-wrap { margin: 0 20px 60px; padding: 56px 28px; }
+  .strip { padding: 20px; flex-direction: column; gap: 12px; }
+}
+</style>
+</head>
+<body>
+
+<nav id="nav">
+  <div class="nav-logo">Fixa<em>Lead</em></div>
+  <div class="nav-links">
+    <a href="#como-funciona">Como funciona</a>
+    <a href="#sectores">Sectores</a>
+    <a href="#precos">Planos</a>
+    <a href="#faq">FAQ</a>
+    <a href="https://app.fixalead.com" class="nav-cta">Entrar →</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-eyebrow">Gestão de leads para negócios locais</div>
+  <h1>Leads que chegam.<br><em>Clientes</em> que ficam.</h1>
+  <p class="hero-sub">Capta leads de qualquer canal. Nunca percas um contacto. Converte mais clientes com menos esforço.</p>
+  <div class="hero-actions">
+    <a href="#precos" class="btn-primary">Começar grátis →</a>
+    <a href="#como-funciona" class="btn-secondary">Ver como funciona ↓</a>
+  </div>
+  <div class="hero-metrics">
+    <div class="metric">
+      <div class="metric-n">15+</div>
+      <div class="metric-l">Fontes de leads</div>
+    </div>
+    <div class="metric">
+      <div class="metric-n">7</div>
+      <div class="metric-l">Sectores suportados</div>
+    </div>
+    <div class="metric">
+      <div class="metric-n">7×</div>
+      <div class="metric-l">Mais respostas em média</div>
+    </div>
+    <div class="metric">
+      <div class="metric-n">∞</div>
+      <div class="metric-l">Leads sem limite</div>
+    </div>
+  </div>
+
+  <!-- DASHBOARD MOCKUP -->
+  <div class="hero-visual">
+    <div class="dashboard-card">
+      <div class="dc-topbar">
+        <div class="dc-tab active">Dashboard</div>
+        <div class="dc-tab">Leads</div>
+        <div class="dc-tab">Funil</div>
+        <div class="dc-tab">Gerador IA</div>
+      </div>
+      <div class="dc-body">
+        <div class="dc-sidebar">
+          <div style="height:28px;background:rgba(26,107,60,.08);border-radius:6px;margin-bottom:16px;display:flex;align-items:center;padding:0 10px;gap:6px;"><div style="width:8px;height:8px;border-radius:50%;background:var(--green);"></div><span style="font-size:11px;color:var(--green);font-weight:500;">FitLife Academia</span></div>
+          <div class="dc-nav-item active"><div class="dc-nav-dot"></div>Dashboard</div>
+          <div class="dc-nav-item"><div class="dc-nav-dot"></div>Alertas</div>
+          <div class="dc-nav-item"><div class="dc-nav-dot"></div>Funil</div>
+          <div class="dc-nav-item"><div class="dc-nav-dot"></div>Lista de leads</div>
+          <div style="height:1px;background:var(--border);margin:10px 0;"></div>
+          <div class="dc-nav-item"><div class="dc-nav-dot"></div>Gerador IA</div>
+          <div class="dc-nav-item"><div class="dc-nav-dot"></div>Catálogo</div>
+          <div class="dc-nav-item"><div class="dc-nav-dot"></div>Relatórios</div>
+        </div>
+        <div class="dc-main">
+          <div class="dc-stats">
+            <div class="dc-stat"><div class="dc-stat-n" style="color:var(--ink)">48</div><div class="dc-stat-l">Total leads</div></div>
+            <div class="dc-stat"><div class="dc-stat-n" style="color:#2563eb">12</div><div class="dc-stat-l">Novos</div></div>
+            <div class="dc-stat"><div class="dc-stat-n" style="color:var(--accent)">7</div><div class="dc-stat-l">Quentes</div></div>
+            <div class="dc-stat"><div class="dc-stat-n" style="color:var(--green)">24%</div><div class="dc-stat-l">Conversão</div></div>
+          </div>
+          <div class="dc-table">
+            <div class="dc-thead">
+              <div class="dc-th" style="width:55%"></div>
+              <div class="dc-th" style="width:70%"></div>
+              <div class="dc-th" style="width:80%"></div>
+              <div class="dc-th" style="width:50%"></div>
+            </div>
+            <div class="dc-row">
+              <div class="dc-name"><div class="dc-av" style="background:#dbeafe"></div><div class="dc-name-bar" style="background:var(--warm);width:65%"></div></div>
+              <div style="font-size:11px;color:var(--ink4)">Instagram</div>
+              <div><span class="dc-chip chip-q">Quente 🔥</span></div>
+              <div class="dc-score" style="color:var(--green)">€1.200</div>
+            </div>
+            <div class="dc-row">
+              <div class="dc-name"><div class="dc-av" style="background:#f3e8ff"></div><div class="dc-name-bar" style="background:var(--warm);width:50%"></div></div>
+              <div style="font-size:11px;color:var(--ink4)">Google</div>
+              <div><span class="dc-chip chip-p">Proposta</span></div>
+              <div class="dc-score" style="color:var(--accent)">€850</div>
+            </div>
+            <div class="dc-row">
+              <div class="dc-name"><div class="dc-av" style="background:#dcfce7"></div><div class="dc-name-bar" style="background:var(--warm);width:75%"></div></div>
+              <div style="font-size:11px;color:var(--ink4)">WhatsApp</div>
+              <div><span class="dc-chip chip-n">Convertido ✓</span></div>
+              <div class="dc-score" style="color:var(--green)">€2.400</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STRIP -->
+<div class="strip">
+  <span class="strip-label">Funciona para</span>
+  <div class="strip-items">
+    <div class="strip-item">🏋️ Academias & Ginásios</div>
+    <div class="strip-item">🔥 Boxes de CrossFit</div>
+    <div class="strip-item">✨ Clínicas de Estética</div>
+    <div class="strip-item">🦷 Clínicas Dentárias</div>
+    <div class="strip-item">🛒 Lojas & Comércio</div>
+    <div class="strip-item">🏠 Imobiliárias</div>
+  </div>
+</div>
+
+<!-- HOW IT WORKS -->
+<section id="como-funciona">
+  <div class="container">
+    <div class="section-label reveal">Como funciona</div>
+    <h2 class="reveal">Do primeiro contacto<br><span class="muted">ao negócio fechado.</span></h2>
+    <div class="how-grid">
+      <div class="how-step reveal">
+        <div class="step-num">01</div>
+        <span class="step-icon">📱</span>
+        <div class="step-title">Lead descobre o teu negócio</div>
+        <div class="step-desc">O lead descobre-te onde estiver — redes sociais, Google, WhatsApp, QR Code na montra, indicação de um cliente. O sistema capta e organiza tudo automaticamente, de 15+ canais.</div>
+        <div class="step-pill">Automático 24/7</div>
+      </div>
+      <div class="how-step reveal">
+        <div class="step-num">02</div>
+        <span class="step-icon">📋</span>
+        <div class="step-title">Formulário recolhe os dados</div>
+        <div class="step-desc">Typeform adaptado ao teu sector. Academia pergunta sobre objectivos fitness. Dentário pergunta sobre plano de saúde. Imobiliária sobre tipologia e orçamento.</div>
+        <div class="step-pill">Campos por sector</div>
+      </div>
+      <div class="how-step reveal">
+        <div class="step-num">03</div>
+        <span class="step-icon">✉️</span>
+        <div class="step-title">Mensagem certa, no momento certo</div>
+        <div class="step-desc">Com um clique tens a mensagem ideal para aquele lead — primeiro contacto, follow-up, proposta ou reactivação. Personalizada ao perfil, canal e etapa. Tu envias, o lead responde.</div>
+        <div class="step-pill">Personalização automática</div>
+      </div>
+      <div class="how-step reveal">
+        <div class="step-num">04</div>
+        <span class="step-icon">📈</span>
+        <div class="step-title">Segues até converter</div>
+        <div class="step-desc">Funil visual com pipeline em €, alertas de aniversário e follow-up, histórico de cada conversa e relatórios automáticos por sector.</div>
+        <div class="step-pill">Mini CRM incluído</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FEATURES BENTO -->
+<section style="background:var(--cream2);">
+  <div class="container">
+    <div class="section-label reveal">Funcionalidades</div>
+    <h2 class="reveal">Tudo num só lugar.<br><span class="muted">Sem complicação.</span></h2>
+    <div class="bento">
+      <div class="bento-card wide reveal">
+        <span class="bento-icon">✉️</span>
+        <div class="bento-title">A mensagem certa para cada lead</div>
+        <div class="bento-desc">7 tipos de mensagem adaptadas ao perfil, canal e etapa do funil. Primeiro contacto, follow-up, proposta, aniversário, reactivação. Escreves menos, respondes mais.</div>
+        <div class="ia-preview">
+          <div class="ia-preview-label"><div class="ia-dot"></div>Mensagem gerada</div>
+          "Olá Ana! Vi que tens interesse em perda de peso — na FitLife temos um programa específico com resultados comprovados. Queres que te conte como funciona?"
+        </div>
+        <div class="bento-tag">7 tipos · Primeiro contacto · Follow-up · Proposta · Reactivação</div>
+      </div>
+      <div class="bento-card reveal">
+        <span class="bento-icon">◈</span>
+        <div class="bento-title">Funil visual com pipeline</div>
+        <div class="bento-desc">7 etapas do funil com valor total em € de cada negócio em aberto. Vês o estado de todos os leads num relance.</div>
+        <div class="pipeline-preview">
+          <div class="pip-row"><div class="pip-label">Novos</div><div class="pip-bar"><div class="pip-fill" style="width:80%;background:#2563eb"></div></div><div class="pip-val">12</div></div>
+          <div class="pip-row"><div class="pip-label">Quentes</div><div class="pip-bar"><div class="pip-fill" style="width:50%;background:var(--accent)"></div></div><div class="pip-val">7</div></div>
+          <div class="pip-row"><div class="pip-label">Proposta</div><div class="pip-bar"><div class="pip-fill" style="width:35%;background:#7c3aed"></div></div><div class="pip-val">5</div></div>
+          <div class="pip-row"><div class="pip-label">Convertidos</div><div class="pip-bar"><div class="pip-fill" style="width:25%;background:var(--green)"></div></div><div class="pip-val">3</div></div>
+        </div>
+        <div class="bento-tag">Pipeline em € · 7 etapas</div>
+      </div>
+      <div class="bento-card reveal">
+        <span class="bento-icon">📊</span>
+        <div class="bento-title">Relatórios por sector</div>
+        <div class="bento-desc">Análise adaptada ao teu negócio — fontes com maior conversão, ticket médio, tratamentos mais pedidos. Exporta em Excel ou PDF.</div>
+        <div class="mini-chart">
+          <div class="mini-bar" style="height:60%;background:#2563eb;opacity:.7"></div>
+          <div class="mini-bar" style="height:90%;background:var(--green)"></div>
+          <div class="mini-bar" style="height:45%;background:var(--accent);opacity:.7"></div>
+          <div class="mini-bar" style="height:75%;background:var(--green);opacity:.8"></div>
+          <div class="mini-bar" style="height:55%;background:#7c3aed;opacity:.7"></div>
+          <div class="mini-bar" style="height:85%;background:var(--green)"></div>
+          <div class="mini-bar" style="height:40%;background:#2563eb;opacity:.6"></div>
+        </div>
+        <div class="bento-tag">Excel + PDF</div>
+      </div>
+      <div class="bento-card reveal">
+        <span class="bento-icon">🎂</span>
+        <div class="bento-title">Alertas automáticos</div>
+        <div class="bento-desc">Aniversários de clientes, follow-ups em atraso e leads quentes a arrefecer. Nunca mais deixas escapar um negócio por falta de atenção.</div>
+        <div class="bento-tag">Aniversários · Follow-ups</div>
+      </div>
+      <div class="bento-card reveal">
+        <span class="bento-icon">🎯</span>
+        <div class="bento-title">Prioriza os leads certos</div>
+        <div class="bento-desc">Cada lead tem uma pontuação automática 0–100. Urgência, valor estimado, comportamento e dados preenchidos. Sabes sempre a quem ligar primeiro.</div>
+        <div style="display:flex;gap:6px;margin-top:14px;">
+          <span style="background:#fee2e2;color:#991b1b;padding:3px 10px;border-radius:100px;font-size:11px;font-weight:600;">🔥 87 — Quente</span>
+          <span style="background:#fef3c7;color:#92400e;padding:3px 10px;border-radius:100px;font-size:11px;font-weight:600;">⚡ 52 — Morno</span>
+          <span style="background:#dbeafe;color:#1e40af;padding:3px 10px;border-radius:100px;font-size:11px;font-weight:600;">❄️ 21 — Frio</span>
+        </div>
+        <div class="bento-tag">Automático · 0–100</div>
+      </div>
+      <div class="bento-card reveal">
+        <span class="bento-icon">🏷️</span>
+        <div class="bento-title">Campos por sector</div>
+        <div class="bento-desc">Imobiliária recolhe zona e financiamento. Dentário recolhe plano de saúde e urgência. Estética recolhe tipo de pele. Cada negócio tem os campos certos.</div>
+        <div class="bento-tag">7 sectores configurados</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SECTORS -->
+<section id="sectores">
+  <div class="container">
+    <div class="section-label reveal">Por sector</div>
+    <h2 class="reveal">Adaptado ao teu<br><em>tipo de negócio.</em></h2>
+    <p class="section-sub reveal">Cada sector tem campos de formulário, fontes de leads e análises comerciais diferentes. O FixaLead adapta-se automaticamente.</p>
+    <div class="sectors-tabs">
+      <button class="sec-btn on" onclick="showSec('academia',this)">🏋️ Academia</button>
+      <button class="sec-btn" onclick="showSec('estetica',this)">✨ Estética</button>
+      <button class="sec-btn" onclick="showSec('dentario',this)">🦷 Dentário</button>
+      <button class="sec-btn" onclick="showSec('loja',this)">🛒 Loja</button>
+      <button class="sec-btn" onclick="showSec('imobiliaria',this)">🏠 Imobiliária</button>
+    </div>
+    <div id="s-academia" class="sec-panel on">
+      <div class="sec-left">
+        <h3>Academia & Ginásio</h3>
+        <p>Capta pessoas que querem começar a treinar. O formulário qualifica por objectivo, condição física e horário disponível. Tens o perfil completo antes da primeira chamada.</p>
+        <div class="sec-fields">
+          <div class="sec-field">Objectivo fitness (perda peso, ganho muscular...)</div>
+          <div class="sec-field">Condição física actual e lesões</div>
+          <div class="sec-field">Experiência em ginásio</div>
+          <div class="sec-field">Horário preferido</div>
+          <div class="sec-field">Canais: Redes sociais, Google, QR Code, WhatsApp</div>
+        </div>
+      </div>
+      <div class="sec-right">
+        <div class="sec-right-title">Exemplo de análise comercial</div>
+        <div class="sec-stat"><span class="sec-stat-k">Leads este mês</span><span class="sec-stat-v">47</span></div>
+        <div class="sec-stat"><span class="sec-stat-k">Canal principal</span><span class="sec-stat-v">Redes sociais 58%</span></div>
+        <div class="sec-stat"><span class="sec-stat-k">Objectivo mais comum</span><span class="sec-stat-v">Perder peso</span></div>
+        <div class="sec-stat"><span class="sec-stat-k">Taxa de conversão</span><span class="sec-stat-v">24%</span></div>
+        <div class="sec-stat"><span class="sec-stat-k">Pipeline em aberto</span><span class="sec-stat-v">€3.800</span></div>
+      </div>
+    </div>
+    <div id="s-estetica" class="sec-panel">
+      <div class="sec-left">
+        <h3>Clínica de Estética</h3>
+        <p>Leads que procuram tratamentos faciais, corporais ou depilação a laser. O formulário qualifica por tipo de pele, histórico de tratamentos e urgência — dados que os concorrentes não recolhem.</p>
+        <div class="sec-fields">
+          <div class="sec-field">Tratamento de interesse específico</div>
+          <div class="sec-field">Tipo de pele e alergias</div>
+          <div class="sec-field">Já fez tratamentos estéticos?</div>
+          <div class="sec-field">Urgência e disponibilidade</div>
+          <div class="sec-field">Canais: Pesquisa orgânica, redes sociais, indicação</div>
+        </div>
+      </div>
+      <div class="sec-right">
+        <div class="sec-right-title">Exemplo de análise comercial</div>
+        <div class="sec-stat"><span class="sec-stat-k">Tratamento mais pedido</span><span class="sec-stat-v">Depilação laser</span></div>
+        <div class="sec-stat"><span class="sec-stat-k">Ticket médio</span><span class="sec-stat-v">€280/pacote</span></div>
+        <div class="sec-stat"><span class="sec-stat-k">Pele sensível</span><span class="sec-stat-v">34% dos leads</span></div>
+        <div class="sec-stat"><span class="sec-stat-k">Pacote vs sessão única</span><span class="sec-stat-v">45% pacote</span></div>
+        <div class="sec-stat"><span class="sec-stat-k">Canal principal</span><span class="sec-stat-v">Pesquisa orgânica 61%</span></div>
+      </div>
+    </div>
+    <div id="s-dentario" class="sec-panel">
+      <div class="sec-left">
+        <h3>Clínica Dentária</h3>
+        <p>Do primeiro contacto à consulta marcada. O sistema identifica urgências, qualifica por plano de saúde e recolhe dados que permitem personalizar totalmente a abordagem.</p>
+        <div class="sec-fields">
+          <div class="sec-field">Tratamento de interesse</div>
+          <div class="sec-field">Tem plano de saúde?</div>
+          <div class="sec-field">Última visita ao dentista</div>
+          <div class="sec-field">Tem dor? (triagem de urgência)</div>
+          <div class="sec-field">Canais: Pesquisa orgânica, indicação, WhatsApp</div>
+        </div>
+      </div>
+      <div class="sec-right">
+        <div class="sec-right-title">Exemplo de análise comercial</div>
+        <div class="sec-stat"><span class="sec-stat-k">Leads com plano de saúde</span><span class="sec-stat-v">62%</span></div>
+        <div class="sec-stat"><span class="sec-stat-k">Tratamento mais pedido</span><span class="sec-stat-v">Branqueamento</span></div>
+        <div class="sec-stat"><span class="sec-stat-k">Canal principal</span><span class="sec-stat-v">Pesquisa orgânica 71%</span></div>
+        <div class="sec-stat"><span class="sec-stat-k">Urgências identificadas</span><span class="sec-stat-v">18%</span></div>
+        <div class="sec-stat"><span class="sec-stat-k">Última visita +1 ano</span><span class="sec-stat-v">44%</span></div>
+      </div>
+    </div>
+    <div id="s-loja" class="sec-panel">
+      <div class="sec-left">
+        <h3>Loja & Comércio</h3>
+        <p>Capta clientes que visitaram a loja, viram online ou pediram orçamento. Acompanha o funil com produto de interesse, orçamento disponível e prazo de decisão.</p>
+        <div class="sec-fields">
+          <div class="sec-field">Produto específico de interesse</div>
+          <div class="sec-field">Orçamento disponível</div>
+          <div class="sec-field">Prazo para decisão</div>
+          <div class="sec-field">Já é cliente?</div>
+          <div class="sec-field">Canais: Visita presencial, marketplace, pesquisa, QR</div>
+        </div>
+      </div>
+      <div class="sec-right">
+        <div class="sec-right-title">Exemplo de análise comercial</div>
+        <div class="sec-stat"><span class="sec-stat-k">Ticket médio</span><span class="sec-stat-v">€1.450</span></div>
+        <div class="sec-stat"><span class="sec-stat-k">Orçamento médio</span><span class="sec-stat-v">€2.000</span></div>
+        <div class="sec-stat"><span class="sec-stat-k">Decisão imediata</span><span class="sec-stat-v">34%</span></div>
+        <div class="sec-stat"><span class="sec-stat-k">Clientes recorrentes</span><span class="sec-stat-v">28%</span></div>
+        <div class="sec-stat"><span class="sec-stat-k">Fonte principal</span><span class="sec-stat-v">OLX 42%</span></div>
+      </div>
+    </div>
+    <div id="s-imobiliaria" class="sec-panel">
+      <div class="sec-left">
+        <h3>Imobiliária</h3>
+        <p>Leads de compra, arrendamento e venda. O sistema qualifica por zona, tipologia, orçamento e necessidade de financiamento — tudo o que precisas antes da primeira chamada.</p>
+        <div class="sec-fields">
+          <div class="sec-field">Tipo de imóvel e tipologia (T1, T2, T3...)</div>
+          <div class="sec-field">Zona preferida</div>
+          <div class="sec-field">Orçamento disponível</div>
+          <div class="sec-field">Precisa de financiamento bancário?</div>
+          <div class="sec-field">Canais: Portais imobiliários, pesquisa, placa no imóvel</div>
+        </div>
+      </div>
+      <div class="sec-right">
+        <div class="sec-right-title">Exemplo de análise comercial</div>
+        <div class="sec-stat"><span class="sec-stat-k">Pipeline total</span><span class="sec-stat-v">€1.2M</span></div>
+        <div class="sec-stat"><span class="sec-stat-k">Tipologia mais pedida</span><span class="sec-stat-v">T2 (42%)</span></div>
+        <div class="sec-stat"><span class="sec-stat-k">Precisam financiamento</span><span class="sec-stat-v">68%</span></div>
+        <div class="sec-stat"><span class="sec-stat-k">Canal principal</span><span class="sec-stat-v">Portais imobiliários 45%</span></div>
+        <div class="sec-stat"><span class="sec-stat-k">Prazo médio de decisão</span><span class="sec-stat-v">3–6 meses</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section id="precos" style="background:var(--cream2);">
+  <div class="container" style="text-align:center;max-width:680px;">
+    <div class="section-label reveal" style="justify-content:center;">Planos</div>
+    <h2 class="reveal">Feito à medida<br><em>do teu negócio.</em></h2>
+    <p class="section-sub reveal" style="margin:20px auto 48px;">Cada negócio tem dimensões e necessidades diferentes. Fala connosco e encontramos juntos a melhor solução — sem surpresas.</p>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:16px;" class="reveal">
+      <div class="price-card" style="text-align:left;">
+        <div class="price-badge" style="background:var(--green-soft);color:var(--green);">Negócio único</div>
+        <div class="price-name" style="margin-bottom:16px;">Para uma academia, clínica ou loja</div>
+        <ul class="price-items" style="margin-bottom:28px;">
+          <li>Leads ilimitados</li>
+          <li>Funil de vendas completo</li>
+          <li>Mensagens personalizadas</li>
+          <li>Relatórios e alertas</li>
+          <li>Catálogo de serviços</li>
+          <li>Configuração incluída</li>
+        </ul>
+        <a href="mailto:hello@fixalead.com" class="btn-plan btn-plan-dark">Pedir proposta →</a>
+      </div>
+      <div class="price-card featured" style="text-align:left;">
+        <div class="price-badge">Múltiplos clientes</div>
+        <div class="price-name" style="margin-bottom:16px;">Para agências e consultores</div>
+        <ul class="price-items" style="margin-bottom:28px;">
+          <li>Tudo do plano anterior</li>
+          <li>Clientes ilimitados</li>
+          <li>Painel admin centralizado</li>
+          <li>Relatórios por cliente</li>
+          <li>Suporte prioritário</li>
+          <li>Onboarding incluído</li>
+        </ul>
+        <a href="mailto:hello@fixalead.com" class="btn-plan btn-plan-light">Falar connosco →</a>
+      </div>
+    </div>
+    <p class="reveal" style="font-size:13px;color:var(--ink4);font-weight:300;">Tens perguntas? Envia-nos um email para <a href="mailto:hello@fixalead.com" style="color:var(--green);text-decoration:none;">hello@fixalead.com</a></p>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section>
+  <div class="container">
+    <div class="section-label reveal">Clientes</div>
+    <h2 class="reveal">O que dizem <em>os nossos clientes.</em></h2>
+    <div class="test-grid">
+      <div class="test-card reveal">
+        <div class="test-stars">★★★★★</div>
+        <div class="test-quote">"Antes perdíamos leads todos os dias porque não respondíamos a tempo. Agora o sistema responde sozinho."</div>
+        <div class="test-author">
+          <div class="test-av">M</div>
+          <div><div class="test-name">Miguel Rodrigues</div><div class="test-role">FitLife Academia · Lisboa</div></div>
+        </div>
+      </div>
+      <div class="test-card reveal">
+        <div class="test-stars">★★★★★</div>
+        <div class="test-quote">"Em segundos tenho a mensagem certa para cada cliente. A taxa de resposta subiu muito e fecho mais negócios com menos tempo."</div>
+        <div class="test-author">
+          <div class="test-av">A</div>
+          <div><div class="test-name">Ana Silva</div><div class="test-role">Clínica Glow · Porto</div></div>
+        </div>
+      </div>
+      <div class="test-card reveal">
+        <div class="test-stars">★★★★★</div>
+        <div class="test-quote">"Giro 8 clientes com o FixaLead. Cada um tem o seu acesso e os seus relatórios. Muito profissional."</div>
+        <div class="test-author">
+          <div class="test-av">R</div>
+          <div><div class="test-name">Rodrigo Ferreira</div><div class="test-role">Agência de marketing digital</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section id="faq" style="background:var(--cream2);">
+  <div class="container" style="text-align:center;">
+    <div class="section-label reveal" style="justify-content:center;">FAQ</div>
+    <h2 class="reveal">Perguntas <em>frequentes.</em></h2>
+    <div class="faq-wrap">
+      <div class="faq-item">
+        <div class="faq-q" onclick="tfaq(this)"><span>Preciso de saber programar?</span><div class="faq-icon">+</div></div>
+        <div class="faq-a">Não. O FixaLead foi desenhado para pessoas sem conhecimentos técnicos. A configuração inicial é feita uma vez e depois o dia-a-dia é tão simples como enviar uma mensagem no WhatsApp.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="tfaq(this)"><span>Como chegam os leads ao sistema?</span><div class="faq-icon">+</div></div>
+        <div class="faq-a">Automaticamente de 15+ canais: redes sociais, pesquisas no Google, QR Codes físicos, WhatsApp Business, marketplaces, indicações, visitas presenciais e muito mais. Cada canal é configurado uma vez e funciona 24/7 — independentemente de onde o teu cliente te encontrar.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="tfaq(this)"><span>O meu cliente precisa de instalar alguma coisa?</span><div class="faq-icon">+</div></div>
+        <div class="faq-a">Não. O FixaLead funciona 100% no browser — Chrome, Safari, Edge. Basta ter o link e as credenciais. Funciona em computador, tablet e telemóvel.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="tfaq(this)"><span>Como funciona a geração de mensagens?</span><div class="faq-icon">+</div></div>
+        <div class="faq-a">Seleccionas o lead, escolhes o tipo de mensagem e o sistema escreve uma mensagem personalizada com base no perfil do lead, sector e etapa do funil. Em segundos tens uma mensagem pronta a copiar e enviar pelo WhatsApp, Instagram ou email. Por baixo do capô usa tecnologia de linguagem avançada — mas isso é detalhe técnico.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="tfaq(this)"><span>Posso gerir vários clientes com uma conta?</span><div class="faq-icon">+</div></div>
+        <div class="faq-a">Sim, com o plano Agência. Tens um painel admin onde crias e geres clientes ilimitados. Cada cliente tem o seu login separado e vê apenas os seus próprios leads — segurança garantida por Row Level Security.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<div class="cta-wrap">
+  <h2>Pronto para <em>fixar</em> mais leads?</h2>
+  <p class="cta-sub">Começa grátis hoje. Sem cartão de crédito.</p>
+  <div class="cta-actions">
+    <a href="#precos" class="btn-cta-p">Criar conta grátis →</a>
+    <a href="mailto:hello@fixalead.com" class="btn-cta-s">Falar com a equipa</a>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div>
+        <div class="footer-logo">Fixa<em>Lead</em></div>
+        <div class="footer-tagline">Gestão de leads para negócios locais portugueses. Capta, gere e converte com menos esforço.</div>
+      </div>
+      <div class="footer-col">
+        <h4>Produto</h4>
+        <a href="#como-funciona">Como funciona</a>
+        <a href="#sectores">Sectores</a>
+        <a href="#precos">Planos</a>
+        <a href="https://app.fixalead.com">Entrar na conta</a>
+      </div>
+      <div class="footer-col">
+        <h4>Sectores</h4>
+        <a href="#">Academias & Ginásios</a>
+        <a href="#">Clínicas de estética</a>
+        <a href="#">Clínicas dentárias</a>
+        <a href="#">Lojas & Comércio</a>
+        <a href="#">Imobiliárias</a>
+      </div>
+      <div class="footer-col">
+        <h4>Empresa</h4>
+        <a href="#">Sobre nós</a>
+        <a href="mailto:hello@fixalead.com">Contacto</a>
+        <a href="#">Privacidade</a>
+        <a href="#">Termos</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 FixaLead. Todos os direitos reservados.</span>
+      <span>Feito em Portugal 🇵🇹</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+// Nav
+window.addEventListener('scroll', () => {
+  document.getElementById('nav').classList.toggle('solid', window.scrollY > 20);
+});
+
+// Reveal on scroll
+const obs = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+}, { threshold: 0.1 });
+document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+
+// Sector tabs
+function showSec(id, btn) {
+  document.querySelectorAll('.sec-panel').forEach(p => p.classList.remove('on'));
+  document.querySelectorAll('.sec-btn').forEach(b => b.classList.remove('on'));
+  document.getElementById('s-' + id).classList.add('on');
+  btn.classList.add('on');
+}
+
+// FAQ
+function tfaq(el) {
+  const item = el.parentElement;
+  const isOpen = item.classList.contains('open');
+  document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+  if (!isOpen) item.classList.add('open');
+}
+</script>
+</body>
+</html>/0.18.5/xlsx.full.min.js"></script>
 <style>
 :root{
   --bg:#f5f5f3;--bg2:#ffffff;--bg3:#f0efed;--bg4:#e8e7e4;--bg5:#deddda;
