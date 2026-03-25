@@ -389,10 +389,6 @@ footer{
   .nav-links{display:none;}
   .strip{justify-content:flex-start;overflow-x:auto;flex-wrap:nowrap;}
 }
-
-.lng-wrap{display:flex;align-items:center;gap:2px;background:#f0f0ee;border-radius:8px;padding:3px;}
-.lng-btn{background:none;border:none;cursor:pointer;font-size:12px;font-weight:600;padding:4px 10px;border-radius:6px;color:#888;font-family:var(--font);transition:all .15s;line-height:1;}
-.lng-btn.on{background:#fff;color:#1a6b3c;box-shadow:0 1px 4px rgba(0,0,0,0.08);}
 </style>
 </head>
 <body>
@@ -400,19 +396,12 @@ footer{
 <!-- NAV -->
 <nav>
   <a href="#" class="brand">Fixa<span>Lead</span></a>
-  <div style="display:flex;align-items:center;gap:20px;">
-      <div class="lng-wrap">
-        <button class="lng-btn on" id="lng-pt" onclick="setLang('pt')">PT</button>
-        <button class="lng-btn" id="lng-en" onclick="setLang('en')">EN</button>
-        <button class="lng-btn" id="lng-es" onclick="setLang('es')">ES</button>
-      </div>
-      <div class="nav-links">
-    <a href="#problema" data-i18n="nav1">Porquê</a>
-    <a href="#como" data-i18n="nav2">Como funciona</a>
-    <a href="#sectores" data-i18n="nav3">Sectores</a>
-    <a href="#funcionalidades" data-i18n="nav4">Funcionalidades</a>
-    <a href="https://app.fixalead.com" class="btn-nav" data-i18n="nav5">Entrar →</a>
-  </div>
+  <div class="nav-links">
+    <a href="#problema">Porquê</a>
+    <a href="#como">Como funciona</a>
+    <a href="#sectores">Sectores</a>
+    <a href="#funcionalidades">Funcionalidades</a>
+    <a href="https://app.fixalead.com" class="btn-nav">Entrar →</a>
   </div>
 </nav>
 
@@ -420,7 +409,7 @@ footer{
 <div style="max-width:1140px;margin:0 auto;padding:0 5%;">
 <section class="hero" style="padding:90px 0 100px;">
   <div class="hero-left">
-    <div class="hero-tag reveal" data-i18n="pill">Sistema de gestão de leads</div>
+    <div class="hero-tag reveal">Sistema de gestão de leads</div>
     <h1 class="reveal d1">
       Os teus leads<br>
       nunca mais<br>
@@ -430,15 +419,15 @@ footer{
       Capta, organiza e converte mais clientes com um sistema feito para negócios locais em Portugal. Com IA integrada.
     </p>
     <div class="hero-actions reveal d3">
-      <a href="https://app.fixalead.com" class="btn-primary" data-i18n="cta1">Começar agora →</a>
+      <a href="https://app.fixalead.com" class="btn-primary">Começar agora →</a>
       <a href="#como" class="btn-secondary">Ver como funciona</a>
     </div>
     <div class="hero-trust reveal d4">
-      <span data-i18n="t1">✓ Sem cartão de crédito</span>
+      <span>✓ Sem cartão de crédito</span>
       <div class="trust-divider"></div>
-      <span data-i18n="t2">✓ Configuração em 1 dia</span>
+      <span>✓ Configuração em 1 dia</span>
       <div class="trust-divider"></div>
-      <span data-i18n="t3">✓ Suporte incluído</span>
+      <span>✓ Suporte incluído</span>
     </div>
   </div>
   <div class="hero-right reveal d2" style="position:relative;padding:30px;">
@@ -510,7 +499,7 @@ footer{
 
 <!-- SECTORES STRIP -->
 <div class="strip">
-  <span class="strip-label" data-i18n="strip">Para:</span>
+  <span class="strip-label">Para:</span>
   <div class="strip-item">🏋️ Academia & Ginásio</div>
   <div class="strip-item">🦷 Clínica Dentária</div>
   <div class="strip-item">✨ Estética</div>
@@ -522,8 +511,8 @@ footer{
 <!-- PROBLEMA -->
 <div id="problema" class="section-full">
 <div class="section-full-inner">
-  <div class="sec-label reveal" data-i18n="lp">O problema</div>
-  <h2 class="sec-h reveal d1" data-i18n="hp">O que está a custar-te clientes.</h2>
+  <div class="sec-label reveal">O problema</div>
+  <h2 class="sec-h reveal d1">O que está a custar-te clientes.</h2>
   <p class="sec-sub reveal d2">A maioria dos negócios locais não perde clientes por falta de procura — perde por falta de processo.</p>
   <div class="prob-grid">
     <div class="prob-card reveal">
@@ -555,7 +544,7 @@ footer{
 <!-- COMO FUNCIONA -->
 <div id="como" style="padding:96px 5%;max-width:1140px;margin:0 auto;">
   <div class="sec-label reveal">Como funciona</div>
-  <h2 class="sec-h reveal d1" data-i18n="hc">Do primeiro contacto ao cliente fechado.</h2>
+  <h2 class="sec-h reveal d1">Do primeiro contacto ao cliente fechado.</h2>
   <div class="steps-grid">
     <div class="steps-list">
       <div class="step reveal">
@@ -627,7 +616,7 @@ footer{
 <div id="funcionalidades" class="section-full">
 <div class="section-full-inner">
   <div class="sec-label reveal">Funcionalidades</div>
-  <h2 class="sec-h reveal d1" data-i18n="hf">Tudo o que precisas.</h2>
+  <h2 class="sec-h reveal d1">Tudo o que precisas.</h2>
   <p class="sec-sub reveal d2">Sem módulos desnecessários. Sem curva de aprendizagem. Abre e usa.</p>
   <div class="feat-grid">
     <div class="feat featured reveal">
@@ -840,10 +829,10 @@ footer{
 <!-- CTA -->
 <div class="cta-section">
   <div class="cta-inner">
-    <h2 class="reveal" data-i18n="ctah1">Começa esta semana.</h2>
+    <h2 class="reveal">Começa esta semana.</h2>
     <p class="reveal d1">Em 5-7 dias o sistema está activo, os formulários configurados e os primeiros leads a entrar.</p>
     <div class="reveal d2">
-      <a href="https://app.fixalead.com" class="btn-cta-white" data-i18n="ctabtn">Entrar no sistema →</a>
+      <a href="https://app.fixalead.com" class="btn-cta-white">Entrar no sistema →</a>
     </div>
     <div class="cta-note reveal d3">✓ Primeira semana gratuita &nbsp;·&nbsp; ✓ Sem compromisso &nbsp;·&nbsp; ✓ Suporte incluído</div>
   </div>
@@ -853,8 +842,8 @@ footer{
 <footer>
   <div class="f-brand">Fixa<span>Lead</span></div>
   <div class="f-links">
-    <a href="mailto:geral@fixalead.com" data-i18n="femail">✉ geral@fixalead.com</a>
-    <a href="https://app.fixalead.com" data-i18n="fentrar">Entrar na conta</a>
+    <a href="mailto:geral@fixalead.com">✉ geral@fixalead.com</a>
+    <a href="https://app.fixalead.com">Entrar na conta</a>
   </div>
   <div class="f-copy">© 2026 FixaLead</div>
 </footer>
@@ -873,54 +862,6 @@ function showSec(id, el){
   document.getElementById('sec-'+id).classList.add('on');
   el.classList.add('on');
 }
-
-// I18N
-const D={
-  pt:{nav1:'Porquê',nav2:'Como funciona',nav3:'Sectores',nav4:'Funcionalidades',nav5:'Entrar →',
-      pill:'Sistema de gestão de leads',h1a:'Leads que chegam.',
-      cta1:'Começar agora →',cta2:'Ver demonstração',
-      t1:'✓ Sem cartão de crédito',t2:'✓ Configuração em 1 dia',t3:'✓ Suporte incluído',
-      strip:'Para:',lp:'O problema',hp:'O que está a custar-te clientes.',
-      hc:'Do primeiro contacto ao cliente fechado.',hf:'Tudo o que precisas.',
-      hs:'Configurado para',ctah1:'Começa esta semana.',ctah2:'Resultados no mês 1.',
-      ctabtn:'Entrar no sistema →',femail:'✉ geral@fixalead.com',fentrar:'Entrar na conta'},
-  en:{nav1:'Why',nav2:'How it works',nav3:'Sectors',nav4:'Features',nav5:'Sign in →',
-      pill:'AI CRM for local businesses',h1a:'Leads that arrive.',
-      cta1:'Get started →',cta2:'See demo',
-      t1:'✓ No credit card',t2:'✓ Setup in 1 day',t3:'✓ Support included',
-      strip:'For:',lp:'The problem',hp:'What is costing you clients.',
-      hc:'From first contact to closed client.',hf:'Everything you need.',
-      hs:'Configured for',ctah1:'Start this week.',ctah2:'Results in month 1.',
-      ctabtn:'Enter the system →',femail:'✉ geral@fixalead.com',fentrar:'Sign in'},
-  es:{nav1:'Por qué',nav2:'Cómo funciona',nav3:'Sectores',nav4:'Funcionalidades',nav5:'Entrar →',
-      pill:'CRM con IA para negocios locales',h1a:'Leads que llegan.',
-      cta1:'Empezar →',cta2:'Ver demo',
-      t1:'✓ Sin tarjeta',t2:'✓ Configuración en 1 día',t3:'✓ Soporte incluido',
-      strip:'Para:',lp:'El problema',hp:'Lo que te está costando clientes.',
-      hc:'Del primer contacto al cliente cerrado.',hf:'Todo lo que necesitas.',
-      hs:'Configurado para',ctah1:'Empieza esta semana.',ctah2:'Resultados en el mes 1.',
-      ctabtn:'Entrar al sistema →',femail:'✉ geral@fixalead.com',fentrar:'Iniciar sesión'}
-};
-let sLang=localStorage.getItem('fl_lang')||navigator.language.slice(0,2)||'pt';
-if(!D[sLang])sLang='pt';
-
-function setLang(l){
-  sLang=l;
-  localStorage.setItem('fl_lang',l);
-  document.querySelectorAll('[data-i18n]').forEach(el=>{
-    const k=el.getAttribute('data-i18n');
-    const v=(D[sLang]||D.pt)[k];
-    if(v)el.innerHTML=v;
-  });
-  document.querySelectorAll('.lng-btn').forEach(b=>b.classList.toggle('on',b.id==='lng-'+l));
-  document.documentElement.lang=l;
-}
-
-document.addEventListener('DOMContentLoaded',()=>{
-  if(sLang!=='pt')setLang(sLang);
-  document.querySelectorAll('.lng-btn').forEach(b=>b.classList.toggle('on',b.id==='lng-'+sLang));
-});
-
 </script>
 </body>
 </html>
