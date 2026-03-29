@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FixaLead para Clínicas Dentárias — Captação de Pacientes em Portugal</title>
+<meta name="description" content="Gestão de leads para clínicas dentárias em Portugal. Formulário com 16 tratamentos pré-configurados, follow-up automático e estratégia de captação personalizada.">
+<link rel="canonical" href="https://fixalead.com/clinica-dentaria" />
+<meta name="robots" content="index, follow" />
+<meta property="og:title" content="FixaLead para Clínicas Dentárias — Captação de Pacientes em Portugal" />
+<meta property="og:description" content="Gestão de leads para clínicas dentárias em Portugal. Formulário com 16 tratamentos pré-configurados, follow-up automático e estratégia de captação personalizada." />
+<meta property="og:url" content="https://fixalead.com/clinica-dentaria" />
+<meta property="og:image" content="https://fixalead.com/og-image.png" />
+<meta property="og:locale" content="pt_PT" />
+<meta name="twitter:card" content="summary_large_image" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<script defer data-domain="fixalead.com" src="https://plausible.io/js/script.js"></script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "FixaLead — Clínica Dentária",
+  "url": "https://fixalead.com/clinica-dentaria",
+  "description": "Sistema de gestão e captação de leads para clínicas dentárias em Portugal. Formulário com 16 tratamentos pré-configurados e implementação consultiva.",
+  "applicationCategory": "BusinessApplication",
+  "operatingSystem": "Web",
+  "offers": {"@type":"Offer","price":"0","priceCurrency":"EUR","description":"Primeira semana gratuita"},
+  "provider": {"@type":"Organization","name":"FixaLead","url":"https://fixalead.com","email":"geral@fixalead.com","areaServed":"PT"},
+  "keywords": "crm clinica dentaria, gestão leads dentista, captação pacientes dentario portugal, sistema leads odontologia"
+}
+</script>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+:root{
+  --g:#1a6b3c;--g2:#145530;--g-soft:#f0f7f3;--g-border:#c8e2d4;
+  --text:#111;--text2:#444;--text3:#888;
+  --bg:#fff;--bg2:#f8f8f6;--border:#e5e5e0;
+  --font:'Plus Jakarta Sans',system-ui,sans-serif;--rad:10px;
+}
+html{font-size:16px;scroll-behavior:smooth;}
+body{font-family:var(--font);background:var(--bg);color:var(--text);-webkit-font-smoothing:antialiased;overflow-x:hidden;}
+.reveal{opacity:0;transform:translateY(18px);transition:opacity .6s ease,transform .6s ease;}
+.reveal.on{opacity:1;transform:none;}
+.d1{transition-delay:.08s;}.d2{transition-delay:.16s;}.d3{transition-delay:.24s;}
+
+nav{position:sticky;top:0;z-index:100;background:rgba(255,255,255,0.93);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);padding:0 5%;height:64px;display:flex;align-items:center;justify-content:space-between;}
+.brand{font-size:19px;font-weight:800;color:var(--text);text-decoration:none;}
+.brand span{color:var(--g);}
+.btn-nav{background:var(--g);color:#fff;padding:9px 22px;border-radius:10px;font-size:14px;font-weight:700;text-decoration:none;box-shadow:0 1px 3px rgba(26,107,60,0.2),0 2px 8px rgba(26,107,60,0.15);transition:all .18s;}
+.btn-nav:hover{background:var(--g2);transform:translateY(-1px);}
+.back{font-size:13px;color:var(--text3);text-decoration:none;display:flex;align-items:center;gap:6px;transition:color .15s;}
+.back:hover{color:var(--text);}
+
+.hero{max-width:1100px;margin:0 auto;padding:80px 5% 90px;display:grid;grid-template-columns:1fr 1fr;gap:72px;align-items:center;}
+.hero-tag{display:inline-flex;align-items:center;gap:7px;font-size:12px;font-weight:700;color:var(--g);text-transform:uppercase;letter-spacing:1px;background:var(--g-soft);border:1px solid var(--g-border);padding:5px 13px;border-radius:100px;margin-bottom:22px;}
+.hero-tag::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--g);animation:pulse 2s ease infinite;}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.3}}
+h1{font-size:clamp(34px,4vw,52px);font-weight:800;line-height:1.1;letter-spacing:-1.5px;color:var(--text);margin-bottom:16px;}
+h1 span{color:var(--g);}
+.hero-desc{font-size:17px;color:var(--text2);line-height:1.65;margin-bottom:32px;}
+.hero-btns{display:flex;align-items:center;gap:12px;margin-bottom:28px;flex-wrap:wrap;}
+.btn-primary{background:var(--g);color:#fff;padding:15px 32px;border-radius:12px;font-size:15px;font-weight:700;text-decoration:none;transition:all .22s cubic-bezier(.4,0,.2,1);display:inline-flex;align-items:center;gap:8px;box-shadow:0 1px 2px rgba(26,107,60,0.15),0 4px 16px rgba(26,107,60,0.2);}
+.btn-primary:hover{background:var(--g2);transform:translateY(-2px);box-shadow:0 2px 4px rgba(26,107,60,0.15),0 8px 24px rgba(26,107,60,0.28);}
+.btn-secondary{color:var(--text2);font-size:15px;font-weight:600;text-decoration:none;display:inline-flex;align-items:center;gap:6px;padding:15px 20px;border-radius:12px;border:1.5px solid var(--border);transition:all .18s;}
+.btn-secondary:hover{color:var(--text);border-color:var(--g-border);background:var(--g-soft);}
+.trust{display:flex;align-items:center;gap:12px;font-size:13px;color:var(--text3);flex-wrap:wrap;}
+.trust-div{width:1px;height:14px;background:var(--border);}
+
+.hero-card{background:var(--bg2);border:1px solid var(--border);border-radius:16px;padding:24px;box-shadow:0 20px 60px rgba(0,0,0,0.07);}
+.hcard-tag{font-size:11px;font-weight:700;color:var(--g);text-transform:uppercase;letter-spacing:.6px;margin-bottom:14px;display:flex;align-items:center;gap:6px;}
+.hcard-tag::before{content:'';width:7px;height:7px;border-radius:50%;background:var(--g);animation:pulse 2s ease infinite;}
+.field-list{display:flex;flex-direction:column;gap:8px;}
+.field-item{background:var(--bg);border:1px solid var(--border);border-radius:8px;padding:10px 14px;font-size:13px;color:var(--text2);display:flex;align-items:center;gap:10px;}
+.field-item::before{content:'✓';color:var(--g);font-weight:700;font-size:12px;flex-shrink:0;}
+
+.section{padding:80px 5%;}
+.section.alt{background:var(--bg2);}
+.section-inner{max-width:1100px;margin:0 auto;}
+.sec-tag{font-size:11px;font-weight:700;color:var(--g);text-transform:uppercase;letter-spacing:1px;background:var(--g-soft);border:1px solid var(--g-border);padding:4px 12px;border-radius:100px;display:inline-block;margin-bottom:16px;}
+.sec-h{font-size:clamp(28px,3vw,42px);font-weight:800;letter-spacing:-1px;line-height:1.1;margin-bottom:10px;}
+.sec-sub{font-size:16px;color:var(--text2);line-height:1.6;margin-bottom:48px;max-width:560px;}
+
+.pain-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;}
+.pain-card{background:var(--bg);border:1px solid var(--border);border-radius:14px;padding:28px;}
+.pain-card:hover{border-color:var(--g-border);box-shadow:0 4px 20px rgba(26,107,60,0.07);transition:all .2s;}
+.pain-n{font-size:28px;font-weight:800;color:var(--g);letter-spacing:-1px;margin-bottom:4px;}
+.pain-t{font-size:15px;font-weight:700;color:var(--text);margin-bottom:8px;}
+.pain-d{font-size:14px;color:var(--text2);line-height:1.6;}
+
+.steps{display:flex;flex-direction:column;gap:0;}
+.step{display:grid;grid-template-columns:48px 1fr;gap:24px;padding:28px 0;border-bottom:1px solid var(--border);align-items:start;}
+.step:last-child{border-bottom:none;}
+.step-n{width:40px;height:40px;border-radius:50%;background:var(--g);display:flex;align-items:center;justify-content:center;font-size:15px;font-weight:800;color:#fff;flex-shrink:0;margin-top:4px;}
+.step-t{font-size:17px;font-weight:700;color:var(--text);margin-bottom:6px;}
+.step-d{font-size:14px;color:var(--text2);line-height:1.65;}
+
+.cta-sect{background:var(--g);padding:80px 5%;text-align:center;}
+.cta-inner{max-width:600px;margin:0 auto;}
+.cta-sect h2{font-size:clamp(28px,3.5vw,44px);font-weight:800;color:#fff;letter-spacing:-1.2px;margin-bottom:14px;line-height:1.1;}
+.cta-sect p{font-size:17px;color:rgba(255,255,255,0.7);margin-bottom:36px;line-height:1.6;}
+.btn-white{background:#fff;color:var(--g);padding:16px 36px;border-radius:12px;font-size:16px;font-weight:700;text-decoration:none;display:inline-block;box-shadow:0 2px 8px rgba(0,0,0,0.12);transition:all .2s;}
+.btn-white:hover{transform:translateY(-2px);box-shadow:0 4px 16px rgba(0,0,0,0.15);}
+.cta-note{margin-top:18px;font-size:13px;color:rgba(255,255,255,0.45);}
+
+footer{padding:36px 5%;border-top:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;}
+.f-brand{font-size:17px;font-weight:800;color:var(--text);} .f-brand span{color:var(--g);}
+.f-links{display:flex;gap:20px;} .f-links a{font-size:13px;color:var(--text3);text-decoration:none;} .f-links a:hover{color:var(--g);}
+.f-copy{font-size:12px;color:var(--text3);}
+
+@media(max-width:768px){
+  .hero{grid-template-columns:1fr;gap:40px;padding:60px 5% 60px;}
+  .pain-grid{grid-template-columns:1fr;}
+  .step{grid-template-columns:40px 1fr;gap:16px;}
+  nav .back{display:none;}
+}
+</style>
+</head>
+<body>
+<nav>
+  <a href="/" class="back">← Voltar ao site</a>
+  <a href="/" class="brand">Fixa<span>Lead</span></a>
+  <a href="https://app.fixalead.com" class="btn-nav">Começar →</a>
+</nav>
+
+<div style="max-width:1100px;margin:0 auto;padding:0 5%;">
+<section class="hero" style="padding:80px 0 90px;">
+  <div>
+    <div class="hero-tag reveal">🦷 Clínica Dentária</div>
+    <h1 class="reveal d1">Mais consultas marcadas.<br><span>Menos pacientes perdidos.</span></h1>
+    <p class="hero-desc reveal d2">Mapeamos o processo de captação da tua clínica, identificamos onde os pacientes se perdem antes da primeira consulta e implementamos um sistema que acompanha cada lead com contexto clínico real.</p>
+    <div class="hero-btns reveal d3">
+      <a href="https://app.fixalead.com" class="btn-primary">Começar gratuitamente →</a>
+      <a href="/" class="btn-secondary">Ver todas as funcionalidades</a>
+    </div>
+    <div class="trust reveal d3">
+      <span>✓ Diagnóstico comercial incluído</span>
+      <div class="trust-div"></div>
+      <span>✓ Implementação em 5–7 dias</span>
+      <div class="trust-div"></div>
+      <span>✓ Primeira semana gratuita</span>
+    </div>
+  </div>
+  <div class="hero-card reveal d2">
+    <div class="hcard-tag">Dados capturados automaticamente</div>
+    <p style="font-size:13px;color:var(--text3);margin-bottom:14px;line-height:1.5;">16 procedimentos dentários pré-configurados. Antes da primeira chamada já sabes se é urgência, rotina ou estética — e como abordar o paciente.</p>
+    <div class="field-list">
+      <div class="field-item">Tratamento de interesse (16 opções pré-configuradas)</div><div class="field-item">Seguro de saúde (Médis, Multicare, AdvanceCare...)</div><div class="field-item">Última visita ao dentista</div><div class="field-item">Dor ou urgência (intensa / tolerável / rotina)</div><div class="field-item">Medo ou ansiedade do dentista</div><div class="field-item">Orçamento estimado</div>
+    </div>
+  </div>
+</section>
+</div>
+
+<div class="section alt">
+<div class="section-inner">
+  <div class="sec-tag reveal">O problema</div>
+  <h2 class="sec-h reveal d1">O que está a custar-te receita.</h2>
+  <p class="sec-sub reveal d2">Identificamos os três padrões de perda mais comuns em clínicas dentárias.</p>
+  <div class="pain-grid">
+    <div class="pain-card reveal">
+      <div class="pain-t">Pedido de orçamento sem resposta atempada</div>
+      <div class="pain-d">Um paciente que pede orçamento online e não recebe resposta em 1h vai pesquisar outra clínica. A urgência odontológica não espera.</div>
+    </div>
+    <div class="pain-card reveal d1">
+      <div class="pain-t">Sem visibilidade sobre o motivo de perda</div>
+      <div class="pain-d">Sabes que marcaste 10 primeiras consultas e fechaste 4. Mas não sabes porquê os outros 6 não voltaram — preço, distância, medo, concorrência?</div>
+    </div>
+    <div class="pain-card reveal d2">
+      <div class="pain-t">Google e redes sociais sem retorno mensurável</div>
+      <div class="pain-d">Investes em posicionamento no Google e campanhas de Instagram. Sem dados de conversão por canal, não sabes o custo real de cada paciente novo.</div>
+    </div>
+  </div>
+</div>
+</div>
+
+<div class="section">
+<div class="section-inner">
+  <div class="sec-tag reveal">Como funciona</div>
+  <h2 class="sec-h reveal d1">Do primeiro contacto ao cliente fechado.</h2>
+  <p class="sec-sub reveal d2">Não instalas um sistema e ficas entregue a ti próprio. Analisamos o teu negócio e implementamos tudo — juntos.</p>
+  <div class="steps">
+    <div class="step reveal">
+      <div class="step-n">1</div>
+      <div><div class="step-t">Diagnóstico do processo de captação</div><div class="step-d">Analisamos como chegam os pacientes novos à tua clínica, quais os canais activos e onde está o maior abandono entre o pedido inicial e a marcação.</div></div>
+    </div>
+    <div class="step reveal d1">
+      <div class="step-n">2</div>
+      <div><div class="step-t">Sistema configurado para clínica dentária</div><div class="step-d">Formulário com 16 tratamentos, campos de urgência, seguro de saúde e histórico. Cada paciente entra qualificado — com o contexto que a recepção precisa.</div></div>
+    </div>
+    <div class="step reveal d2">
+      <div class="step-n">3</div>
+      <div><div class="step-t">Follow-up automático com contexto clínico</div><div class="step-d">A IA gera a mensagem certa para cada tipo de tratamento e perfil de paciente. Gestão de alertas de follow-up para nenhuma consulta de avaliação ser esquecida.</div></div>
+    </div>
+  </div>
+</div>
+</div>
+
+<div class="cta-sect">
+  <div class="cta-inner">
+    <h2 class="reveal">Vamos analisar a tua clínica.</h2>
+    <p class="reveal d1">Em 5–7 dias tens um sistema de captação operacional, configurado para a realidade de uma clínica dentária em Portugal.</p>
+    <a href="https://app.fixalead.com" class="btn-white reveal d2">Entrar no sistema →</a>
+    <div class="cta-note reveal d3">✓ Primeira semana gratuita &nbsp;·&nbsp; ✓ Sem compromisso &nbsp;·&nbsp; ✓ Implementação incluída</div>
+  </div>
+</div>
+
+<footer>
+  <div class="f-brand">Fixa<span>Lead</span></div>
+  <div class="f-links">
+    <a href="/">Início</a>
+    <a href="https://app.fixalead.com">Entrar</a>
+    <a href="mailto:geral@fixalead.com">geral@fixalead.com</a>
+  </div>
+  <div class="f-copy">© 2026 FixaLead</div>
+</footer>
+
+<script>
+const obs=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('on');});},{threshold:0.1});
+document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+</script>
+</body>
+</html>
