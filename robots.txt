@@ -1,0 +1,8 @@
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://fixalead.com/sitemap.xml
+
+# Bloquear acesso ao painel de app
+Disallow: /admin
