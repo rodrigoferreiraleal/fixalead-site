@@ -484,7 +484,29 @@ nav{
 }
 .footer-made{font-size:13px;color:var(--text3);}
 
+/* FORMULÁRIO CONTACTO */
+.contact-form{text-align:left;}
+.cf-row{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+.cf-field{display:flex;flex-direction:column;gap:6px;margin-bottom:16px;}
+.cf-label{font-size:13px;font-weight:600;color:var(--text2);}
+.cf-input{
+  padding:11px 14px;border:1.5px solid var(--border);border-radius:var(--rad);
+  background:var(--bg);color:var(--text);font-size:14px;
+  font-family:var(--font);outline:none;transition:border-color .15s;resize:vertical;
+}
+.cf-input:focus{border-color:var(--g);}
+.cf-btn{
+  width:100%;padding:14px;border-radius:var(--rad);
+  background:var(--g);color:#fff;font-size:15px;font-weight:700;
+  border:none;cursor:pointer;font-family:var(--font);
+  transition:all .2s;letter-spacing:-0.2px;
+  box-shadow:0 1px 3px rgba(26,107,60,0.2),0 4px 12px rgba(26,107,60,0.15);
+}
+.cf-btn:hover{background:var(--g2);transform:translateY(-1px);}
+@media(max-width:600px){.cf-row{grid-template-columns:1fr;}}
+
 /* FOOTER */
+
 
 footer{
   padding:40px 5%;border-top:1px solid var(--border);
@@ -1150,6 +1172,45 @@ footer{
       <div class="cta-arrow">→</div>
       <div class="cta-step"><span>4</span>Crescer</div>
     </div>
+  </div>
+</div>
+
+<!-- CONTACTO -->
+<div id="contacto" style="padding:80px 5%;background:var(--bg2);">
+  <div style="max-width:640px;margin:0 auto;text-align:center;">
+    <div class="sec-label reveal">Contacto</div>
+    <h2 class="sec-h reveal d1" style="margin-bottom:12px;">Uma conversa não compromete.</h2>
+    <p class="sec-sub reveal d2" style="margin-bottom:40px;">Conta-nos o teu negócio e o que queres melhorar. Analisamos e respondemos em 24 horas.</p>
+    <form class="contact-form reveal d3" onsubmit="submitContacto(event)">
+      <div class="cf-row">
+        <div class="cf-field">
+          <label class="cf-label">Nome</label>
+          <input id="cf-nome" type="text" class="cf-input" placeholder="O teu nome" required>
+        </div>
+        <div class="cf-field">
+          <label class="cf-label">Tipo de negócio</label>
+          <select id="cf-sector" class="cf-input">
+            <option value="">Seleccionar...</option>
+            <option>Academia / Ginásio</option>
+            <option>Clínica Dentária</option>
+            <option>Estética</option>
+            <option>Loja & Comércio</option>
+            <option>Imobiliária</option>
+            <option>Outro</option>
+          </select>
+        </div>
+      </div>
+      <div class="cf-field">
+        <label class="cf-label">Email ou telemóvel</label>
+        <input id="cf-contacto" type="text" class="cf-input" placeholder="Para respondermos" required>
+      </div>
+      <div class="cf-field">
+        <label class="cf-label">O que queres melhorar? <span style="font-weight:400;color:var(--text3)">(opcional)</span></label>
+        <textarea id="cf-msg" class="cf-input" rows="3" placeholder="Captação de leads, follow-up, relatórios..."></textarea>
+      </div>
+      <button type="submit" class="cf-btn" id="cf-submit">Enviar mensagem →</button>
+      <div id="cf-ok" style="display:none;margin-top:16px;font-size:14px;color:var(--g);font-weight:600;">✓ Mensagem enviada! Respondemos em menos de 24 horas.</div>
+    </form>
   </div>
 </div>
 
