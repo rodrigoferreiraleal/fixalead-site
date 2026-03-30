@@ -52,13 +52,13 @@ nav{
 }
 .nav-links a:hover{color:var(--text);}
 .btn-nav{
-  background:var(--g);color:#fff;
+  background:#fff;color:var(--g);
   padding:9px 22px;border-radius:10px;
   font-size:14px;font-weight:700;letter-spacing:-0.1px;
   text-decoration:none;transition:all .18s;
-  box-shadow:0 1px 3px rgba(26,107,60,0.2), 0 2px 8px rgba(26,107,60,0.15);
+  border:2px solid var(--g);
 }
-.btn-nav:hover{background:var(--g2);color:#fff!important;transform:translateY(-1px);}
+.btn-nav:hover{background:var(--g);color:#fff!important;transform:translateY(-1px);}
 
 /* HERO */
 .hero{
@@ -100,10 +100,13 @@ nav{
   position:relative;overflow:hidden;
 }
 .btn-primary::after{
-  content:'';position:absolute;inset:0;
-  background:linear-gradient(to bottom, rgba(255,255,255,0.08), transparent);
+  content:'';position:absolute;
+  top:0;left:-100%;width:100%;height:100%;
+  background:linear-gradient(90deg,transparent,rgba(255,255,255,0.15),transparent);
+  transition:left .5s ease;
   pointer-events:none;
 }
+.btn-primary:hover::after{left:100%;}
 .btn-primary:hover{
   background:var(--g2);
   transform:translateY(-2px);
@@ -378,12 +381,12 @@ nav{
 .btn-cta-white{
   background:#fff;color:var(--g);
   padding:16px 36px;border-radius:12px;
-  font-size:16px;font-weight:700;letter-spacing:-0.2px;
+  font-size:16px;font-weight:800;letter-spacing:-0.3px;
   text-decoration:none;transition:all .22s cubic-bezier(.4,0,.2,1);
   display:inline-flex;align-items:center;gap:8px;
-  box-shadow:0 2px 8px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.08);
+  box-shadow:0 4px 20px rgba(0,0,0,0.18);
 }
-.btn-cta-white:hover{background:var(--g-soft);transform:translateY(-2px);box-shadow:0 4px 16px rgba(0,0,0,0.15);}
+.btn-cta-white:hover{background:#f0faf4;transform:translateY(-2px);box-shadow:0 8px 28px rgba(0,0,0,0.22);}
 .cta-note{margin-top:16px;font-size:13px;color:rgba(255,255,255,0.5);}
 
 /* PROVA SOCIAL */
@@ -494,15 +497,22 @@ nav{
   background:var(--bg);color:var(--text);font-size:14px;
   font-family:var(--font);outline:none;transition:border-color .15s;resize:vertical;
 }
-.cf-input:focus{border-color:var(--g);}
+.cf-input:focus{border-color:var(--g);box-shadow:0 0 0 3px rgba(26,107,60,0.08);outline:none;}
 .cf-btn{
-  width:100%;padding:14px;border-radius:var(--rad);
-  background:var(--g);color:#fff;font-size:15px;font-weight:700;
+  width:100%;padding:15px;border-radius:var(--rad);
+  background:var(--g);color:#fff;font-size:15px;font-weight:800;
   border:none;cursor:pointer;font-family:var(--font);
-  transition:all .2s;letter-spacing:-0.2px;
-  box-shadow:0 1px 3px rgba(26,107,60,0.2),0 4px 12px rgba(26,107,60,0.15);
+  transition:all .22s cubic-bezier(.4,0,.2,1);letter-spacing:-0.2px;
+  box-shadow:0 2px 4px rgba(26,107,60,0.15),0 6px 20px rgba(26,107,60,0.2);
+  position:relative;overflow:hidden;
 }
-.cf-btn:hover{background:var(--g2);transform:translateY(-1px);}
+.cf-btn::after{
+  content:'';position:absolute;top:0;left:-100%;width:100%;height:100%;
+  background:linear-gradient(90deg,transparent,rgba(255,255,255,0.12),transparent);
+  transition:left .5s ease;
+}
+.cf-btn:hover::after{left:100%;}
+.cf-btn:hover{background:var(--g2);transform:translateY(-2px);box-shadow:0 4px 8px rgba(26,107,60,0.2),0 10px 28px rgba(26,107,60,0.25);}
 @media(max-width:600px){.cf-row{grid-template-columns:1fr;}}
 
 /* FOOTER */
@@ -1176,10 +1186,10 @@ footer{
 </div>
 
 <!-- CONTACTO -->
-<div id="contacto" style="padding:80px 5%;background:var(--bg2);">
+<div id="contacto" style="padding:80px 5%;background:linear-gradient(135deg,var(--g-soft) 0%,var(--bg2) 60%,#fff 100%);">
   <div style="max-width:640px;margin:0 auto;text-align:center;">
     <div class="sec-label reveal">Contacto</div>
-    <h2 class="sec-h reveal d1" style="margin-bottom:12px;">Uma conversa não compromete.</h2>
+    <h2 class="sec-h reveal d1" style="margin-bottom:12px;">Conta-nos o teu negócio.</h2>
     <p class="sec-sub reveal d2" style="margin-bottom:40px;">Conta-nos o teu negócio e o que queres melhorar. Analisamos e respondemos em 24 horas.</p>
     <form class="contact-form reveal d3" onsubmit="submitContacto(event)">
       <div class="cf-row">
