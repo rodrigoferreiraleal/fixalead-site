@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>FixaLead — Formulário</title>
+<meta property="og:title"       content="FixaLead — Regista o teu interesse">
+<meta property="og:description" content="Preenche o formulário e a equipa entrará em contacto contigo brevemente.">
+<meta property="og:type"        content="website">
+<meta property="og:url"         content="https://app.fixalead.com/form">
+<meta name="description"        content="Preenche o formulário e a equipa entrará em contacto contigo brevemente.">
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=AW-997434557"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'AW-997434557');
+</script>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+:root{--g:#1a6b3c;--t:#0d1117;--t2:#4b5563;--t3:#9ca3af;--bg:#f9fafb;--card:#fff;--border:#e5e7eb;--font:'Inter',sans-serif;}
+body{font-family:var(--font);background:var(--bg);color:var(--t);min-height:100vh;display:flex;flex-direction:column;-webkit-font-smoothing:antialiased;}
+.form-wrap{flex:1;display:flex;align-items:center;justify-content:center;padding:40px 20px;}
+.form-card{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:40px;width:100%;max-width:480px;box-shadow:0 4px 24px rgba(0,0,0,0.06);}
+.form-logo{font-size:15px;font-weight:800;color:var(--t);margin-bottom:28px;display:flex;align-items:center;gap:8px;}
+.form-logo em{font-style:normal;color:var(--g);}
+.form-logo .sep{width:1px;height:16px;background:var(--border);}
+.form-logo .biz{font-weight:600;font-size:14px;color:var(--t2);}
+.form-title{font-size:22px;font-weight:800;color:var(--t);letter-spacing:-.5px;margin-bottom:6px;}
+.form-sub{font-size:14px;color:var(--t2);margin-bottom:28px;line-height:1.5;}
+.fld{margin-bottom:16px;}
+.fld label{display:block;font-size:12px;font-weight:600;color:var(--t);margin-bottom:6px;letter-spacing:.1px;}
+.fld input,.fld select,.fld textarea{width:100%;padding:11px 14px;border:1px solid var(--border);border-radius:9px;font-family:var(--font);font-size:14px;color:var(--t);background:#fff;transition:border-color .15s;outline:none;}
+.fld input:focus,.fld select:focus,.fld textarea:focus{border-color:var(--g);box-shadow:0 0 0 3px rgba(26,107,60,0.08);}
+.fld textarea{resize:vertical;min-height:80px;}
+.fld select{appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%239ca3af' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 12px center;}
+.frow{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
+.submit-btn{width:100%;padding:14px;background:var(--g);color:#fff;border:none;border-radius:9px;font-family:var(--font);font-size:15px;font-weight:600;cursor:pointer;transition:all .2s;margin-top:8px;}
+.submit-btn:hover{background:#15572f;transform:translateY(-1px);}
+.submit-btn:disabled{opacity:.6;cursor:not-allowed;transform:none;}
+.success{text-align:center;padding:40px 20px;}
+.success-icon{font-size:48px;margin-bottom:16px;}
+.success-title{font-size:20px;font-weight:800;color:var(--t);margin-bottom:8px;}
+.success-msg{font-size:14px;color:var(--t2);line-height:1.6;}
+.pills{display:flex;flex-wrap:wrap;gap:8px;margin-top:4px;}
+.pill-opt{padding:7px 14px;border:1px solid var(--border);border-radius:100px;font-size:13px;cursor:pointer;transition:all .15s;color:var(--t2);background:#fff;}
+.pill-opt.on{background:rgba(26,107,60,0.08);border-color:rgba(26,107,60,0.3);color:var(--g);font-weight:600;}
+.required{color:#dc2626;}
+.form-footer{text-align:center;padding:20px;font-size:12px;color:var(--t3);}
+.form-footer a{color:var(--g);text-decoration:none;font-weight:600;}
+.loading{text-align:center;padding:60px 20px;color:var(--t3);}
+.spin{width:32px;height:32px;border:3px solid var(--border);border-top-color:var(--g);border-radius:50%;animation:spin .7s linear infinite;margin:0 auto 12px;}
+@keyframes spin{to{transform:rotate(360deg)}}
+</style>
+</head>
+<body>
+<div class="form-wrap">
+  <div class="form-card" id="form-card">
+    <div class="loading"><div class="spin"></div>A carregar...</div>
+  </div>
+</div>
+<div class="form-footer">Powered by <a href="https://fixalead.com">FixaLead</a></div>
+
+<script>
+const SB_URL = 'https://wctmuzgyanibwqmtcplk.supabase.co';
+const SB_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6IndjdG11emd5YW5pYndxbXRjcGxrIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzQyMTI3NzcsImV4cCI6MjA4OTc4ODc3N30.vLVJLZVfgSJzDoGQCsRpi9xIrIhRcLWhYwMRe1_Mh5s';
+const sb = supabase.createClient(SB_URL, SB_KEY);
+
+const params = new URLSearchParams(location.search);
+const slug = params.get('s') || location.pathname.split('/').pop();
+
+const UTM_LABELS = {
+  instagram:'Instagram',facebook:'Facebook',whatsapp:'WhatsApp',
+  google:'Google',panfleto:'Panfleto / QR Code',email:'Email Marketing',
+  tiktok:'TikTok',linkedin:'LinkedIn',indicacan:'Indicação'
+};
+const utmRaw = (params.get('utm') || params.get('source') || '').toLowerCase();
+const fonteDetectada = UTM_LABELS[utmRaw] || (utmRaw ? utmRaw : 'Formulário Web');
+
+let formData = {};
+let academia = {};
+let form = {};
+let selectedPills = {};
+
+const SECTOR_FIELDS = {
+  fitness: [
+    {id:'objetivo',label:'Objectivo',type:'pills',required:true,opts:['Perder peso','Ganhar músculo','Manter forma','Reabilitação','Performance']},
+    {id:'horario',label:'Horário preferido',type:'pills',opts:['Manhã','Tarde','Noite','Fim de semana']},
+    {id:'experiencia',label:'Experiência em ginásio',type:'select',opts:['Nenhuma','Alguma','Experiente']},
+  ],
+  crossfit: [
+    {id:'objetivo',label:'Objectivo',type:'pills',required:true,opts:['Condição física','Perda de peso','Competição','Força']},
+    {id:'experiencia',label:'Experiência em CrossFit',type:'select',opts:['Nenhuma','Já experimentei','Pratico regularmente']},
+  ],
+  dentario: [
+    {id:'tratamento',label:'Tratamento de interesse',type:'select',required:true,opts:['Consulta de rotina','Limpeza dentária','Branqueamento','Implante dentário','Invisalign','Aparelho fixo','Facetas','Extracção','Urgência / dor','Outro']},
+    {id:'seguro',label:'Tem seguro de saúde?',type:'select',opts:['Sim — Médis','Sim — Multicare','Sim — AdvanceCare','Sim — outro','Não tenho']},
+    {id:'urgencia',label:'Nível de urgência',type:'pills',opts:['Urgente (dor)','Esta semana','Sem pressa']},
+  ],
+  estetica: [
+    {id:'tratamento',label:'Procedimento de interesse',type:'select',required:true,opts:['Toxina botulínica','Preenchimento lábios','Depilação laser','Peeling químico','Microblading','Radiofrequência','Limpeza de pele','Outro']},
+    {id:'urgencia',label:'Urgência',type:'pills',opts:['Tenho evento próximo','Nos próximos 30 dias','Estou a explorar']},
+  ],
+  loja: [
+    {id:'produto',label:'Produto / serviço de interesse',type:'text',required:true,placeholder:'Ex: equipamento de ginásio, roupa desportiva...'},
+    {id:'orcamento',label:'Orçamento aproximado',type:'select',opts:['Menos de €100','€100 – €500','€500 – €2.000','Mais de €2.000']},
+  ],
+  imobiliaria: [
+    {id:'operacao',label:'Tipo de operação',type:'pills',required:true,opts:['Comprar','Arrendar','Vender']},
+    {id:'tipologia',label:'Tipologia',type:'pills',opts:['T0/T1','T2','T3','T4+','Moradia']},
+    {id:'orcamento',label:'Orçamento máximo',type:'select',opts:['Até €100k','€100k–€200k','€200k–€350k','€350k–€500k','Mais de €500k']},
+  ],
+};
+
+function renderForm() {
+  const sectorFields = (form.campos && form.campos.length > 0)
+    ? form.campos
+    : (SECTOR_FIELDS[academia.sector] || []);
+  const g = form.cor_primaria || '#1a6b3c';
+  document.documentElement.style.setProperty('--g', g);
+
+  document.getElementById('form-card').innerHTML = `
+    <div class="form-logo">
+      <span>Fixa<em>Lead</em></span>
+      <div class="sep"></div>
+      <span class="biz">${academia.nome}</span>
+    </div>
+    <div class="form-title">${form.titulo || 'Quero saber mais'}</div>
+    <div class="form-sub">${form.subtitulo || 'Preenche os teus dados e entraremos em contacto brevemente.'}</div>
+    <form id="lead-form" onsubmit="submitForm(event)">
+      <div class="frow">
+        <div class="fld"><label>Nome <span class="required">*</span></label><input type="text" id="f-nome" placeholder="O teu nome" required></div>
+        <div class="fld"><label>Telemóvel <span class="required">*</span></label><input type="tel" id="f-tel" placeholder="9XX XXX XXX" required></div>
+      </div>
+      <div class="fld"><label>Email</label><input type="email" id="f-email" placeholder="email@exemplo.com"></div>
+      ${sectorFields.map(f => renderField(f)).join('')}
+      <div class="fld"><label>Mensagem (opcional)</label><textarea id="f-msg" placeholder="Alguma informação adicional que queiras partilhar..."></textarea></div>
+      <button type="submit" class="submit-btn" id="submit-btn">Enviar →</button>
+    </form>`;
+}
+
+function renderField(f) {
+  if (f.type === 'pills') {
+    return `<div class="fld">
+      <label>${f.label}${f.required ? ' <span class="required">*</span>' : ''}</label>
+      <div class="pills" id="pills-${f.id}">
+        ${f.opts.map(o => `<div class="pill-opt" onclick="togglePill('${f.id}','${o}',this)">${o}</div>`).join('')}
+      </div>
+    </div>`;
+  }
+  if (f.type === 'select') {
+    return `<div class="fld">
+      <label>${f.label}${f.required ? ' <span class="required">*</span>' : ''}</label>
+      <select id="f-${f.id}"><option value="">— Seleccionar —</option>${f.opts.map(o=>`<option>${o}</option>`).join('')}</select>
+    </div>`;
+  }
+  return `<div class="fld">
+    <label>${f.label}${f.required ? ' <span class="required">*</span>' : ''}</label>
+    <input type="text" id="f-${f.id}" placeholder="${f.placeholder||''}">
+  </div>`;
+}
+
+function togglePill(fieldId, value, el) {
+  if (!selectedPills[fieldId]) selectedPills[fieldId] = [];
+  const idx = selectedPills[fieldId].indexOf(value);
+  if (idx >= 0) {
+    selectedPills[fieldId].splice(idx, 1);
+    el.classList.remove('on');
+  } else {
+    selectedPills[fieldId].push(value);
+    el.classList.add('on');
+  }
+}
+
+async function submitForm(e) {
+  e.preventDefault();
+  const btn = document.getElementById('submit-btn');
+  btn.disabled = true;
+  btn.textContent = 'A enviar...';
+
+  const nome = document.getElementById('f-nome').value.trim();
+  const telefone = document.getElementById('f-tel').value.trim();
+  const email = document.getElementById('f-email').value.trim();
+  const notas = document.getElementById('f-msg').value.trim();
+
+  const sectorData = {};
+  const sectorFields = (form.campos && form.campos.length > 0)
+    ? form.campos
+    : (SECTOR_FIELDS[academia.sector] || []);
+  sectorFields.forEach(f => {
+    if (f.type === 'pills') {
+      if (selectedPills[f.id]?.length) sectorData[f.id] = selectedPills[f.id].join(', ');
+    } else {
+      const el = document.getElementById('f-' + f.id);
+      if (el?.value) sectorData[f.id] = el.value;
+    }
+  });
+
+  let score = 30;
+  if (email) score += 10;
+  if (sectorData.urgencia?.includes('Urgente') || sectorData.urgencia?.includes('evento')) score += 25;
+  if (sectorData.objetivo || sectorData.tratamento || sectorData.operacao) score += 20;
+  if (notas) score += 10;
+  score = Math.min(score, 95);
+
+  const leadData = {
+    academia_id: academia.id,
+    nome, telefone, email,
+    notas: notas || null,
+    fonte: fonteDetectada,
+    estado: 'frio',
+    sector_data: sectorData,
+    objetivos: selectedPills['objetivo'] || (sectorData.tratamento ? [sectorData.tratamento] : []),
+  };
+
+  const {error} = await sb.from('leads').insert(leadData);
+
+  if (error) {
+    btn.disabled = false;
+    btn.textContent = 'Enviar →';
+    alert('Erro ao enviar. Por favor tenta novamente.');
+    return;
+  }
+
+  // Google Ads conversion event — fires on every successful lead submission
+  if (typeof gtag !== 'undefined') {
+    gtag('event', 'conversion', {
+      'send_to': 'AW-997434557/WBMhCMrY7ZocEL3JztsD',
+      'value': 1.0,
+      'currency': 'EUR'
+    });
+  }
+
+  document.getElementById('form-card').innerHTML = `
+    <div class="success">
+      <div class="success-icon">✅</div>
+      <div class="success-title">Mensagem enviada!</div>
+      <div class="success-msg">${form.mensagem_sucesso}</div>
+    </div>`;
+}
+
+function showError() {
+  document.getElementById('form-card').innerHTML = `
+    <div class="success">
+      <div class="success-icon">⚠️</div>
+      <div class="success-title">Formulário não encontrado</div>
+      <div class="success-msg">Este link pode ter expirado ou estar incorrecto. Contacta o negócio directamente.</div>
+    </div>`;
+}
+
+async function init() {
+  if (!slug || slug === 'form.html' || slug === 'form') {
+    showDemo();
+    return;
+  }
+
+  const {data: f} = await sb.from('formularios').select('*').eq('slug', slug).single();
+  if (!f) { showError(); return; }
+  form = f;
+
+  const {data: a} = await sb.from('academias').select('*').eq('id', f.academia_id).single();
+  if (!a) { showError(); return; }
+  academia = a;
+
+  document.title = f.titulo || `${a.nome} — Formulário`;
+  renderForm();
+}
+
+function showDemo() {
+  academia = { nome: 'O teu negócio', sector: 'fitness' };
+  form = {
+    titulo: 'Quero saber mais',
+    subtitulo: 'Preenche os teus dados e entraremos em contacto brevemente.',
+    mensagem_sucesso: 'Obrigado! Entraremos em contacto brevemente.',
+    cor_primaria: '#1a6b3c'
+  };
+  renderForm();
+  const card = document.getElementById('form-card');
+  const banner = document.createElement('div');
+  banner.style.cssText = 'background:#fef3c7;border:1px solid #f59e0b;border-radius:8px;padding:10px 14px;margin-bottom:16px;font-size:12px;color:#92400e;font-weight:600;';
+  banner.textContent = '👁️ Pré-visualização — este é o aspecto do formulário para os teus leads';
+  card.insertBefore(banner, card.firstChild);
+}
+
+init();
+</script>
+</body>
+</html>
