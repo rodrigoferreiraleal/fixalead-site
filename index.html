@@ -1,663 +1,595 @@
 <!DOCTYPE html>
 <html lang="pt">
 <head>
-    <meta name="google-site-verification" content="erjFVBoJ-C15eW_zSLBYISzEKBJM-qb6eTw15e5CriY" />
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>FixaLead — CRM e Gestão de Leads para Negócios Locais em Portugal</title>
-<meta name="description" content="CRM com IA integrada para negócios locais em Portugal. Capta leads, gera mensagens automáticas e converte mais clientes. Para academias, clínicas dentárias, estética, lojas e imobiliárias. Primeira semana gratuita.">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <meta name="google-site-verification" content="erjFVBoJ-C15eW_zSLBYISzEKBJM-qb6eTw15e5CriY" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FixaLead — CRM e Gestão de Leads para Negócios Locais em Portugal</title>
+  <meta name="description" content="CRM com IA integrada para negócios locais em Portugal. Capta leads, gera mensagens automáticas e converte mais clientes. Para academias, clínicas dentárias, estética, lojas e imobiliárias.">
+  <link rel="canonical" href="https://fixalead.com/">
+  <meta name="robots" content="index, follow">
+  <meta http-equiv="X-Content-Type-Options" content="nosniff">
+  <meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="FixaLead — Gestão de Leads para Negócios Locais">
+  <meta property="og:description" content="Capta, organiza e converte mais clientes. CRM com IA para negócios locais em Portugal.">
+  <meta property="og:url" content="https://fixalead.com/">
+  <meta property="og:image" content="https://fixalead.com/og-image.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"SoftwareApplication","name":"FixaLead","url":"https://fixalead.com","description":"Sistema de gestão de leads com IA integrada para negócios locais em Portugal.","applicationCategory":"BusinessApplication","operatingSystem":"Web","offers":{"@type":"Offer","price":"0","priceCurrency":"EUR","description":"Primeira semana gratuita"},"provider":{"@type":"Organization","name":"FixaLead","url":"https://fixalead.com","email":"geral@fixalead.com","areaServed":"PT"},"inLanguage":"pt-PT"}</script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <script>if('serviceWorker' in navigator&&'PushManager' in window){window.addEventListener('load',()=>{navigator.serviceWorker.register('/sw.js').catch(()=>{});});}</script>
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
 :root{
-  --g:#1a6b3c;
-  --g2:#15572f;
-  --g-soft:#f0f7f3;
-  --g-border:#c8e2d4;
-  --text:#111;
-  --text2:#444;
-  --text3:#888;
-  --bg:#fff;
-  --bg2:#f8f8f6;
-  --bg3:#f2f2ef;
-  --border:#e5e5e0;
+  --g:#1a6b3c; --g2:#15572f;
+  --g-soft:#f0f7f3; --g-border:#c8e2d4;
+  --text:#0d1117; --text2:#4a5568; --text3:#9aa5b4;
+  --bg:#ffffff; --bg2:#f8f9fa; --bg3:#f1f3f5;
+  --border:#e9ecef;
   --font:'Plus Jakarta Sans',system-ui,sans-serif;
-  --rad:10px;
+  --max:1160px;
 }
 html{font-size:16px;scroll-behavior:smooth;}
 body{font-family:var(--font);background:var(--bg);color:var(--text);-webkit-font-smoothing:antialiased;overflow-x:hidden;}
 
 /* REVEAL */
-.reveal{opacity:0;transform:translateY(20px);transition:opacity .6s ease,transform .6s ease;}
-.reveal.on{opacity:1;transform:translateY(0);}
+.reveal{opacity:0;transform:translateY(24px);transition:opacity .7s ease,transform .7s ease;}
+.reveal.on{opacity:1;transform:none;}
 .d1{transition-delay:.08s;}.d2{transition-delay:.16s;}.d3{transition-delay:.24s;}.d4{transition-delay:.32s;}
 
-/* NAV */
+/* ══ NAV ══ */
 nav{
   position:sticky;top:0;z-index:100;
-  background:rgba(255,255,255,0.92);backdrop-filter:blur(12px);
+  background:rgba(255,255,255,0.94);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);
   border-bottom:1px solid var(--border);
-  padding:0 5%;height:68px;
+  height:68px;padding:0 6%;
   display:flex;align-items:center;justify-content:space-between;
 }
-.brand{
-  font-size:20px;font-weight:800;color:var(--text);
-  letter-spacing:-0.5px;text-decoration:none;
-}
+.brand{font-size:20px;font-weight:800;color:var(--text);text-decoration:none;letter-spacing:-.5px;}
 .brand span{color:var(--g);}
 .nav-links{display:flex;align-items:center;gap:28px;}
-.nav-links a{
-  font-size:14px;font-weight:500;color:var(--text2);
-  text-decoration:none;transition:color .15s;
-}
-.nav-links a:hover{color:var(--text);}
-.btn-nav{
-  background:#fff;color:var(--g);
-  padding:9px 22px;border-radius:10px;
-  font-size:14px;font-weight:700;letter-spacing:-0.1px;
-  text-decoration:none;transition:all .18s;
-  border:2px solid var(--g);
-}
-.btn-nav:hover{background:var(--g);color:#fff!important;transform:translateY(-1px);}
+.nav-links>a{font-size:14px;font-weight:500;color:var(--text2);text-decoration:none;transition:color .15s;}
+.nav-links>a:hover{color:var(--text);}
+.btn-nav{background:var(--text);color:#fff !important;padding:9px 22px;border-radius:9px;font-size:14px;font-weight:700;text-decoration:none;transition:all .18s;}
+.btn-nav:hover{background:var(--g) !important;transform:translateY(-1px);}
 
-/* HERO */
-.hero{
-  max-width:1140px;margin:0 auto;
-  padding:90px 5% 100px;
-  display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center;
+/* ══ HERO — FULL BLEED ══ */
+.hero-section{
+  position:relative;height:92vh;min-height:600px;max-height:900px;
+  overflow:hidden;display:flex;align-items:center;
 }
-.hero-left{}
-.hero-tag{
-  display:inline-flex;align-items:center;gap:7px;
-  font-size:12px;font-weight:700;color:var(--g);
-  text-transform:uppercase;letter-spacing:1px;
-  background:var(--g-soft);border:1px solid var(--g-border);
-  padding:5px 13px;border-radius:100px;margin-bottom:24px;
+/* Foto de fundo full-bleed */
+.hero-bg{
+  position:absolute;inset:0;
+  background-image:url('https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=1800&q=90&auto=format&fit=crop');
+  background-size:cover;background-position:center 20%;
 }
-.hero-tag::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--g);animation:pulse 2s ease infinite;}
-@keyframes pulse{0%,100%{opacity:1}50%{opacity:.3}}
-.hero h1{
-  font-size:clamp(36px,4.5vw,56px);
-  font-weight:800;
-  line-height:1.1;
-  letter-spacing:-1.5px;
-  color:var(--text);
-  margin-bottom:20px;
+/* Overlay claro — estilo Inter/Bautz: lado esquerdo com texto, foto aparece à direita */
+.hero-bg::after{
+  content:'';position:absolute;inset:0;
+  background:linear-gradient(
+    105deg,
+    rgba(255,255,255,0.97) 0%,
+    rgba(255,255,255,0.93) 38%,
+    rgba(255,255,255,0.65) 58%,
+    rgba(255,255,255,0.08) 100%
+  );
 }
-.hero h1 span{color:var(--g);}
-.hero-desc{
-  font-size:18px;color:var(--text2);font-weight:400;
-  line-height:1.65;margin-bottom:36px;max-width:460px;
+.hero-content{
+  position:relative;z-index:1;
+  max-width:var(--max);margin:0 auto;
+  padding:0 6%;width:100%;
 }
-.hero-actions{display:flex;align-items:center;gap:14px;margin-bottom:48px;}
-.btn-primary{
-  background:var(--g);color:#fff;
-  padding:15px 32px;border-radius:12px;
-  font-size:15px;font-weight:700;letter-spacing:-0.2px;
-  text-decoration:none;transition:all .22s cubic-bezier(.4,0,.2,1);
+.hero-content>*{max-width:540px;}
+.hero-pill{
   display:inline-flex;align-items:center;gap:8px;
-  box-shadow:0 1px 2px rgba(26,107,60,0.15), 0 4px 16px rgba(26,107,60,0.2);
-  position:relative;overflow:hidden;
+  font-size:12px;font-weight:700;color:var(--g);
+  text-transform:uppercase;letter-spacing:1.1px;
+  background:rgba(240,247,243,0.95);border:1px solid var(--g-border);
+  padding:5px 14px;border-radius:100px;margin-bottom:28px;
 }
-.btn-primary::after{
-  content:'';position:absolute;
-  top:0;left:-100%;width:100%;height:100%;
-  background:linear-gradient(90deg,transparent,rgba(255,255,255,0.15),transparent);
-  transition:left .5s ease;
-  pointer-events:none;
+.hero-dot{width:6px;height:6px;border-radius:50%;background:var(--g);animation:blink 2s ease infinite;}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:.25}}
+.hero-content h1{
+  font-size:clamp(40px,5.5vw,72px);
+  font-weight:800;line-height:1.04;
+  letter-spacing:-2.5px;color:var(--text);
+  margin-bottom:22px;
 }
-.btn-primary:hover::after{left:100%;}
-.btn-primary:hover{
-  background:var(--g2);
-  transform:translateY(-2px);
-  box-shadow:0 2px 4px rgba(26,107,60,0.15), 0 8px 24px rgba(26,107,60,0.28);
+.hero-content h1 em{font-style:normal;color:var(--g);}
+.hero-desc{
+  font-size:18px;color:var(--text2);
+  line-height:1.7;margin-bottom:36px;
+  font-weight:400;
 }
-.btn-primary:active{transform:translateY(0);}
-.btn-secondary{
+.hero-ctas{display:flex;align-items:center;gap:14px;margin-bottom:36px;flex-wrap:wrap;}
+.btn-primary{
+  display:inline-flex;align-items:center;gap:8px;
+  background:var(--g);color:#fff;padding:15px 30px;
+  border-radius:12px;font-size:15px;font-weight:700;
+  text-decoration:none;transition:all .22s;
+  box-shadow:0 4px 16px rgba(26,107,60,0.28);
+}
+.btn-primary:hover{background:var(--g2);transform:translateY(-2px);box-shadow:0 6px 24px rgba(26,107,60,0.36);}
+.btn-ghost{
+  display:inline-flex;align-items:center;gap:8px;
   color:var(--text2);font-size:15px;font-weight:600;
-  text-decoration:none;display:inline-flex;align-items:center;gap:6px;
-  transition:all .18s;padding:15px 24px;border-radius:12px;
-  border:1.5px solid var(--border);background:transparent;
+  text-decoration:none;padding:15px 24px;
+  border-radius:12px;border:1.5px solid rgba(0,0,0,0.12);
+  transition:all .18s;
 }
-.btn-secondary:hover{color:var(--text);border-color:var(--g-border);background:var(--g-soft);}
-.hero-sectors{
-  display:flex;align-items:center;gap:10px;flex-wrap:wrap;
-  margin-top:16px;
-}
-.hero-sector-lbl{font-size:12px;color:var(--text3);font-weight:600;}
-.hero-sectors span:not(.hero-sector-lbl){
-  font-size:12px;color:var(--text2);
-  background:var(--bg2);border:1px solid var(--border);
-  padding:4px 10px;border-radius:100px;
-}
+.btn-ghost:hover{border-color:var(--g-border);color:var(--g);background:var(--g-soft);}
 .hero-trust{
-  display:flex;align-items:center;gap:12px;
-  font-size:13px;color:var(--text3);
+  display:flex;align-items:center;gap:6px;
+  font-size:13px;color:var(--text3);flex-wrap:wrap;
 }
-.trust-divider{width:1px;height:14px;background:var(--border);}
+.trust-sep{width:3px;height:3px;border-radius:50%;background:var(--border);}
 
-/* HERO VISUAL */
-.hero-right{position:relative;}
-.hero-mockup{
-  background:var(--bg2);border:1px solid var(--border);
-  border-radius:16px;overflow:hidden;
-  box-shadow:0 20px 60px rgba(0,0,0,0.08),0 4px 16px rgba(0,0,0,0.04);
-}
-.mockup-bar{
-  height:44px;background:var(--bg);border-bottom:1px solid var(--border);
-  display:flex;align-items:center;padding:0 16px;gap:8px;
-}
-.mock-dot{width:11px;height:11px;border-radius:50%;}
-.mockup-body{padding:20px;}
-.mock-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:16px;}
-.mock-stat{background:var(--bg);border:1px solid var(--border);border-radius:8px;padding:14px;}
-.mock-stat-n{font-size:22px;font-weight:800;color:var(--text);letter-spacing:-1px;margin-bottom:2px;}
-.mock-stat-l{font-size:11px;color:var(--text3);font-weight:500;}
-.mock-leads{display:flex;flex-direction:column;gap:8px;}
-.mock-lead{
-  background:var(--bg);border:1px solid var(--border);border-radius:8px;
-  padding:12px 14px;display:flex;align-items:center;gap:12px;
-}
-.mock-av{
-  width:34px;height:34px;border-radius:50%;
-  display:flex;align-items:center;justify-content:center;
-  font-size:12px;font-weight:700;color:#fff;flex-shrink:0;
-}
-.mock-info{flex:1;}
-.mock-name{font-size:13px;font-weight:600;color:var(--text);margin-bottom:2px;}
-.mock-sub{font-size:11px;color:var(--text3);}
-.mock-badge{
-  font-size:10px;font-weight:600;padding:3px 9px;border-radius:100px;
-}
-.badge-q{background:#fff3cd;color:#856404;}
-.badge-n{background:#d1ecf1;color:#0c5460;}
-.badge-p{background:#d4edda;color:#155724;}
-/* Float cards */
-.float-card{
-  position:absolute;
-  background:var(--bg);border:1px solid var(--border);border-radius:12px;
-  padding:14px 16px;
-  box-shadow:0 8px 24px rgba(0,0,0,0.08);
-  font-size:12px;
-}
-.float-card.top-right{
-  top:-20px;right:-30px;
-  display:flex;align-items:center;gap:10px;
-}
-.float-card.bot-left{
-  bottom:-20px;left:-30px;
-  min-width:160px;
-}
-.fc-icon{font-size:24px;}
-.fc-title{font-size:12px;font-weight:700;color:var(--text);margin-bottom:1px;}
-.fc-sub{font-size:11px;color:var(--text3);}
-.fc-val{font-size:20px;font-weight:800;color:var(--g);letter-spacing:-0.5px;}
-
-/* LOGOS / SECTORES STRIP */
+/* ══ STRIP SECTORES ══ */
 .strip{
   border-top:1px solid var(--border);border-bottom:1px solid var(--border);
-  background:var(--bg2);
-  padding:20px 5%;
-  display:flex;align-items:center;justify-content:center;gap:8px;flex-wrap:wrap;
+  padding:16px 6%;display:flex;align-items:center;gap:10px;
+  background:var(--bg);overflow-x:auto;
 }
-.strip-label{font-size:13px;color:var(--text3);font-weight:500;margin-right:8px;}
-.strip-item{
-  display:flex;align-items:center;gap:7px;
-  background:var(--bg);border:1px solid var(--border);
-  padding:8px 16px;border-radius:100px;
-  font-size:13px;font-weight:500;color:var(--text2);
+.strip::-webkit-scrollbar{display:none;}
+.strip-pre{font-size:12px;font-weight:700;color:var(--text3);text-transform:uppercase;letter-spacing:.8px;flex-shrink:0;margin-right:4px;}
+.strip-chip{
+  display:flex;align-items:center;gap:6px;flex-shrink:0;
+  padding:7px 16px;border-radius:100px;
+  font-size:13px;font-weight:600;color:var(--text2);
+  border:1.5px solid var(--border);background:var(--bg);
+  transition:all .15s;cursor:default;
 }
+.strip-chip:hover{border-color:var(--g-border);color:var(--g);background:var(--g-soft);}
 
-/* SECTIONS */
-.section{padding:96px 5%;max-width:1140px;margin:0 auto;}
-.section-full{padding:80px 5%;background:var(--bg2);}
-.section-full-inner{max-width:1140px;margin:0 auto;}
-.sec-label{
+/* ══ SECÇÃO GENÉRICA ══ */
+.s{padding:100px 6%;}
+.s-alt{padding:100px 6%;background:var(--bg2);}
+.w{max-width:var(--max);margin:0 auto;}
+.kicker{
   font-size:12px;font-weight:700;color:var(--g);
-  text-transform:uppercase;letter-spacing:1px;margin-bottom:14px;
+  text-transform:uppercase;letter-spacing:1.1px;
+  margin-bottom:14px;
 }
-.sec-h{
-  font-size:clamp(28px,3.5vw,44px);
-  font-weight:800;letter-spacing:-1px;
-  color:var(--text);line-height:1.15;margin-bottom:16px;
+.sh{
+  font-size:clamp(30px,4vw,50px);font-weight:800;
+  letter-spacing:-1.5px;color:var(--text);line-height:1.08;
+  margin-bottom:16px;
 }
-.sec-sub{
-  font-size:17px;color:var(--text2);font-weight:400;
-  line-height:1.6;max-width:520px;margin-bottom:56px;
-}
+.sp{font-size:16px;color:var(--text2);line-height:1.7;max-width:480px;margin-bottom:52px;}
 
-/* PROBLEMA */
-.prob-grid{
-  display:grid;grid-template-columns:repeat(2,1fr);gap:16px;
+/* ══ PROBLEMA — FULL BLEED FOTO ══ */
+/* Layout: texto esquerda, foto direita sem moldura */
+.prob-split{display:grid;grid-template-columns:1fr 1fr;min-height:560px;}
+.prob-text{
+  padding:80px 6% 80px 0;
+  display:flex;flex-direction:column;justify-content:center;
 }
-.prob-card{
-  background:var(--bg);border:1px solid var(--border);
-  border-radius:var(--rad);padding:32px;
-  transition:border-color .2s,box-shadow .2s;
+.prob-photo-side{
+  position:relative;overflow:hidden;
 }
-.prob-card:hover{border-color:var(--g-border);box-shadow:0 4px 20px rgba(0,0,0,0.04);}
-.prob-icon{font-size:28px;margin-bottom:16px;display:block;}
-.prob-title{font-size:16px;font-weight:700;color:var(--text);margin-bottom:8px;letter-spacing:-.2px;}
-.prob-desc{font-size:14px;color:var(--text2);line-height:1.65;font-weight:400;}
+.prob-photo-side img{
+  width:100%;height:100%;object-fit:cover;
+  object-position:center;display:block;
+}
+/* Detalhe decorativo — linha verde no canto */
+.prob-photo-side::before{
+  content:'';position:absolute;
+  left:0;top:10%;bottom:10%;width:3px;
+  background:linear-gradient(to bottom,transparent,var(--g),transparent);
+  z-index:1;
+}
+/* Stat sobre a foto */
 .prob-stat{
-  font-size:28px;font-weight:800;color:var(--g);
-  letter-spacing:-1px;margin-top:16px;
+  position:absolute;bottom:40px;left:-24px;z-index:2;
+  background:#fff;border:1px solid var(--border);
+  border-radius:16px;padding:18px 24px;
+  box-shadow:0 8px 32px rgba(0,0,0,0.10);
 }
+.prob-stat-n{font-size:38px;font-weight:800;color:var(--g);letter-spacing:-2px;line-height:1;}
+.prob-stat-l{font-size:12px;color:var(--text3);margin-top:4px;line-height:1.45;max-width:110px;}
 
-/* COMO FUNCIONA */
-.steps-grid{
-  display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center;
-}
-.steps-list{display:flex;flex-direction:column;gap:0;}
-.step{
-  display:grid;grid-template-columns:48px 1fr;gap:16px;
-  padding:24px 0;border-bottom:1px solid var(--border);
-  cursor:pointer;transition:all .15s;
-}
-.step:last-child{border-bottom:none;}
-.step:hover .step-n{background:var(--g);color:#fff;}
-.step-n{
-  width:40px;height:40px;border-radius:10px;
-  background:var(--bg3);border:1px solid var(--border);
-  display:flex;align-items:center;justify-content:center;
-  font-size:15px;font-weight:800;color:var(--text3);
-  transition:all .2s;flex-shrink:0;margin-top:2px;
-}
-.step-title{font-size:16px;font-weight:700;color:var(--text);margin-bottom:6px;letter-spacing:-.2px;}
-.step-desc{font-size:14px;color:var(--text2);line-height:1.6;}
-.step-tag{
-  display:inline-block;margin-top:8px;
-  font-size:11px;font-weight:700;color:var(--g);
-  background:var(--g-soft);padding:3px 10px;border-radius:100px;
-}
-.steps-visual{
-  background:var(--bg);border:1px solid var(--border);
-  border-radius:16px;overflow:hidden;
-  box-shadow:0 16px 48px rgba(0,0,0,0.07);
-}
-.sv-bar{
-  background:var(--bg2);border-bottom:1px solid var(--border);
-  padding:12px 16px;font-size:12px;font-weight:600;color:var(--text3);
-  display:flex;align-items:center;gap:8px;
-}
-.sv-dot{width:8px;height:8px;border-radius:50%;background:var(--g);}
-.sv-body{padding:20px;}
-.ia-bubble{
+.prob-list{display:flex;flex-direction:column;gap:24px;}
+.prob-item{display:flex;gap:16px;align-items:flex-start;}
+.prob-icon{
+  width:44px;height:44px;border-radius:12px;flex-shrink:0;
   background:var(--g-soft);border:1px solid var(--g-border);
-  border-radius:12px;padding:16px;margin-bottom:12px;
+  display:flex;align-items:center;justify-content:center;font-size:19px;
 }
-.ia-label{font-size:11px;font-weight:700;color:var(--g);text-transform:uppercase;letter-spacing:.5px;margin-bottom:8px;display:flex;align-items:center;gap:5px;}
-.ia-dot-pulse{width:5px;height:5px;border-radius:50%;background:var(--g);animation:pulse 1.5s ease infinite;}
-.ia-text{font-size:13px;color:var(--text);line-height:1.6;}
-.ia-actions{display:flex;gap:8px;margin-top:12px;}
-.ia-btn{font-size:11px;font-weight:600;padding:6px 12px;border-radius:6px;border:none;cursor:pointer;font-family:var(--font);}
-.ia-btn.primary{background:var(--g);color:#fff;}
-.ia-btn.ghost{background:var(--bg3);color:var(--text2);}
+.prob-h{font-size:15px;font-weight:700;color:var(--text);margin-bottom:5px;}
+.prob-p{font-size:14px;color:var(--text2);line-height:1.65;}
 
-/* FUNCIONALIDADES */
-.feat-grid{
-  display:grid;grid-template-columns:repeat(3,1fr);gap:16px;
+/* ══ COMO FUNCIONA ══ */
+.steps-layout{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:start;}
+.steps{display:flex;flex-direction:column;}
+.step{display:grid;grid-template-columns:48px 1fr;gap:18px;padding:26px 0;border-bottom:1px solid var(--border);}
+.step:last-child{border-bottom:none;}
+.step-n{
+  width:44px;height:44px;border-radius:12px;
+  background:var(--text);color:#fff;
+  display:flex;align-items:center;justify-content:center;
+  font-size:15px;font-weight:800;flex-shrink:0;
 }
-.feat{
+.step-h{font-size:16px;font-weight:700;color:var(--text);margin-bottom:6px;}
+.step-p{font-size:14px;color:var(--text2);line-height:1.65;}
+.step-tag{display:inline-block;margin-top:9px;font-size:11px;font-weight:700;color:var(--g);background:var(--g-soft);padding:3px 10px;border-radius:100px;}
+
+/* IA card */
+.ia-card{
   background:var(--bg);border:1px solid var(--border);
-  border-radius:var(--rad);padding:28px;
-  transition:border-color .2s,transform .2s;
+  border-radius:20px;overflow:hidden;
+  box-shadow:0 4px 16px rgba(0,0,0,0.06),0 20px 48px rgba(0,0,0,0.05);
+  position:sticky;top:90px;
 }
-.feat:hover{border-color:var(--g-border);transform:translateY(-2px);}
-.feat.featured{
-  background:var(--g);border-color:var(--g);
-  grid-column:span 2;
-  display:grid;grid-template-columns:1fr 1fr;gap:24px;align-items:center;
-}
-.feat-icon{font-size:26px;margin-bottom:16px;display:block;}
-.feat-title{font-size:16px;font-weight:700;color:var(--text);margin-bottom:8px;letter-spacing:-.2px;}
-.feat-desc{font-size:13px;color:var(--text2);line-height:1.6;}
+.ia-header{background:var(--text);padding:15px 20px;display:flex;align-items:center;gap:10px;}
+.ia-header-dot{width:7px;height:7px;border-radius:50%;background:rgba(255,255,255,0.3);}
+.ia-header-lbl{font-size:13px;font-weight:600;color:rgba(255,255,255,0.85);}
+.ia-body{padding:20px;}
+.ia-lead{display:flex;align-items:center;gap:12px;padding:12px;background:var(--bg2);border-radius:10px;margin-bottom:16px;border:1px solid var(--border);}
+.ia-av{width:38px;height:38px;border-radius:50%;background:var(--g);display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:800;color:#fff;flex-shrink:0;}
+.ia-lead-name{font-size:14px;font-weight:700;color:var(--text);}
+.ia-lead-sub{font-size:11px;color:var(--text3);margin-top:2px;}
+.ia-bubble{background:var(--g-soft);border:1px solid var(--g-border);border-radius:12px;padding:16px;margin-bottom:12px;}
+.ia-bubble-lbl{font-size:10px;font-weight:700;color:var(--g);text-transform:uppercase;letter-spacing:.6px;margin-bottom:8px;display:flex;align-items:center;gap:5px;}
+.ai-pulse{width:5px;height:5px;border-radius:50%;background:var(--g);animation:blink 1.4s ease infinite;}
+.ia-msg{font-size:13px;color:var(--text);line-height:1.68;font-style:italic;}
+.ia-btns{display:flex;gap:8px;margin-top:12px;}
+.ia-btn{font-size:12px;font-weight:600;padding:8px 14px;border-radius:8px;border:none;cursor:pointer;font-family:var(--font);}
+.ia-btn.p{background:var(--g);color:#fff;}
+.ia-btn.s{background:var(--bg3);color:var(--text2);}
+.ia-meta{display:flex;flex-direction:column;gap:8px;}
+.ia-meta-row{display:flex;align-items:center;justify-content:space-between;background:var(--bg2);border:1px solid var(--border);border-radius:8px;padding:10px 14px;}
+.ia-meta-k{font-size:12px;color:var(--text3);}
+.ia-meta-v{font-size:12px;font-weight:700;color:var(--text);}
+
+/* ══ FUNCIONALIDADES ══ */
+.feat-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border);border:1px solid var(--border);border-radius:20px;overflow:hidden;}
+.feat{background:var(--bg);padding:32px;transition:background .2s;}
+.feat:hover{background:var(--g-soft);}
+.feat-icon{font-size:24px;margin-bottom:16px;display:block;}
+.feat-h{font-size:15px;font-weight:700;color:var(--text);margin-bottom:8px;}
+.feat-p{font-size:13px;color:var(--text2);line-height:1.65;}
 .feat-tag{font-size:11px;font-weight:700;color:var(--g);margin-top:12px;display:block;}
-.feat.featured .feat-title{color:#fff;font-size:20px;}
-.feat.featured .feat-desc{color:rgba(255,255,255,0.75);}
-.feat.featured .feat-tag{color:rgba(255,255,255,0.6);}
-.feat-preview-light{
-  background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.15);
-  border-radius:10px;padding:16px;font-size:13px;color:rgba(255,255,255,0.85);line-height:1.6;
-  font-style:italic;
+/* Featured ia card */
+.feat.featured{
+  background:var(--text);
+  grid-column:span 2;
+  display:grid;grid-template-columns:1fr 1fr;gap:28px;align-items:center;
 }
-.feat-preview-label{
-  font-size:10px;font-weight:700;color:rgba(255,255,255,0.5);
-  text-transform:uppercase;letter-spacing:.6px;margin-bottom:8px;
-  display:flex;align-items:center;gap:5px;
-}
+.feat.featured:hover{background:#1a2332;}
+.feat.featured .feat-h{color:#fff;font-size:18px;}
+.feat.featured .feat-p{color:rgba(255,255,255,0.65);}
+.feat.featured .feat-tag{color:rgba(255,255,255,0.35);}
+.feat-preview{background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.12);border-radius:12px;padding:18px;font-size:13px;color:rgba(255,255,255,0.85);line-height:1.68;font-style:italic;}
+.feat-preview-lbl{font-size:10px;font-weight:700;color:rgba(255,255,255,0.35);text-transform:uppercase;letter-spacing:.6px;margin-bottom:8px;display:flex;align-items:center;gap:5px;}
 
-/* SECTORES */
-.sec-tabs{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:32px;}
-.sec-tab{
-  padding:8px 18px;border-radius:100px;font-size:13px;font-weight:600;
-  border:1px solid var(--border);background:var(--bg);color:var(--text2);
-  cursor:pointer;transition:all .15s;
-}
-.sec-tab:hover,.sec-tab.on{background:var(--g);color:#fff;border-color:var(--g);}
-.sec-content{display:none;animation:fadein .3s ease;}
-.sec-content.on{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:start;}
-@keyframes fadein{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
-.sec-detail h3{font-size:22px;font-weight:800;color:var(--text);letter-spacing:-.5px;margin-bottom:12px;}
-.sec-detail p{font-size:15px;color:var(--text2);line-height:1.65;margin-bottom:20px;}
+/* ══ SECTORES ══ */
+.sec-tabs{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:36px;}
+.sec-tab{padding:9px 20px;border-radius:100px;font-size:13px;font-weight:600;border:1.5px solid var(--border);background:var(--bg);color:var(--text2);cursor:pointer;transition:all .15s;font-family:var(--font);}
+.sec-tab:hover,.sec-tab.on{background:var(--text);color:#fff;border-color:var(--text);}
+.sec-content{display:none;}
+.sec-content.on{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:start;animation:fadein .3s ease;}
+@keyframes fadein{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+.sec-detail h3{font-size:22px;font-weight:800;color:var(--text);letter-spacing:-.5px;margin-bottom:10px;}
+.sec-detail p{font-size:14px;color:var(--text2);line-height:1.65;margin-bottom:20px;}
 .sec-fields{display:flex;flex-direction:column;gap:8px;}
-.sec-field{
-  display:flex;align-items:center;gap:10px;
-  background:var(--bg2);border:1px solid var(--border);
-  border-radius:8px;padding:10px 14px;font-size:13px;color:var(--text);
-}
+.sec-field{display:flex;align-items:center;gap:10px;background:var(--bg);border:1px solid var(--border);border-radius:9px;padding:10px 14px;font-size:13px;color:var(--text);}
 .sec-field::before{content:'✓';color:var(--g);font-weight:700;flex-shrink:0;}
-.sec-visual{
-  background:var(--bg);border:1px solid var(--border);
-  border-radius:var(--rad);overflow:hidden;
-  box-shadow:0 8px 24px rgba(0,0,0,0.06);
-}
-.sv-header{
-  background:var(--bg2);border-bottom:1px solid var(--border);
-  padding:14px 18px;display:flex;align-items:center;justify-content:space-between;
-}
+.sec-visual{background:var(--bg);border:1px solid var(--border);border-radius:16px;overflow:hidden;}
+.sv-header{background:var(--bg2);border-bottom:1px solid var(--border);padding:14px 18px;display:flex;align-items:center;justify-content:space-between;}
 .sv-title{font-size:13px;font-weight:700;color:var(--text);}
 .sv-badge{font-size:11px;font-weight:600;color:var(--g);background:var(--g-soft);padding:3px 8px;border-radius:100px;}
 .sv-leads{padding:12px;}
-.sv-lead{
-  display:flex;align-items:center;gap:10px;
-  padding:10px 12px;border-radius:8px;margin-bottom:6px;
-  border:1px solid var(--border);background:var(--bg);
-}
-.sv-av{width:30px;height:30px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;color:#fff;flex-shrink:0;}
+.sv-lead{display:flex;align-items:center;gap:10px;padding:10px 12px;border-radius:8px;margin-bottom:6px;border:1px solid var(--border);}
+.sv-av{width:32px;height:32px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;color:#fff;flex-shrink:0;}
 .sv-name{font-size:12px;font-weight:600;color:var(--text);flex:1;}
-.sv-b{font-size:10px;font-weight:700;padding:2px 8px;border-radius:100px;}
+.sv-st{font-size:10px;font-weight:700;padding:3px 9px;border-radius:100px;}
 
-/* CTA */
-.cta-section{
-  background:var(--g);padding:100px 5%;text-align:center;
-}
-.cta-inner{max-width:640px;margin:0 auto;}
-.cta-section h2{
-  font-size:clamp(32px,4vw,52px);font-weight:800;
-  color:#fff;letter-spacing:-1.5px;margin-bottom:16px;line-height:1.1;
-}
-.cta-section p{font-size:18px;color:rgba(255,255,255,0.75);font-weight:400;margin-bottom:40px;line-height:1.6;}
-.btn-cta-white{
-  background:#fff;color:var(--g);
-  padding:16px 36px;border-radius:12px;
-  font-size:16px;font-weight:800;letter-spacing:-0.3px;
-  text-decoration:none;transition:all .22s cubic-bezier(.4,0,.2,1);
-  display:inline-flex;align-items:center;gap:8px;
-  box-shadow:0 4px 20px rgba(0,0,0,0.18);
-}
-.btn-cta-white:hover{background:#f0faf4;transform:translateY(-2px);box-shadow:0 8px 28px rgba(0,0,0,0.22);}
-.cta-note{margin-top:16px;font-size:13px;color:rgba(255,255,255,0.5);}
-
-/* PROVA SOCIAL */
-.social-proof-section{
-  background:var(--g);padding:64px 5%;
-}
-.social-proof-inner{max-width:1140px;margin:0 auto;text-align:center;}
-.sp-tag{
-  display:inline-block;
-  font-size:12px;font-weight:700;color:rgba(255,255,255,0.6);
-  text-transform:uppercase;letter-spacing:1px;margin-bottom:40px;
-}
-.sp-nums{
-  display:flex;align-items:center;justify-content:center;
-  gap:0;flex-wrap:wrap;
-}
-.sp-num{flex:1;min-width:160px;padding:16px;}
-.sp-val{font-size:clamp(32px,4vw,48px);font-weight:800;color:#fff;letter-spacing:-1.5px;line-height:1;}
-.sp-lbl{font-size:13px;color:rgba(255,255,255,0.55);margin-top:8px;line-height:1.4;}
-.sp-div{width:1px;height:60px;background:rgba(255,255,255,0.12);flex-shrink:0;}
-
-/* FAQ */
-.faq-section{padding:96px 5%;background:var(--bg2);}
-.faq-inner{max-width:1140px;margin:0 auto;}
-.faq-grid{
-  display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:48px;
-}
-.faq-item{
-  background:#fff;border:1px solid var(--border);
-  border-radius:12px;padding:24px 28px;
-  transition:border-color .2s,box-shadow .2s;
-}
-.faq-item:hover{border-color:var(--g-border);box-shadow:0 4px 16px rgba(26,107,60,0.08);}
-.faq-q{font-size:15px;font-weight:700;color:var(--text);margin-bottom:10px;line-height:1.4;}
-.faq-a{font-size:14px;color:var(--text2);line-height:1.65;font-weight:400;}
-
-/* CTA melhorado */
-.cta-tag{
-  display:inline-block;
-  font-size:12px;font-weight:700;color:rgba(255,255,255,0.6);
-  text-transform:uppercase;letter-spacing:1px;margin-bottom:20px;
-}
-.cta-btns{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-bottom:16px;}
-.btn-cta-ghost{
-  background:transparent;color:rgba(255,255,255,0.85);
-  padding:16px 32px;border-radius:12px;
-  font-size:16px;font-weight:600;letter-spacing:-0.1px;
-  text-decoration:none;transition:all .18s;
-  display:inline-flex;align-items:center;gap:8px;
-  border:1.5px solid rgba(255,255,255,0.25);
-}
-.btn-cta-ghost:hover{background:rgba(255,255,255,0.1);border-color:rgba(255,255,255,0.4);color:#fff;}
-.cta-steps{
-  display:flex;align-items:center;justify-content:center;
-  gap:8px;flex-wrap:wrap;margin-top:32px;
-}
-.cta-step{
-  display:flex;align-items:center;gap:8px;
-  font-size:13px;font-weight:600;color:rgba(255,255,255,0.7);
-}
-.cta-step span{
-  width:24px;height:24px;border-radius:50%;
-  background:rgba(255,255,255,0.15);
-  display:flex;align-items:center;justify-content:center;
-  font-size:12px;font-weight:700;color:#fff;
-  flex-shrink:0;
-}
-.cta-arrow{color:rgba(255,255,255,0.25);font-size:14px;}
-
-/* FOOTER melhorado */
-.footer-grid{
-  display:grid;grid-template-columns:2fr 1fr 1fr 1fr;
-  gap:48px;max-width:1140px;margin:0 auto;padding-bottom:48px;
-  border-bottom:1px solid var(--border);
-}
-.footer-brand-col{}
-.footer-tagline{font-size:14px;color:var(--text3);line-height:1.6;margin:12px 0 16px;}
-.footer-email{font-size:13px;color:var(--g);text-decoration:none;font-weight:600;}
-.footer-email:hover{text-decoration:underline;}
-.footer-links-col{display:flex;flex-direction:column;gap:10px;}
-.footer-col-title{font-size:12px;font-weight:700;color:var(--text);text-transform:uppercase;letter-spacing:.5px;margin-bottom:4px;}
-.footer-links-col a{font-size:14px;color:var(--text2);text-decoration:none;transition:color .15s;}
-.footer-links-col a:hover{color:var(--g);}
-.footer-cta-btn{
-  display:inline-block;
-  background:var(--g);color:#fff;
-  padding:10px 18px;border-radius:8px;
-  font-size:13px;font-weight:700;
-  text-decoration:none;transition:background .15s;
-  text-align:center;margin-bottom:12px;
-}
-.footer-cta-btn:hover{background:var(--g2);color:#fff!important;}
-.footer-guarantee{font-size:12px;color:var(--text3);line-height:1.8;}
-.footer-bottom{
-  max-width:1140px;margin:0 auto;
-  padding-top:24px;
-  display:flex;justify-content:space-between;align-items:center;
-}
-.footer-made{font-size:13px;color:var(--text3);}
-
-/* FORMULÁRIO CONTACTO */
-.contact-form{text-align:left;}
-.cf-row{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
-.cf-field{display:flex;flex-direction:column;gap:6px;margin-bottom:16px;}
-.cf-label{font-size:13px;font-weight:600;color:var(--text2);}
-.cf-input{
-  padding:11px 14px;border:1.5px solid var(--border);border-radius:var(--rad);
-  background:var(--bg);color:var(--text);font-size:14px;
-  font-family:var(--font);outline:none;transition:border-color .15s;resize:vertical;
-}
-.cf-input:focus{border-color:var(--g);box-shadow:0 0 0 3px rgba(26,107,60,0.08);outline:none;}
-.cf-btn{
-  width:100%;padding:15px;border-radius:var(--rad);
-  background:var(--g);color:#fff;font-size:15px;font-weight:800;
-  border:none;cursor:pointer;font-family:var(--font);
-  transition:all .22s cubic-bezier(.4,0,.2,1);letter-spacing:-0.2px;
-  box-shadow:0 2px 4px rgba(26,107,60,0.15),0 6px 20px rgba(26,107,60,0.2);
+/* ══ PROVA SOCIAL — FULL BLEED VERDE ESCURO ══ */
+.proof-section{
   position:relative;overflow:hidden;
+  background:var(--text);
+  padding:100px 6%;
 }
-.cf-btn::after{
-  content:'';position:absolute;top:0;left:-100%;width:100%;height:100%;
-  background:linear-gradient(90deg,transparent,rgba(255,255,255,0.12),transparent);
-  transition:left .5s ease;
+/* Foto de pessoa integrada no fundo */
+.proof-photo-bg{
+  position:absolute;right:0;top:0;bottom:0;width:45%;
+  overflow:hidden;
 }
-.cf-btn:hover::after{left:100%;}
-.cf-btn:hover{background:var(--g2);transform:translateY(-2px);box-shadow:0 4px 8px rgba(26,107,60,0.2),0 10px 28px rgba(26,107,60,0.25);}
-@media(max-width:600px){.cf-row{grid-template-columns:1fr;}}
-
-/* FOOTER */
-
-
-footer{
-  padding:40px 5%;border-top:1px solid var(--border);
-  display:flex;align-items:center;justify-content:space-between;
-  max-width:1140px;margin:0 auto;
+.proof-photo-bg::before{
+  content:'';position:absolute;left:0;top:0;bottom:0;width:70%;z-index:1;
+  background:linear-gradient(to right,var(--text) 0%,transparent 100%);
 }
-.f-brand{font-size:18px;font-weight:800;color:var(--text);letter-spacing:-.3px;}
-.f-brand span{color:var(--g);}
-.f-links{display:flex;gap:24px;}
-.f-links a{font-size:13px;color:var(--text3);text-decoration:none;transition:color .15s;}
-.f-links a:hover{color:var(--text);}
-.f-copy{font-size:13px;color:var(--text3);}
+.proof-photo-bg img{
+  width:100%;height:100%;object-fit:cover;
+  object-position:center top;opacity:.3;display:block;
+}
+.proof-inner{max-width:var(--max);margin:0 auto;position:relative;z-index:1;}
+.proof-nums{display:grid;grid-template-columns:repeat(4,1fr);margin-bottom:72px;}
+.proof-num{padding:0 24px;text-align:center;border-right:1px solid rgba(255,255,255,0.08);}
+.proof-num:first-child{padding-left:0;text-align:left;}
+.proof-num:last-child{border-right:none;}
+.proof-val{font-size:clamp(40px,5vw,60px);font-weight:800;color:#fff;letter-spacing:-3px;line-height:1;}
+.proof-lbl{font-size:13px;color:rgba(255,255,255,0.45);margin-top:10px;line-height:1.5;}
 
-@media(max-width:900px){
-  .hero{grid-template-columns:1fr;gap:48px;}
-  .hero-right{display:none;}
-  .steps-grid{grid-template-columns:1fr;}
-  .steps-visual{display:none;}
-  .prob-grid,.feat-grid{grid-template-columns:1fr;}
-  .feat.featured{grid-column:span 1;grid-template-columns:1fr;}
+/* Testemunhos — layout horizontal limpo */
+.testimonials{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:rgba(255,255,255,0.08);border-radius:16px;overflow:hidden;}
+.testi{background:rgba(255,255,255,0.04);padding:32px;display:flex;flex-direction:column;}
+.testi-stars{color:#f59e0b;font-size:13px;letter-spacing:2px;margin-bottom:16px;}
+.testi-text{font-size:14px;color:rgba(255,255,255,0.78);line-height:1.75;margin-bottom:24px;font-style:italic;flex:1;}
+.testi-footer{display:flex;align-items:center;gap:14px;padding-top:20px;border-top:1px solid rgba(255,255,255,0.08);}
+.testi-photo-wrap{width:46px;height:46px;border-radius:50%;overflow:hidden;flex-shrink:0;border:2px solid rgba(255,255,255,0.15);}
+.testi-photo{width:100%;height:100%;object-fit:cover;object-position:center top;display:block;}
+.testi-name{font-size:14px;font-weight:700;color:#fff;}
+.testi-role{font-size:12px;color:rgba(255,255,255,0.4);margin-top:2px;}
+
+/* ══ FAQ ══ */
+.faq-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:48px;}
+.faq-item{background:var(--bg);border:1px solid var(--border);border-radius:14px;padding:24px 28px;transition:border-color .2s;}
+.faq-item:hover{border-color:var(--g-border);}
+.faq-q{font-size:15px;font-weight:700;color:var(--text);margin-bottom:10px;line-height:1.4;}
+.faq-a{font-size:14px;color:var(--text2);line-height:1.65;}
+
+/* ══ CTA FINAL — FULL BLEED ══ */
+.cta-section{
+  position:relative;height:560px;overflow:hidden;
+  display:flex;align-items:center;
+}
+.cta-photo-bg{
+  position:absolute;inset:0;
+  background-image:url('https://images.unsplash.com/photo-1521737711867-e3b97375f902?w=1800&q=90&auto=format&fit=crop');
+  background-size:cover;background-position:center 30%;
+}
+.cta-photo-bg::after{
+  content:'';position:absolute;inset:0;
+  background:linear-gradient(
+    105deg,
+    rgba(255,255,255,0.97) 0%,
+    rgba(255,255,255,0.92) 35%,
+    rgba(255,255,255,0.55) 60%,
+    rgba(255,255,255,0.05) 100%
+  );
+}
+.cta-content{
+  position:relative;z-index:1;
+  max-width:var(--max);margin:0 auto;
+  padding:0 6%;width:100%;
+}
+.cta-content>*{max-width:520px;}
+.cta-kicker{font-size:12px;font-weight:700;color:var(--g);text-transform:uppercase;letter-spacing:1.1px;margin-bottom:20px;display:block;}
+.cta-section h2{font-size:clamp(32px,4.5vw,54px);font-weight:800;color:var(--text);letter-spacing:-1.5px;margin-bottom:16px;line-height:1.05;}
+.cta-section p{font-size:17px;color:var(--text2);margin-bottom:36px;line-height:1.65;}
+.cta-btns{display:flex;gap:12px;flex-wrap:wrap;}
+.btn-dark{background:var(--text);color:#fff;padding:15px 32px;border-radius:12px;font-size:15px;font-weight:800;text-decoration:none;transition:all .2s;display:inline-flex;align-items:center;gap:8px;box-shadow:0 4px 20px rgba(0,0,0,0.15);}
+.btn-dark:hover{background:var(--g);transform:translateY(-2px);}
+.btn-outline{background:transparent;color:var(--text);padding:15px 28px;border-radius:12px;font-size:15px;font-weight:600;text-decoration:none;transition:all .18s;display:inline-flex;align-items:center;gap:8px;border:1.5px solid rgba(0,0,0,0.15);}
+.btn-outline:hover{border-color:var(--g);color:var(--g);}
+.cta-note{margin-top:20px;font-size:13px;color:var(--text3);}
+
+/* ══ CONTACTO ══ */
+.contact-outer{padding:100px 6%;background:var(--bg2);}
+.contact-inner{max-width:620px;margin:0 auto;text-align:center;}
+.contact-form{text-align:left;margin-top:44px;}
+.cf-row{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+.cf-field{display:flex;flex-direction:column;gap:6px;margin-bottom:14px;}
+.cf-label{font-size:13px;font-weight:600;color:var(--text2);}
+.cf-input{padding:13px 15px;border:1.5px solid var(--border);border-radius:10px;background:var(--bg);color:var(--text);font-size:14px;font-family:var(--font);outline:none;transition:border-color .15s,box-shadow .15s;resize:vertical;width:100%;}
+.cf-input:focus{border-color:var(--g);box-shadow:0 0 0 3px rgba(26,107,60,0.08);}
+.cf-btn{width:100%;padding:15px;border-radius:10px;background:var(--text);color:#fff;font-size:15px;font-weight:700;border:none;cursor:pointer;font-family:var(--font);transition:all .18s;}
+.cf-btn:hover:not(:disabled){background:var(--g);transform:translateY(-1px);}
+.cf-btn:disabled{opacity:.55;cursor:not-allowed;transform:none;}
+
+/* ══ FOOTER ══ */
+.footer{padding:56px 6% 32px;border-top:1px solid var(--border);}
+.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:48px;max-width:var(--max);margin:0 auto;padding-bottom:48px;border-bottom:1px solid var(--border);}
+.footer-brand{font-size:20px;font-weight:800;color:var(--text);text-decoration:none;letter-spacing:-.5px;display:block;margin-bottom:12px;}
+.footer-brand span{color:var(--g);}
+.footer-tagline{font-size:14px;color:var(--text3);line-height:1.65;margin-bottom:16px;}
+.footer-mail{font-size:13px;color:var(--g);text-decoration:none;font-weight:600;}
+.footer-mail:hover{text-decoration:underline;}
+.footer-col-h{font-size:11px;font-weight:700;color:var(--text);text-transform:uppercase;letter-spacing:.8px;margin-bottom:14px;}
+.footer-links{display:flex;flex-direction:column;gap:10px;}
+.footer-links a{font-size:14px;color:var(--text2);text-decoration:none;transition:color .15s;}
+.footer-links a:hover{color:var(--g);}
+.footer-cta{display:block;background:var(--text);color:#fff;padding:10px 18px;border-radius:8px;font-size:13px;font-weight:700;text-decoration:none;margin-bottom:14px;transition:background .15s;text-align:center;}
+.footer-cta:hover{background:var(--g);}
+.footer-guar{font-size:12px;color:var(--text3);line-height:2;}
+.footer-bottom{max-width:var(--max);margin:28px auto 0;display:flex;justify-content:space-between;align-items:center;}
+.footer-copy{font-size:13px;color:var(--text3);}
+
+/* ══ PUSH / WA / TOAST ══ */
+.push-banner{position:fixed;bottom:24px;right:24px;z-index:999;background:#fff;border:1px solid var(--border);border-radius:18px;padding:20px 24px;box-shadow:0 8px 40px rgba(0,0,0,0.12);max-width:310px;display:none;}
+.push-banner.show{display:block;animation:slideUp .4s ease;}
+@keyframes slideUp{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
+.push-close{position:absolute;top:12px;right:14px;background:none;border:none;color:var(--text3);font-size:18px;cursor:pointer;line-height:1;}
+.push-title{font-size:15px;font-weight:700;color:var(--text);margin-bottom:6px;}
+.push-sub{font-size:13px;color:var(--text2);line-height:1.5;margin-bottom:16px;}
+.push-btns{display:flex;gap:8px;}
+.push-yes{flex:1;padding:9px 0;border-radius:8px;background:var(--g);color:#fff;border:none;font-size:13px;font-weight:700;cursor:pointer;font-family:var(--font);}
+.push-no{padding:9px 14px;border-radius:8px;background:var(--bg3);color:var(--text2);border:none;font-size:13px;cursor:pointer;font-family:var(--font);}
+.wa-float{position:fixed;bottom:24px;left:24px;z-index:998;background:#25D366;color:#fff;width:54px;height:54px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:26px;text-decoration:none;box-shadow:0 4px 16px rgba(37,211,102,0.4);transition:transform .2s;animation:waIn .8s ease .5s both;}
+.wa-float:hover{transform:scale(1.1);}
+@keyframes waIn{from{opacity:0;transform:scale(0.4)}to{opacity:1;transform:scale(1)}}
+.notif-toast{position:fixed;top:80px;right:24px;z-index:1000;background:var(--text);color:#fff;padding:14px 20px;border-radius:12px;font-size:13px;max-width:300px;line-height:1.5;box-shadow:0 8px 24px rgba(0,0,0,0.2);display:none;}
+.notif-toast.show{display:block;animation:toastIn .3s ease;}
+@keyframes toastIn{from{opacity:0;transform:translateY(-8px)}to{opacity:1;transform:none}}
+
+/* ══ RESPONSIVE ══ */
+/* ── TABLET / LANDSCAPE MOBILE ── */
+@media(max-width:1000px){
+  /* HERO */
+  .hero-section{height:auto;min-height:auto;}
+  .hero-bg{display:none;}
+  .hero-content{padding:64px 6% 0;width:100%;}
+  .hero-content>*{max-width:100%;}
+  .hero-content h1{font-size:clamp(34px,7vw,52px);letter-spacing:-1.5px;}
+  .hero-desc{font-size:16px;}
+  /* Foto mobile abaixo do texto — full width sem moldura */
+  .hero-section::after{
+    content:'';display:block;
+    height:260px;margin-top:48px;
+    background-image:url('https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=900&q=80&auto=format&fit=crop&crop=center');
+    background-size:cover;background-position:center 25%;
+  }
+  /* PROBLEMA */
+  .prob-split{grid-template-columns:1fr;min-height:auto;}
+  .prob-text{padding:64px 6%;}
+  .prob-photo-side{height:280px;order:2;}
+  .prob-photo-side::before{display:none;}
+  .prob-stat{left:auto;right:20px;bottom:20px;}
+  /* STEPS */
+  .steps-layout{grid-template-columns:1fr;gap:40px;}
+  .ia-card{position:static;}
+  /* FEATS */
+  .feat-grid{grid-template-columns:1fr 1fr;}
+  .feat.featured{grid-column:span 2;grid-template-columns:1fr;}
+  /* SECTORES */
   .sec-content.on{grid-template-columns:1fr;}
-  footer{flex-direction:column;gap:16px;text-align:center;}
-  .f-links{justify-content:center;}
+  /* PROVA */
+  .proof-photo-bg{display:none;}
+  .proof-nums{grid-template-columns:repeat(2,1fr);gap:0;margin-bottom:48px;}
+  .proof-num{
+    text-align:center;padding:24px 16px;
+    border-right:none;border-bottom:1px solid rgba(255,255,255,0.08);
+  }
+  .proof-num:nth-child(odd){border-right:1px solid rgba(255,255,255,0.08);}
+  .proof-num:last-child,.proof-num:nth-last-child(2):nth-child(odd){border-bottom:none;}
+  .testimonials{grid-template-columns:1fr;}
+  /* CTA */
+  .cta-section{height:auto;}
+  .cta-photo-bg::after{
+    background:linear-gradient(180deg,
+      rgba(255,255,255,.98) 0%,
+      rgba(255,255,255,.94) 55%,
+      rgba(255,255,255,.80) 100%
+    );
+  }
+  .cta-content{padding:72px 6%;}
+  .cta-content>*{max-width:100%;}
+  /* FOOTER */
+  .footer-grid{grid-template-columns:1fr 1fr;gap:32px;}
+  .footer-bottom{flex-direction:column;gap:10px;text-align:center;}
+  /* FAQ */
+  .faq-grid{grid-template-columns:1fr;}
 }
-@media(max-width:600px){
-  .nav-links{display:none;}
-  .strip{justify-content:flex-start;overflow-x:auto;flex-wrap:nowrap;}
+
+/* ── MOBILE ── */
+@media(max-width:640px){
+  /* NAV */
+  nav{padding:0 5%;height:60px;}
+  .brand{font-size:18px;}
+  .nav-links>a:not(.btn-nav){display:none;}
+  .btn-nav{padding:8px 16px;font-size:13px;}
+
+  /* SECÇÕES — padding uniforme 5% */
+  .s{padding:72px 5%;}
+  .s-alt{padding:72px 5%;}
+  .proof-section{padding:72px 5%;}
+  .cta-content{padding:64px 5%;}
+  .contact-outer{padding:72px 5%;}
+  .footer{padding:48px 5% 28px;}
+  .w{padding:0;}
+
+  /* HERO */
+  .hero-content{padding:56px 5% 0;}
+  .hero-pill{font-size:11px;padding:4px 12px;}
+  .hero-content h1{font-size:clamp(32px,9vw,46px);letter-spacing:-1.2px;margin-bottom:18px;}
+  .hero-desc{font-size:15px;margin-bottom:28px;}
+  .hero-ctas{gap:10px;margin-bottom:24px;}
+  .btn-primary{padding:13px 22px;font-size:14px;}
+  .btn-ghost{padding:13px 18px;font-size:14px;}
+  .hero-trust{flex-direction:column;align-items:flex-start;gap:5px;font-size:12px;}
+  .trust-sep{display:none;}
+  .hero-section::after{height:220px;margin-top:40px;}
+
+  /* PROBLEMA */
+  .prob-text{padding:56px 5%;}
+  .prob-photo-side{height:240px;}
+  .prob-stat{right:16px;bottom:16px;padding:14px 18px;}
+  .prob-stat-n{font-size:30px;}
+
+  /* KICKER / TÍTULOS */
+  .kicker{font-size:11px;}
+  .sh{font-size:clamp(26px,7vw,36px);letter-spacing:-1px;margin-bottom:12px;}
+  .sp{font-size:15px;margin-bottom:36px;}
+
+  /* STEPS */
+  .step{grid-template-columns:40px 1fr;gap:14px;padding:20px 0;}
+  .step-n{width:38px;height:38px;font-size:14px;}
+  .step-h{font-size:15px;}
+
+  /* IA CARD */
+  .ia-card{border-radius:14px;}
+  .ia-msg{font-size:12px;}
+
+  /* FEATS */
+  .feat-grid{grid-template-columns:1fr;gap:0;}
+  .feat.featured{grid-column:span 1;}
+  .feat{padding:24px 20px;}
+  .feat.featured{padding:28px 20px;}
+
+  /* SECTORES */
+  .sec-tabs{gap:6px;}
+  .sec-tab{padding:7px 14px;font-size:12px;}
+  .sec-visual{display:none;}/* esconde pipeline em mobile — só texto */
+  .sec-content.on{grid-template-columns:1fr;}
+  .sec-detail h3{font-size:18px;}
+  .sec-field{font-size:12px;padding:9px 12px;}
+
+  /* PROVA SOCIAL */
+  .proof-nums{grid-template-columns:1fr 1fr;}
+  .proof-val{font-size:clamp(32px,9vw,48px);}
+  .testi{padding:24px 20px;}
+  .testi-text{font-size:13px;}
+
+  /* FAQ */
+  .faq-item{padding:20px 22px;}
+  .faq-q{font-size:14px;}
+  .faq-a{font-size:13px;}
+
+  /* CTA */
+  .cta-section h2{font-size:clamp(26px,7vw,38px);letter-spacing:-1px;}
+  .cta-section p{font-size:15px;margin-bottom:28px;}
+  .cta-btns{flex-direction:column;align-items:flex-start;gap:10px;}
+  .btn-dark,.btn-outline{width:100%;justify-content:center;padding:14px 20px;}
+  .cta-note{font-size:12px;}
+
+  /* CONTACTO */
+  .cf-row{grid-template-columns:1fr;}
+  .cf-input{padding:12px 13px;font-size:14px;}
+  .cf-btn{font-size:14px;padding:14px;}
+
+  /* FOOTER */
+  .footer-grid{grid-template-columns:1fr;gap:28px;}
+  .footer-brand{font-size:18px;}
+
+  /* PUSH / WA */
+  .push-banner{bottom:0;right:0;left:0;max-width:100%;border-radius:18px 18px 0 0;}
+  .wa-float{width:46px;height:46px;font-size:21px;bottom:18px;left:18px;}
+  .notif-toast{right:16px;left:16px;max-width:none;}
+
+  /* STRIP */
+  .strip{padding:12px 5%;}
+  .strip-chip{font-size:12px;padding:6px 12px;}
 }
 </style>
-
-  <!-- SEO: Canonical + Robots -->
-  
-  <!-- Sitemap -->
-  <link rel="sitemap" type="application/xml" href="/sitemap.xml" />
-  <link rel="canonical" href="https://fixalead.com/" />
-  <meta name="robots" content="index, follow" />
-  <meta name="author" content="FixaLead" />
-  <meta name="keywords" content="gestão de leads, crm negócios locais, crm portugal, software leads academia, crm clínica dentária, crm estética, crm imobiliária, gerador mensagens ia, sistema leads portugal" />
-
-  <!-- Open Graph (Facebook, LinkedIn, WhatsApp) -->
-  <meta property="og:type" content="website" />
-  <meta property="og:locale" content="pt_PT" />
-  <meta property="og:site_name" content="FixaLead" />
-  <meta property="og:title" content="FixaLead — Gestão de Leads para Negócios Locais em Portugal" />
-  <meta property="og:description" content="Capta, organiza e converte mais clientes. CRM com IA integrada para academias, clínicas dentárias, estética, lojas e imobiliárias em Portugal. Primeira semana gratuita." />
-  <meta property="og:url" content="https://fixalead.com/" />
-  <meta property="og:image" content="https://fixalead.com/og-image.png" />
-  <meta property="og:image:width" content="1200" />
-  <meta property="og:image:height" content="630" />
-  <meta property="og:image:alt" content="FixaLead — Sistema de gestão de leads para negócios locais" />
-
-  <!-- Twitter Card -->
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="FixaLead — Gestão de Leads para Negócios Locais" />
-  <meta name="twitter:description" content="CRM com IA para academias, clínicas, estética, lojas e imobiliárias. Capta e converte mais leads em Portugal." />
-  <meta name="twitter:image" content="https://fixalead.com/og-image.png" />
-
-  <!-- Schema.org: SoftwareApplication -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "SoftwareApplication",
-    "name": "FixaLead",
-    "url": "https://fixalead.com",
-    "description": "Sistema de gestão de leads com IA integrada para negócios locais em Portugal. Capta, organiza e converte mais clientes — para academias, clínicas dentárias, estética, lojas e imobiliárias.",
-    "applicationCategory": "BusinessApplication",
-    "operatingSystem": "Web",
-    "offers": {
-      "@type": "Offer",
-      "price": "0",
-      "priceCurrency": "EUR",
-      "description": "Primeira semana gratuita, sem compromisso"
-    },
-    "provider": {
-      "@type": "Organization",
-      "name": "FixaLead",
-      "url": "https://fixalead.com",
-      "email": "geral@fixalead.com",
-      "areaServed": "PT",
-      "logo": "https://fixalead.com/og-image.png"
-    },
-    "featureList": [
-      "Formulário público de captação de leads",
-      "Pipeline visual de vendas",
-      "Gerador de mensagens com IA",
-      "Alertas de follow-up automáticos",
-      "Relatórios por canal e período",
-      "Adaptado a vários sectores: academias, clínicas, estética, imobiliária"
-    ],
-    "inLanguage": "pt-PT",
-    "keywords": "gestão de leads, crm portugal, crm academias, crm clínicas, software leads negócios locais"
-  }
-  </script>
-
-  <!-- Schema.org: FAQPage — perguntas comuns para featured snippets -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    "mainEntity": [
-      {
-        "@type": "Question",
-        "name": "O que é o FixaLead?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "O FixaLead é um sistema de gestão de leads (CRM) com inteligência artificial integrada, criado para negócios locais em Portugal. Permite captar, organizar e acompanhar leads de academias, clínicas dentárias, estética, lojas e imobiliárias — com geração automática de mensagens e alertas de follow-up."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "Quanto custa o FixaLead?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "A primeira semana é gratuita, sem necessidade de cartão de crédito. Após esse período, existem planos mensais adaptados ao tamanho do negócio. Contacta-nos em geral@fixalead.com para saber mais."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "O FixaLead funciona para que tipo de negócios?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "O FixaLead está configurado para academias e ginásios, clínicas dentárias, clínicas de estética, lojas e comércio local, imobiliárias e negócios de crossfit. Cada sector tem campos, fontes e relatórios específicos."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "Como funciona a IA do FixaLead?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "A inteligência artificial do FixaLead analisa o perfil do lead — interesse, urgência, fonte e etapa do funil — e gera a mensagem ideal para aquele momento. Suporta primeiro contacto, follow-up, proposta, reactivação e resposta a objecções, sempre em Português de Portugal."
-        }
-      }
-    ]
-  }
-  </script>
-
-  <!-- Preconnect para performance -->
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 </head>
 <body>
+
+<a class="wa-float" href="https://wa.me/351919000000?text=Ol%C3%A1%21+Vim+do+site+FixaLead." target="_blank" rel="noopener noreferrer" aria-label="WhatsApp">💬</a>
+<div class="push-banner" id="push-banner" role="dialog">
+  <button class="push-close" onclick="closePushBanner()">×</button>
+  <div class="push-title">🔔 Alertas de leads em tempo real</div>
+  <div class="push-sub">Sabe quando chega um novo lead — mesmo com o browser fechado.</div>
+  <div class="push-btns">
+    <button class="push-yes" onclick="requestPushPermission()">Activar</button>
+    <button class="push-no" onclick="closePushBanner()">Agora não</button>
+  </div>
+</div>
+<div class="notif-toast" id="notif-toast"></div>
 
 <!-- NAV -->
 <nav>
@@ -666,614 +598,504 @@ footer{
     <a href="#problema">Porquê</a>
     <a href="#como">Como funciona</a>
     <a href="#sectores">Sectores</a>
-    <a href="#funcionalidades">Funcionalidades</a>
-    <a href="https://app.fixalead.com" class="btn-nav">Entrar →</a>
+    <a href="#faq">FAQ</a>
+    <a href="https://app.fixalead.com" class="btn-nav" rel="noopener noreferrer">Entrar →</a>
   </div>
 </nav>
 
-<!-- HERO -->
-<div style="max-width:1140px;margin:0 auto;padding:0 5%;">
-<section class="hero" style="padding:90px 0 100px;">
-  <div class="hero-left">
-    <div class="hero-tag reveal">Consultoria de implementação · Negócios locais</div>
-    <h1 class="reveal d1">
-      Os teus leads <br>
-      nunca mais <br>
-      <span>se perdem.</span>
-    </h1>
-    <p class="hero-desc reveal d2">
-      Antes de activar qualquer sistema, estudamos a tua estrutura comercial e desenhamos a estratégia de captação à medida. A implementação é nossa — os resultados são teus.
-    </p>
-    <div class="hero-actions reveal d3">
-      <a href="https://app.fixalead.com" class="btn-primary">Começar agora →</a>
-      <a href="#como" class="btn-secondary">Ver como funciona</a>
+<!-- ══ HERO — FOTO FULL BLEED ══ -->
+<div class="hero-section">
+  <div class="hero-bg"></div>
+  <div class="hero-content">
+    <div class="hero-pill reveal"><span class="hero-dot"></span>Para negócios locais em Portugal</div>
+    <h1 class="reveal d1">Os teus leads<br>nunca mais <em>se perdem.</em></h1>
+    <p class="hero-desc reveal d2">Estudamos o teu processo comercial e implementamos o sistema à medida. Em dias, não meses.</p>
+    <div class="hero-ctas reveal d3">
+      <a href="https://app.fixalead.com" class="btn-primary" rel="noopener noreferrer">Começar agora →</a>
+      <a href="#como" class="btn-ghost">Como funciona</a>
     </div>
     <div class="hero-trust reveal d4">
-      <span>✓ Diagnóstico comercial incluído</span>
-      <div class="trust-divider"></div>
-      <span>✓ Estratégia de captação à medida</span>
-      <div class="trust-divider"></div>
-      <span>✓ Acompanhamento nas primeiras semanas</span>
-    </div>
-    <div class="hero-sectors reveal d4">
-      <span class="hero-sector-lbl">Para:</span>
-      <span>🏋️ Academia</span>
-      <span>🦷 Dentário</span>
-      <span>✨ Estética</span>
-      <span>🛒 Loja</span>
-      <span>🏠 Imobiliária</span>
+      <span>✓ Primeira semana gratuita</span>
+      <div class="trust-sep"></div>
+      <span>✓ Sem cartão de crédito</span>
+      <div class="trust-sep"></div>
+      <span>✓ Suporte incluído</span>
     </div>
   </div>
-  <div class="hero-right reveal d2" style="position:relative;padding:30px;">
-    <div class="hero-mockup">
-      <div class="mockup-bar">
-        <div class="mock-dot" style="background:#ff5f57;"></div>
-        <div class="mock-dot" style="background:#febc2e;"></div>
-        <div class="mock-dot" style="background:#28c840;"></div>
-        <span style="margin-left:8px;font-size:12px;color:var(--text3);font-weight:500;">fixalead.com · Dashboard</span>
-      </div>
-      <div class="mockup-body">
-        <div class="mock-stats">
-          <div class="mock-stat">
-            <div class="mock-stat-n" style="color:var(--g);">24</div>
-            <div class="mock-stat-l">Total leads</div>
-          </div>
-          <div class="mock-stat">
-            <div class="mock-stat-n" style="color:#f59e0b;">8</div>
-            <div class="mock-stat-l">Em negociação</div>
-          </div>
-          <div class="mock-stat">
-            <div class="mock-stat-n" style="color:var(--g);">33%</div>
-            <div class="mock-stat-l">Conversão</div>
-          </div>
-        </div>
-        <div style="font-size:11px;font-weight:700;color:var(--text3);text-transform:uppercase;letter-spacing:.5px;margin-bottom:10px;">Leads recentes</div>
-        <div class="mock-leads">
-          <div class="mock-lead">
-            <div class="mock-av" style="background:#3b82f6;">AR</div>
-            <div class="mock-info">
-              <div class="mock-name">Ana Rodrigues</div>
-              <div class="mock-sub">Instagram · Perder peso</div>
-            </div>
-            <div class="mock-badge badge-q">Negociação</div>
-          </div>
-          <div class="mock-lead">
-            <div class="mock-av" style="background:#8b5cf6;">MS</div>
-            <div class="mock-info">
-              <div class="mock-name">Miguel Santos</div>
-              <div class="mock-sub">Google · Ganhar músculo</div>
-            </div>
-            <div class="mock-badge badge-n">Contacto 01</div>
-          </div>
-          <div class="mock-lead">
-            <div class="mock-av" style="background:#10b981;">BC</div>
-            <div class="mock-info">
-              <div class="mock-name">Bruno Costa</div>
-              <div class="mock-sub">Indicação · Plano anual</div>
-            </div>
-            <div class="mock-badge badge-p">Convertido</div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="float-card top-right">
-      <div class="fc-icon">🎯</div>
-      <div>
-        <div class="fc-title">Follow-up hoje</div>
-        <div class="fc-sub">3 leads à espera</div>
-      </div>
-    </div>
-    <div class="float-card bot-left">
-      <div class="fc-sub" style="margin-bottom:2px;">Pipeline aberto</div>
-      <div class="fc-val">€4.820</div>
-    </div>
-  </div>
-</section>
 </div>
 
-<!-- SECTORES STRIP -->
+<!-- Strip -->
 <div class="strip">
-  <span class="strip-label">Para:</span>
-  <div class="strip-item">🏋️ Academia & Ginásio</div>
-  <div class="strip-item">🦷 Clínica Dentária</div>
-  <div class="strip-item">✨ Estética</div>
-  <div class="strip-item">🛒 Loja & Comércio</div>
-  <div class="strip-item">🏠 Imobiliária</div>
-  <div class="strip-item">🔥 CrossFit</div>
+  <span class="strip-pre">Para</span>
+  <div class="strip-chip">🏋️ Academia</div>
+  <div class="strip-chip">🦷 Clínica Dentária</div>
+  <div class="strip-chip">✨ Estética</div>
+  <div class="strip-chip">🛒 Loja & Comércio</div>
+  <div class="strip-chip">🏠 Imobiliária</div>
+  <div class="strip-chip">🔥 CrossFit</div>
 </div>
 
-<!-- PROBLEMA -->
-<div id="problema" class="section-full">
-<div class="section-full-inner">
-  <div class="sec-label reveal">O problema</div>
-  <h2 class="sec-h reveal d1">O que está a custar-te receita todos os meses.</h2>
-  <p class="sec-sub reveal d2">A procura existe. Sem um processo de captação estruturado, os leads dispersam-se por cinco canais e ninguém os acompanha com consistência. A receita perdida é mensurável.</p>
-  <div class="prob-grid">
-    <div class="prob-card reveal">
-      <span class="prob-icon">⚡</span>
-      <div class="prob-title">A janela de conversão é estreita</div>
-      <div class="prob-desc">Um lead sem resposta na primeira hora tem 7× menos probabilidade de converter. Não é falta de vontade — é falta de processo.</div>
-      <div class="prob-stat">72%</div>
-      <div style="font-size:12px;color:var(--text3);margin-top:4px;">dos leads sem resposta na primeira hora não voltam a contactar</div>
+<!-- ══ PROBLEMA — FOTO FULL BLEED LADO DIREITO ══ -->
+<div id="problema">
+  <div class="prob-split">
+    <!-- Texto esquerda -->
+    <div class="prob-text s">
+      <div class="kicker reveal">O problema</div>
+      <h2 class="sh reveal d1">O que está a custar-te receita.</h2>
+      <div class="prob-list reveal d2">
+        <div class="prob-item">
+          <div class="prob-icon">⚡</div>
+          <div>
+            <div class="prob-h">A janela de conversão é estreita</div>
+            <div class="prob-p">Um lead sem resposta na 1ª hora tem 7× menos probabilidade de converter.</div>
+          </div>
+        </div>
+        <div class="prob-item">
+          <div class="prob-icon">📱</div>
+          <div>
+            <div class="prob-h">Sem visão central do pipeline</div>
+            <div class="prob-p">WhatsApp, Instagram, Google, indicação — sem sistema, tomas decisões sem dados.</div>
+          </div>
+        </div>
+        <div class="prob-item">
+          <div class="prob-icon">🔄</div>
+          <div>
+            <div class="prob-h">Follow-up que depende da memória</div>
+            <div class="prob-p">Prometeste dar notícias — e não deste. Sem alertas, o acompanhamento colapsa.</div>
+          </div>
+        </div>
+        <div class="prob-item">
+          <div class="prob-icon">📊</div>
+          <div>
+            <div class="prob-h">Investimento sem retorno mensurável</div>
+            <div class="prob-p">Sem dados por canal, financias o que não funciona e subinvestes no que funciona.</div>
+          </div>
+        </div>
+      </div>
     </div>
-    <div class="prob-card reveal d1">
-      <span class="prob-icon">📱</span>
-      <div class="prob-title">Sem visão central do pipeline</div>
-      <div class="prob-desc">WhatsApp, Instagram, Google, indicação, balcão — sem visão central, tomas decisões sem dados e investes sem saber o retorno.</div>
-    </div>
-    <div class="prob-card reveal d2">
-      <span class="prob-icon">🔄</span>
-      <div class="prob-title">O acompanhamento depende da memória</div>
-      <div class="prob-desc">Prometeste dar notícias — e não deste. Sem alertas estruturados, o follow-up colapsa sob o peso das operações diárias.</div>
-    </div>
-    <div class="prob-card reveal d3">
-      <span class="prob-icon">📊</span>
-      <div class="prob-title">Investimento sem retorno mensurável</div>
-      <div class="prob-desc">Distribuis o orçamento por intuição. Sem dados de conversão por canal, financias o que não funciona e subinvestes no que funciona.</div>
+    <!-- Foto full bleed direita -->
+    <div class="prob-photo-side reveal d1">
+      <img
+        src="https://images.unsplash.com/photo-1531746790731-6c087fecd65a?w=800&q=88&auto=format&fit=crop&crop=center"
+        alt="Empresário sem sistema de leads estruturado"
+        loading="lazy" decoding="async"
+      >
+      <div class="prob-stat">
+        <div class="prob-stat-n">72%</div>
+        <div class="prob-stat-l">não voltam se não responderes na 1ª hora</div>
+      </div>
     </div>
   </div>
 </div>
+
+<!-- ══ COMO FUNCIONA ══ -->
+<div id="como" class="s-alt">
+  <div class="w">
+    <div class="kicker reveal">Como funciona</div>
+    <h2 class="sh reveal d1">Do primeiro contacto ao cliente fechado.</h2>
+    <p class="sp reveal d2">Não te entregamos um manual. Analisamos o negócio, configuramos tudo e ficamos contigo.</p>
+    <div class="steps-layout">
+      <div class="steps">
+        <div class="step reveal">
+          <div class="step-n">1</div>
+          <div>
+            <div class="step-h">Diagnóstico e estratégia de captação</div>
+            <div class="step-p">Mapeamos as fontes e desenhamos a arquitectura de captação. O lead entra qualificado desde o primeiro contacto.</div>
+            <div class="step-tag">Diagnóstico comercial · 15+ canais · Score automático</div>
+          </div>
+        </div>
+        <div class="step reveal d1">
+          <div class="step-n">2</div>
+          <div>
+            <div class="step-h">IA gera a mensagem certa</div>
+            <div class="step-p">A IA lê o perfil do lead e produz a mensagem para aquele momento. Primeiro contacto, proposta, follow-up. Em Português de Portugal.</div>
+            <div class="step-tag">7 tipos de mensagem · Contexto real · PT-PT</div>
+          </div>
+        </div>
+        <div class="step reveal d2">
+          <div class="step-n">3</div>
+          <div>
+            <div class="step-h">Alertas antes de perder a oportunidade</div>
+            <div class="step-p">Follow-up em atraso, lead quente sem actividade — o sistema avisa antes de a oportunidade fechar.</div>
+            <div class="step-tag">Alertas preditivos · Tempo real</div>
+          </div>
+        </div>
+        <div class="step reveal d3">
+          <div class="step-n">4</div>
+          <div>
+            <div class="step-h">Relatórios que sustentam decisões</div>
+            <div class="step-p">Taxa de conversão por canal, ticket médio, forecast. Sabes onde investir — com dados reais.</div>
+            <div class="step-tag">Forecast · Conversão por canal · Excel + PDF</div>
+          </div>
+        </div>
+      </div>
+      <div class="ia-card reveal d1">
+        <div class="ia-header">
+          <div class="ia-header-dot"></div>
+          <div class="ia-header-lbl">Gerador IA — Ana Rodrigues</div>
+        </div>
+        <div class="ia-body">
+          <div class="ia-lead">
+            <div class="ia-av">AR</div>
+            <div>
+              <div class="ia-lead-name">Ana Rodrigues</div>
+              <div class="ia-lead-sub">Instagram · Perder peso · Score 78</div>
+            </div>
+          </div>
+          <div class="ia-bubble">
+            <div class="ia-bubble-lbl"><div class="ai-pulse"></div>Mensagem gerada</div>
+            <div class="ia-msg">"Olá Ana! Vi que tens interesse em perder peso antes do verão — temos um programa com resultados comprovados em 8 semanas. Posso contar-te como funciona?"</div>
+            <div class="ia-btns">
+              <button class="ia-btn p">📋 Copiar</button>
+              <button class="ia-btn s">Regenerar</button>
+            </div>
+          </div>
+          <div class="ia-meta">
+            <div class="ia-meta-row"><span class="ia-meta-k">🔁 Follow-up</span><span class="ia-meta-v">Amanhã às 10h</span></div>
+            <div class="ia-meta-row"><span class="ia-meta-k">📊 Score</span><span class="ia-meta-v">78/100 — Lead quente</span></div>
+            <div class="ia-meta-row"><span class="ia-meta-k">📅 Dias no pipeline</span><span class="ia-meta-v">3 dias</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
 
-<!-- COMO FUNCIONA -->
-<div id="como" style="padding:96px 5%;max-width:1140px;margin:0 auto;">
-  <div class="sec-label reveal">Como funciona</div>
-  <h2 class="sec-h reveal d1">Do primeiro contacto ao cliente fechado.</h2>
-  <p class="sec-sub reveal d2">Não te entregamos um manual e um bom trabalho. Analisamos o negócio, definimos a estratégia e ficamos ao teu lado até os resultados serem evidentes.</p>
-  <div class="steps-grid">
-    <div class="steps-list">
-      <div class="step reveal">
-        <div class="step-n">1</div>
+<!-- ══ FUNCIONALIDADES ══ -->
+<div id="funcionalidades" class="s">
+  <div class="w">
+    <div class="kicker reveal">Funcionalidades</div>
+    <h2 class="sh reveal d1">Tudo o que precisas.</h2>
+    <p class="sp reveal d2">Cada funcionalidade resolve um problema real — sem complexidade desnecessária.</p>
+    <div class="feat-grid reveal d2">
+      <div class="feat featured">
         <div>
-          <div class="step-title">Diagnóstico e estratégia de captação</div>
-          <div class="step-desc">Mapeamos as fontes, identificamos as lacunas e desenhamos a arquitectura de captação. Cada canal tem o formulário certo — o lead entra qualificado e pronto para ser trabalhado.</div>
-          <div class="step-tag">Diagnóstico comercial · 15+ canais · Score automático</div>
+          <span class="feat-icon">✦</span>
+          <div class="feat-h">IA com contexto sectorial</div>
+          <div class="feat-p">Primeiro contacto, follow-up, proposta, reactivação — com o interesse, etapa e linguagem do teu sector. Não é um template.</div>
+          <div class="feat-tag">Contexto real · PT-PT · Accionável imediatamente</div>
+        </div>
+        <div class="feat-preview">
+          <div class="feat-preview-lbl"><div class="ai-pulse"></div>Exemplo real</div>
+          "Olá João! Reparei que ainda não respondeste — entendo que é uma decisão importante. Posso enviar-te os resultados de clientes com o mesmo perfil?"
         </div>
       </div>
-      <div class="step reveal d1">
-        <div class="step-n">2</div>
-        <div>
-          <div class="step-title">Comunicação gerada com contexto real</div>
-          <div class="step-desc">A IA lê o perfil do lead e produz a mensagem certa para aquele momento. Primeiro contacto, proposta, follow-up, reactivação. Em Português de Portugal.</div>
-          <div class="step-tag">7 tipos de mensagem · Contexto real · Português de Portugal</div>
+      <div class="feat">
+        <span class="feat-icon">◈</span>
+        <div class="feat-h">Pipeline em valor real</div>
+        <div class="feat-p">Valor em euros por etapa, forecast do mês. Sabes o que tens em negociação sem abrir uma folha de cálculo.</div>
+        <span class="feat-tag">Valor em € · Forecast · Tempo real</span>
+      </div>
+      <div class="feat">
+        <span class="feat-icon">🎯</span>
+        <div class="feat-h">Prioridades do dia</div>
+        <div class="feat-p">O sistema analisa o pipeline e apresenta as acções urgentes. Não interpretas dados — recebes prioridades claras.</div>
+        <span class="feat-tag">Automático · Sem ruído</span>
+      </div>
+      <div class="feat">
+        <span class="feat-icon">⏰</span>
+        <div class="feat-h">Follow-up estruturado</div>
+        <div class="feat-p">Alertas com data, prioridade e contexto. Consistência no follow-up separa quem converte de quem não converte.</div>
+        <span class="feat-tag">Alertas precisos · Contexto por lead</span>
+      </div>
+      <div class="feat">
+        <span class="feat-icon">⚙️</span>
+        <div class="feat-h">Catálogo e pricing reais</div>
+        <div class="feat-p">A IA incorpora os teus produtos e preços nas propostas. O cliente recebe a oferta concreta.</div>
+        <span class="feat-tag">Preços reais · Mix configurável</span>
+      </div>
+      <div class="feat">
+        <span class="feat-icon">📊</span>
+        <div class="feat-h">Relatórios para decisão</div>
+        <div class="feat-p">Filtra por período, canal ou etapa. Exporta em Excel ou PDF.</div>
+        <span class="feat-tag">Excel · PDF · Filtros avançados</span>
+      </div>
+      <div class="feat">
+        <span class="feat-icon">🎂</span>
+        <div class="feat-h">Retenção automática</div>
+        <div class="feat-p">Aniversário do cliente detectado, mensagem gerada automaticamente. O gesto certo, sem esforço.</div>
+        <span class="feat-tag">Automático · Contextualizado</span>
+      </div>
+      <div class="feat">
+        <span class="feat-icon">📋</span>
+        <div class="feat-h">Rastreabilidade total</div>
+        <div class="feat-p">Cada interacção registada com data, hora e responsável. Retomas qualquer conversa com contexto completo.</div>
+        <span class="feat-tag">Timeline · Auditável · Multi-utilizador</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ SECTORES ══ -->
+<div id="sectores" class="s-alt">
+  <div class="w">
+    <div class="kicker reveal">Sectores</div>
+    <h2 class="sh reveal d1">Adaptado ao teu negócio.</h2>
+    <p class="sp reveal d2">Campos, fontes e lógica específicos para cada sector — não um CRM genérico adaptado.</p>
+    <div class="sec-tabs reveal d3">
+      <button class="sec-tab on" onclick="showSec('fitness',this)">🏋️ Academia</button>
+      <button class="sec-tab" onclick="showSec('dentario',this)">🦷 Dentário</button>
+      <button class="sec-tab" onclick="showSec('estetica',this)">✨ Estética</button>
+      <button class="sec-tab" onclick="showSec('loja',this)">🛒 Loja</button>
+      <button class="sec-tab" onclick="showSec('imobiliaria',this)">🏠 Imobiliária</button>
+    </div>
+    <div class="sec-content on" id="sec-fitness">
+      <div class="sec-detail">
+        <h3>🏋️ Academia & Ginásio</h3>
+        <p>Objectivo, condição física, horário e limitações — captados antes do primeiro contacto. A IA usa esses dados para mensagens personalizadas.</p>
+        <div class="sec-fields">
+          <div class="sec-field">Objectivo (perder peso, ganhar músculo, reabilitação…)</div>
+          <div class="sec-field">Condição física actual (sedentário a atleta)</div>
+          <div class="sec-field">Horário preferido (manhã, tarde, noite)</div>
+          <div class="sec-field">Experiência anterior em ginásio</div>
+          <div class="sec-field">Lesões ou limitações físicas</div>
+          <div class="sec-field">Prazo para atingir o objectivo</div>
         </div>
       </div>
-      <div class="step reveal d2">
-        <div class="step-n">3</div>
-        <div>
-          <div class="step-title">Visibilidade total sobre o pipeline</div>
-          <div class="step-desc">Follow-up em atraso, lead quente sem actividade, aniversário de cliente — o sistema sinaliza antes de a oportunidade fechar. Antecipas, não reages.</div>
-          <div class="step-tag">Alertas preditivos · Histórico completo · Tempo real</div>
-        </div>
-      </div>
-      <div class="step reveal d3">
-        <div class="step-n">4</div>
-        <div>
-          <div class="step-title">Dados que sustentam decisões comerciais</div>
-          <div class="step-desc">Taxa de conversão por canal, ticket médio, forecast do mês. O relatório define onde alocar esforço e orçamento — não é burocracia, é decisão.</div>
-          <div class="step-tag">Forecast · Conversão por canal · Exportação Excel + PDF</div>
+      <div class="sec-visual">
+        <div class="sv-header"><div class="sv-title">🏋️ FitLife Academia</div><div class="sv-badge">12 activos</div></div>
+        <div class="sv-leads">
+          <div class="sv-lead"><div class="sv-av" style="background:#3b82f6">JF</div><div class="sv-name">João Ferreira</div><div class="sv-st" style="background:#fef3c7;color:#92400e">Negociação</div></div>
+          <div class="sv-lead"><div class="sv-av" style="background:#8b5cf6">CM</div><div class="sv-name">Catarina Mendes</div><div class="sv-st" style="background:#d1ecf1;color:#0c5460">Contacto 01</div></div>
+          <div class="sv-lead"><div class="sv-av" style="background:#10b981">RL</div><div class="sv-name">Rui Lopes</div><div class="sv-st" style="background:#d4edda;color:#155724">Convertido</div></div>
+          <div class="sv-lead"><div class="sv-av" style="background:#f59e0b">AS</div><div class="sv-name">Ana Silva</div><div class="sv-st" style="background:#fce8ff;color:#6b21a8">Proposta</div></div>
         </div>
       </div>
     </div>
-    <div class="steps-visual reveal d1">
-      <div class="sv-bar">
-        <div class="sv-dot"></div>
-        <span>Gerador IA — Ana Rodrigues</span>
-      </div>
-      <div class="sv-body">
-        <div class="ia-bubble">
-          <div class="ia-label">
-            <div class="ia-dot-pulse"></div>
-            Mensagem gerada pela IA
-          </div>
-          <div class="ia-text">
-            "Olá Ana! Vi que tens interesse em perder peso antes do verão — temos um programa específico com resultados comprovados em 8 semanas. Posso contar-te como funciona?"
-          </div>
-          <div class="ia-actions">
-            <button class="ia-btn primary">📋 Copiar</button>
-            <button class="ia-btn ghost">Regenerar</button>
-          </div>
+    <div class="sec-content" id="sec-dentario">
+      <div class="sec-detail">
+        <h3>🦷 Clínica Dentária</h3>
+        <p>16 procedimentos reais. Sabes se é urgência ou rotina, o seguro de saúde e a última visita — antes da primeira chamada.</p>
+        <div class="sec-fields">
+          <div class="sec-field">Tratamento de interesse (16 opções reais)</div>
+          <div class="sec-field">Seguro de saúde (Médis, Multicare, AdvanceCare…)</div>
+          <div class="sec-field">Última visita ao dentista</div>
+          <div class="sec-field">Dor ou urgência (intensa / tolerável / rotina)</div>
+          <div class="sec-field">Medo ou ansiedade do dentista</div>
+          <div class="sec-field">Orçamento estimado</div>
         </div>
-        <div style="display:flex;flex-direction:column;gap:8px;margin-top:4px;">
-          <div style="background:var(--bg2);border:1px solid var(--border);border-radius:8px;padding:10px 12px;font-size:12px;color:var(--text2);">
-            <span style="font-weight:600;color:var(--text);">🔁 Follow-up</span> · Amanhã às 10h
-          </div>
-          <div style="background:var(--bg2);border:1px solid var(--border);border-radius:8px;padding:10px 12px;font-size:12px;color:var(--text2);">
-            <span style="font-weight:600;color:var(--text);">📊 Score</span> · 78/100 — Lead quente
-          </div>
+      </div>
+      <div class="sec-visual">
+        <div class="sv-header"><div class="sv-title">🦷 Sorriso Perfeito</div><div class="sv-badge">8 activos</div></div>
+        <div class="sv-leads">
+          <div class="sv-lead"><div class="sv-av" style="background:#ef4444">AP</div><div class="sv-name">Armando Pires — Urgência</div><div class="sv-st" style="background:#fee2e2;color:#991b1b">🔴 Urgente</div></div>
+          <div class="sv-lead"><div class="sv-av" style="background:#8b5cf6">SF</div><div class="sv-name">Susana Faria — Invisalign</div><div class="sv-st" style="background:#fef3c7;color:#92400e">Negociação</div></div>
+          <div class="sv-lead"><div class="sv-av" style="background:#3b82f6">MC</div><div class="sv-name">Manuel Correia — Implante</div><div class="sv-st" style="background:#fce8ff;color:#6b21a8">Proposta</div></div>
+        </div>
+      </div>
+    </div>
+    <div class="sec-content" id="sec-estetica">
+      <div class="sec-detail">
+        <h3>✨ Clínica de Estética</h3>
+        <p>Botox, laser, microblading — tratamento, tipo de pele, alergias e urgência captados antes da consulta.</p>
+        <div class="sec-fields">
+          <div class="sec-field">Tratamento de interesse (10+ opções)</div>
+          <div class="sec-field">Tipo de pele (normal, seca, oleosa, sensível)</div>
+          <div class="sec-field">Experiência anterior em estética</div>
+          <div class="sec-field">Alergias ou contra-indicações</div>
+          <div class="sec-field">Urgência (evento próximo / normal / a explorar)</div>
+        </div>
+      </div>
+      <div class="sec-visual">
+        <div class="sv-header"><div class="sv-title">✨ Bella Estética</div><div class="sv-badge">6 activos</div></div>
+        <div class="sv-leads">
+          <div class="sv-lead"><div class="sv-av" style="background:#ec4899">MR</div><div class="sv-name">Marta Rodrigues — Botox</div><div class="sv-st" style="background:#fef3c7;color:#92400e">Negociação</div></div>
+          <div class="sv-lead"><div class="sv-av" style="background:#8b5cf6">LP</div><div class="sv-name">Luísa Pinto — Laser</div><div class="sv-st" style="background:#d1ecf1;color:#0c5460">Contacto 01</div></div>
+          <div class="sv-lead"><div class="sv-av" style="background:#10b981">SF</div><div class="sv-name">Sara Fernandes — Peeling</div><div class="sv-st" style="background:#d4edda;color:#155724">Convertido</div></div>
+        </div>
+      </div>
+    </div>
+    <div class="sec-content" id="sec-loja">
+      <div class="sec-detail">
+        <h3>🛒 Loja & Comércio</h3>
+        <p>Produto, orçamento e prazo de decisão captados antes do contacto. A IA menciona os preços reais nas propostas.</p>
+        <div class="sec-fields">
+          <div class="sec-field">Produto ou serviço de interesse</div>
+          <div class="sec-field">Tipo de compra (pessoal / empresa / revenda)</div>
+          <div class="sec-field">Orçamento disponível</div>
+          <div class="sec-field">Prazo para decisão</div>
+          <div class="sec-field">Já é cliente?</div>
+        </div>
+      </div>
+      <div class="sec-visual">
+        <div class="sv-header"><div class="sv-title">🛒 SportZone Lisboa</div><div class="sv-badge">9 activos</div></div>
+        <div class="sv-leads">
+          <div class="sv-lead"><div class="sv-av" style="background:#f59e0b">RL</div><div class="sv-name">Rui Lopes — 20 camisetas</div><div class="sv-st" style="background:#fce8ff;color:#6b21a8">Proposta</div></div>
+          <div class="sv-lead"><div class="sv-av" style="background:#3b82f6">PA</div><div class="sv-name">Pedro Alves — Atacado</div><div class="sv-st" style="background:#fef3c7;color:#92400e">Negociação</div></div>
+          <div class="sv-lead"><div class="sv-av" style="background:#10b981">NO</div><div class="sv-name">Nuno Oliveira — Bicicletas</div><div class="sv-st" style="background:#d4edda;color:#155724">Convertido</div></div>
+        </div>
+      </div>
+    </div>
+    <div class="sec-content" id="sec-imobiliaria">
+      <div class="sec-detail">
+        <h3>🏠 Imobiliária</h3>
+        <p>Comprar, arrendar ou vender? Tipologia, zona, orçamento e crédito — captados antes de mostrar o primeiro imóvel.</p>
+        <div class="sec-fields">
+          <div class="sec-field">Tipo de operação (comprar / arrendar / vender)</div>
+          <div class="sec-field">Tipologia (T0 ao T4+)</div>
+          <div class="sec-field">Zona preferida</div>
+          <div class="sec-field">Orçamento máximo</div>
+          <div class="sec-field">Crédito habitação (aprovado / a tratar / capital próprio)</div>
+          <div class="sec-field">Prazo para concretizar</div>
+        </div>
+      </div>
+      <div class="sec-visual">
+        <div class="sv-header"><div class="sv-title">🏠 LisboaImóveis</div><div class="sv-badge">7 activos</div></div>
+        <div class="sv-leads">
+          <div class="sv-lead"><div class="sv-av" style="background:#3b82f6">JC</div><div class="sv-name">João Cruz — T3 Lisboa</div><div class="sv-st" style="background:#fef3c7;color:#92400e">Negociação</div></div>
+          <div class="sv-lead"><div class="sv-av" style="background:#8b5cf6">MF</div><div class="sv-name">Maria Fonseca — T2 Porto</div><div class="sv-st" style="background:#d1ecf1;color:#0c5460">Contacto 01</div></div>
+          <div class="sv-lead"><div class="sv-av" style="background:#10b981">TP</div><div class="sv-name">Tiago Pereira — Venda V4</div><div class="sv-st" style="background:#fce8ff;color:#6b21a8">Proposta</div></div>
         </div>
       </div>
     </div>
   </div>
 </div>
 
-<!-- FUNCIONALIDADES -->
-<div id="funcionalidades" class="section-full">
-<div class="section-full-inner">
-  <div class="sec-label reveal">Funcionalidades</div>
-  <h2 class="sec-h reveal d1">Tudo o que precisas.</h2>
-  <p class="sec-sub reveal d2">Construído para quem gere um negócio. Cada funcionalidade resolve um problema real do processo comercial — sem complexidade desnecessária.</p>
-  <div class="feat-grid">
-    <div class="feat featured reveal">
-      <div>
-        <span class="feat-icon">✦</span>
-        <div class="feat-title">Inteligência artificial com contexto sectorial</div>
-        <div class="feat-desc">Primeiro contacto, follow-up, proposta, reactivação, objecções — com o interesse, etapa e linguagem do teu sector. Não é um template; é comunicação construída para aquele lead.</div>
-        <div class="feat-tag">Contexto real · Accionável imediatamente · Português de Portugal</div>
-      </div>
-      <div class="feat-preview-light">
-        <div class="feat-preview-label"><div class="ia-dot-pulse"></div>Exemplo real</div>
-        "Olá João! Reparei que ainda não respondeste — entendo que é uma decisão importante. Para te ajudar a decidir, posso enviar-te os resultados de outros clientes nossos com o mesmo perfil?"
-      </div>
-    </div>
-    <div class="feat reveal">
-      <span class="feat-icon">◈</span>
-      <div class="feat-title">Pipeline comercial em valor real</div>
-      <div class="feat-desc">Valor em euros por etapa, forecast do mês, pipeline em tempo real. Sabes exactamente o que tens em negociação — sem abrir uma folha de cálculo.</div>
-        <div class="feat-tag">Valor em € por etapa · Forecast automático · Tempo real</div>
-    </div>
-    <div class="feat reveal d1">
-      <span class="feat-icon">🎯</span>
-      <div class="feat-title">Dashboard com prioridades claras</div>
-      <div class="feat-desc">O sistema analisa o pipeline e apresenta as acções urgentes do dia. Não interpretas dados — recebes prioridades claras.</div>
-        <div class="feat-tag">Prioridades automáticas · Acções claras · Sem ruído</div>
-    </div>
-    <div class="feat reveal d2">
-      <span class="feat-icon">⏰</span>
-      <div class="feat-title">Gestão de follow-up estruturada</div>
-      <div class="feat-desc">Data, prioridade e contexto por acompanhamento. O sistema alerta no momento certo — hoje, amanhã, em sete dias. Consistência no follow-up é o que separa quem converte de quem não converte.</div>
-        <div class="feat-tag">Alertas precisos · Contexto por lead · Sem falhas</div>
-    </div>
-    <div class="feat reveal">
-      <span class="feat-icon">⚙️</span>
-      <div class="feat-title">Catálogo e pricing integrados</div>
-      <div class="feat-desc">Configuras produtos e preços reais. A IA incorpora esses valores nas propostas — o cliente recebe uma comunicação que reflecte a oferta concreta.</div>
-        <div class="feat-tag">Preços reais nas propostas · Mix configurável</div>
-    </div>
-    <div class="feat reveal d1">
-      <span class="feat-icon">📊</span>
-      <div class="feat-title">Relatórios para decisão, não para arquivo</div>
-      <div class="feat-desc">Filtra por período, canal ou etapa. Exporta em Excel ou PDF. Os dados no formato certo para as decisões que precisas de tomar.</div>
-        <div class="feat-tag">Excel · PDF · Filtros avançados · Exportação imediata</div>
-    </div>
-    <div class="feat reveal d2">
-      <span class="feat-icon">🎂</span>
-      <div class="feat-title">Retenção através de momentos relevantes</div>
-      <div class="feat-desc">O sistema sinaliza o aniversário e gera a mensagem automaticamente. O gesto certo, na hora certa, sem esforço da tua parte.</div>
-        <div class="feat-tag">Automático · Contextualizado · Sem intervenção manual</div>
-    </div>
-    <div class="feat reveal">
-      <span class="feat-icon">📋</span>
-      <div class="feat-title">Rastreabilidade total do processo comercial</div>
-      <div class="feat-desc">Cada interacção fica registada com data, hora e responsável. Quando retomas uma conversa, tens o contexto completo — sem depender da memória de ninguém.</div>
-        <div class="feat-tag">Timeline completa · Auditável · Multi-utilizador</div>
-    </div>
+<!-- ══ PROVA SOCIAL — FUNDO ESCURO COM FOTO INTEGRADA ══ -->
+<div class="proof-section">
+  <div class="proof-photo-bg">
+    <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=900&q=85&auto=format&fit=crop&crop=top" alt="" loading="lazy" decoding="async">
   </div>
-</div>
-</div>
-
-<!-- SECTORES -->
-<div id="sectores" style="padding:96px 5%;max-width:1140px;margin:0 auto;">
-  <div class="sec-label reveal">Sectores</div>
-  <h2 class="sec-h reveal d1">Adaptado ao teu negócio.</h2>
-  <p class="sec-sub reveal d2">Um CRM genérico obriga-te a adaptar ao sistema. O FixaLead é o inverso — adapta-se ao teu sector, com campos, fontes e qualificação específicos para o teu negócio.</p>
-
-  <div class="sec-tabs reveal d3">
-    <div class="sec-tab on" onclick="showSec('fitness',this)">🏋️ Academia</div>
-    <div class="sec-tab" onclick="showSec('dentario',this)">🦷 Dentário</div>
-    <div class="sec-tab" onclick="showSec('estetica',this)">✨ Estética</div>
-    <div class="sec-tab" onclick="showSec('loja',this)">🛒 Loja</div>
-    <div class="sec-tab" onclick="showSec('imobiliaria',this)">🏠 Imobiliária</div>
-  </div>
-
-  <!-- FITNESS -->
-  <div class="sec-content on" id="sec-fitness">
-    <div class="sec-detail">
-      <h3>🏋️ Academia & Ginásio</h3>
-      <p>Capta leads com os dados certos desde o primeiro momento — condição física, objectivo, horário preferido e limitações. A IA usa esses dados para gerar mensagens altamente personalizadas.</p>
-      <div class="sec-fields">
-        <div class="sec-field">Objectivo (perder peso, ganhar músculo, reabilitação...)</div>
-        <div class="sec-field">Condição física actual (sedentário a atleta)</div>
-        <div class="sec-field">Horário preferido (manhã, tarde, noite)</div>
-        <div class="sec-field">Experiência anterior em ginásio</div>
-        <div class="sec-field">Lesões ou limitações físicas</div>
-        <div class="sec-field">Prazo para atingir o objectivo</div>
-      </div>
+  <div class="proof-inner">
+    <div class="proof-nums reveal">
+      <div class="proof-num"><div class="proof-val">72%</div><div class="proof-lbl">dos leads sem resposta na 1ª hora não voltam a contactar</div></div>
+      <div class="proof-num"><div class="proof-val">3×</div><div class="proof-lbl">mais conversões com follow-up estruturado</div></div>
+      <div class="proof-num"><div class="proof-val">24h</div><div class="proof-lbl">da análise ao sistema operacional</div></div>
+      <div class="proof-num"><div class="proof-val">3 seg</div><div class="proof-lbl">para gerar mensagem com IA contextualizada</div></div>
     </div>
-    <div class="sec-visual">
-      <div class="sv-header">
-        <div class="sv-title">🏋️ FitLife Academia — Leads</div>
-        <div class="sv-badge">12 activos</div>
+    <div class="testimonials reveal d1">
+      <div class="testi">
+        <div class="testi-stars">★★★★★</div>
+        <div class="testi-text">"Antes perdia leads porque não conseguia responder a tempo. Agora o sistema avisa-me e já tenho a mensagem pronta. A diferença no final do mês é clara."</div>
+        <div class="testi-footer">
+          <div class="testi-photo-wrap"><img class="testi-photo" src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=120&q=80&auto=format&fit=crop&crop=face" alt="Ricardo Mendes" loading="lazy"></div>
+          <div><div class="testi-name">Ricardo Mendes</div><div class="testi-role">Academia FitLife, Porto</div></div>
+        </div>
       </div>
-      <div class="sv-leads">
-        <div class="sv-lead"><div class="sv-av" style="background:#3b82f6;">JF</div><div class="sv-name">João Ferreira</div><div class="sv-b" style="background:#fef3c7;color:#92400e;">Negociação</div></div>
-        <div class="sv-lead"><div class="sv-av" style="background:#8b5cf6;">CM</div><div class="sv-name">Catarina Mendes</div><div class="sv-b" style="background:#d1ecf1;color:#0c5460;">Contacto 01</div></div>
-        <div class="sv-lead"><div class="sv-av" style="background:#10b981;">RL</div><div class="sv-name">Rui Lopes</div><div class="sv-b" style="background:#d4edda;color:#155724;">Convertido</div></div>
-        <div class="sv-lead"><div class="sv-av" style="background:#f59e0b;">AS</div><div class="sv-name">Ana Silva</div><div class="sv-b" style="background:#fce8ff;color:#6b21a8;">Proposta</div></div>
+      <div class="testi">
+        <div class="testi-stars">★★★★★</div>
+        <div class="testi-text">"Implementaram tudo em dois dias. Configuraram os formulários para o nosso sector. Já no primeiro mês sentimos a diferença na taxa de conversão."</div>
+        <div class="testi-footer">
+          <div class="testi-photo-wrap"><img class="testi-photo" src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=120&q=80&auto=format&fit=crop&crop=face" alt="Dra. Carla Sousa" loading="lazy"></div>
+          <div><div class="testi-name">Dra. Carla Sousa</div><div class="testi-role">Clínica Sorriso+, Lisboa</div></div>
+        </div>
       </div>
-    </div>
-  </div>
-
-  <!-- DENTÁRIO -->
-  <div class="sec-content" id="sec-dentario">
-    <div class="sec-detail">
-      <h3>🦷 Clínica Dentária</h3>
-      <p>16 procedimentos reais pré-configurados. Sabes logo se é urgência ou rotina, se tem seguro de saúde e qual a última visita ao dentista — antes da primeira chamada.</p>
-      <div class="sec-fields">
-        <div class="sec-field">Tratamento de interesse (16 opções reais)</div>
-        <div class="sec-field">Seguro de saúde (Médis, Multicare, AdvanceCare...)</div>
-        <div class="sec-field">Última visita ao dentista</div>
-        <div class="sec-field">Dor ou urgência (intensa / tolerável / rotina)</div>
-        <div class="sec-field">Medo ou ansiedade do dentista</div>
-        <div class="sec-field">Orçamento estimado</div>
-      </div>
-    </div>
-    <div class="sec-visual">
-      <div class="sv-header">
-        <div class="sv-title">🦷 Sorriso Perfeito — Leads</div>
-        <div class="sv-badge">8 activos</div>
-      </div>
-      <div class="sv-leads">
-        <div class="sv-lead"><div class="sv-av" style="background:#ef4444;">AP</div><div class="sv-name">Armando Pires — Urgência</div><div class="sv-b" style="background:#fee2e2;color:#991b1b;">🔴 Urgente</div></div>
-        <div class="sv-lead"><div class="sv-av" style="background:#8b5cf6;">SF</div><div class="sv-name">Susana Faria — Invisalign</div><div class="sv-b" style="background:#fef3c7;color:#92400e;">Negociação</div></div>
-        <div class="sv-lead"><div class="sv-av" style="background:#3b82f6;">MC</div><div class="sv-name">Manuel Correia — Implante</div><div class="sv-b" style="background:#fce8ff;color:#6b21a8;">Proposta</div></div>
-      </div>
-    </div>
-  </div>
-
-  <!-- ESTÉTICA -->
-  <div class="sec-content" id="sec-estetica">
-    <div class="sec-detail">
-      <h3>✨ Clínica de Estética</h3>
-      <p>Botox, laser, microblading, radiofrequência — capta o tratamento de interesse, tipo de pele, alergias e urgência antes da consulta. A IA gera mensagens adaptadas a cada tratamento.</p>
-      <div class="sec-fields">
-        <div class="sec-field">Tratamento de interesse (10+ opções)</div>
-        <div class="sec-field">Tipo de pele (normal, seca, oleosa, sensível)</div>
-        <div class="sec-field">Experiência anterior em estética</div>
-        <div class="sec-field">Alergias ou contra-indicações</div>
-        <div class="sec-field">Urgência (evento próximo / normal / a explorar)</div>
-      </div>
-    </div>
-    <div class="sec-visual">
-      <div class="sv-header">
-        <div class="sv-title">✨ Bella Estética — Leads</div>
-        <div class="sv-badge">6 activos</div>
-      </div>
-      <div class="sv-leads">
-        <div class="sv-lead"><div class="sv-av" style="background:#ec4899;">MR</div><div class="sv-name">Marta Rodrigues — Botox</div><div class="sv-b" style="background:#fef3c7;color:#92400e;">Negociação</div></div>
-        <div class="sv-lead"><div class="sv-av" style="background:#8b5cf6;">LP</div><div class="sv-name">Luísa Pinto — Laser</div><div class="sv-b" style="background:#d1ecf1;color:#0c5460;">Contacto 01</div></div>
-        <div class="sv-lead"><div class="sv-av" style="background:#10b981;">SF</div><div class="sv-name">Sara Fernandes — Peeling</div><div class="sv-b" style="background:#d4edda;color:#155724;">Convertido</div></div>
-      </div>
-    </div>
-  </div>
-
-  <!-- LOJA -->
-  <div class="sec-content" id="sec-loja">
-    <div class="sec-detail">
-      <h3>🛒 Loja & Comércio</h3>
-      <p>Produto de interesse, orçamento, prazo de decisão — tudo capturado antes do contacto. Parametriza o teu mix de produtos e a IA menciona os preços reais nas propostas.</p>
-      <div class="sec-fields">
-        <div class="sec-field">Produto ou serviço de interesse</div>
-        <div class="sec-field">Tipo de compra (pessoal / empresa / revenda)</div>
-        <div class="sec-field">Orçamento disponível</div>
-        <div class="sec-field">Prazo para decisão</div>
-        <div class="sec-field">Já é cliente?</div>
-      </div>
-    </div>
-    <div class="sec-visual">
-      <div class="sv-header">
-        <div class="sv-title">🛒 SportZone Lisboa — Leads</div>
-        <div class="sv-badge">9 activos</div>
-      </div>
-      <div class="sv-leads">
-        <div class="sv-lead"><div class="sv-av" style="background:#f59e0b;">RL</div><div class="sv-name">Rui Lopes — 20 camisetas</div><div class="sv-b" style="background:#fce8ff;color:#6b21a8;">Proposta</div></div>
-        <div class="sv-lead"><div class="sv-av" style="background:#3b82f6;">PA</div><div class="sv-name">Pedro Alves — Atacado bolas</div><div class="sv-b" style="background:#fef3c7;color:#92400e;">Negociação</div></div>
-        <div class="sv-lead"><div class="sv-av" style="background:#10b981;">NO</div><div class="sv-name">Nuno Oliveira — Bicicletas</div><div class="sv-b" style="background:#d4edda;color:#155724;">Convertido</div></div>
-      </div>
-    </div>
-  </div>
-
-  <!-- IMOBILIÁRIA -->
-  <div class="sec-content" id="sec-imobiliaria">
-    <div class="sec-detail">
-      <h3>🏠 Imobiliária</h3>
-      <p>Comprar, arrendar ou vender? Tipologia, zona, orçamento e crédito habitação — tudo capturado. Sabes exactamente o que o cliente procura antes de mostrar o primeiro imóvel.</p>
-      <div class="sec-fields">
-        <div class="sec-field">Tipo de operação (comprar / arrendar / vender)</div>
-        <div class="sec-field">Tipologia (T0 ao T4+)</div>
-        <div class="sec-field">Zona preferida</div>
-        <div class="sec-field">Orçamento máximo</div>
-        <div class="sec-field">Crédito habitação (aprovado / a tratar / capital próprio)</div>
-        <div class="sec-field">Prazo para concretizar</div>
-      </div>
-    </div>
-    <div class="sec-visual">
-      <div class="sv-header">
-        <div class="sv-title">🏠 LisboaImóveis — Leads</div>
-        <div class="sv-badge">7 activos</div>
-      </div>
-      <div class="sv-leads">
-        <div class="sv-lead"><div class="sv-av" style="background:#3b82f6;">JC</div><div class="sv-name">João Cruz — T3 Lisboa</div><div class="sv-b" style="background:#fef3c7;color:#92400e;">Negociação</div></div>
-        <div class="sv-lead"><div class="sv-av" style="background:#8b5cf6;">MF</div><div class="sv-name">Maria Fonseca — T2 Porto</div><div class="sv-b" style="background:#d1ecf1;color:#0c5460;">Contacto 01</div></div>
-        <div class="sv-lead"><div class="sv-av" style="background:#10b981;">TP</div><div class="sv-name">Tiago Pereira — Venda V4</div><div class="sv-b" style="background:#fce8ff;color:#6b21a8;">Proposta</div></div>
+      <div class="testi">
+        <div class="testi-stars">★★★★★</div>
+        <div class="testi-text">"Finalmente sei de onde vêm os meus melhores clientes. Os relatórios mostram o que funciona — muito mais fácil tomar decisões e alocar o orçamento."</div>
+        <div class="testi-footer">
+          <div class="testi-photo-wrap"><img class="testi-photo" src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=120&q=80&auto=format&fit=crop&crop=face" alt="Nuno Ferreira" loading="lazy"></div>
+          <div><div class="testi-name">Nuno Ferreira</div><div class="testi-role">Bella Estética, Braga</div></div>
+        </div>
       </div>
     </div>
   </div>
 </div>
 
-<!-- PROVA SOCIAL + FAQ -->
-<div class="social-proof-section">
-  <div class="social-proof-inner">
-    <div class="sp-tag">Resultados de negócios locais em Portugal</div>
-    <div class="sp-nums">
-      <div class="sp-num">
-        <div class="sp-val">72%</div>
-        <div class="sp-lbl">dos leads sem resposta na primeira hora não voltam a contactar</div>
-      </div>
-      <div class="sp-div"></div>
-      <div class="sp-num">
-        <div class="sp-val">3×</div>
-        <div class="sp-lbl">mais conversões em negócios com processo de follow-up estruturado</div>
-      </div>
-      <div class="sp-div"></div>
-      <div class="sp-num">
-        <div class="sp-val">24h</div>
-        <div class="sp-lbl">da análise ao sistema operacional e a captar leads</div>
-      </div>
-      <div class="sp-div"></div>
-      <div class="sp-num">
-        <div class="sp-val">3 seg</div>
-        <div class="sp-lbl">para gerar comunicação contextualizada com IA</div>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- FAQ — para SEO e featured snippets -->
-<div class="faq-section" id="faq">
-  <div class="faq-inner">
-    <div class="sec-label reveal">Perguntas frequentes</div>
-    <h2 class="sec-h reveal d1">Tudo o que queres saber.</h2>
+<!-- ══ FAQ ══ -->
+<div id="faq" class="s">
+  <div class="w">
+    <div class="kicker reveal">Perguntas frequentes</div>
+    <h2 class="sh reveal d1">Tudo o que queres saber.</h2>
     <div class="faq-grid">
-      <div class="faq-item reveal">
-        <div class="faq-q">O que é o FixaLead?</div>
-        <div class="faq-a">Sistema de gestão e conversão de leads com IA para negócios locais em Portugal. Não fornecemos apenas tecnologia — desenhamos a estratégia de captação e acompanhamos a implementação com o cliente.</div>
-      </div>
-      <div class="faq-item reveal d1">
-        <div class="faq-q">Quanto custa o FixaLead?</div>
-        <div class="faq-a">Primeira semana sem custos e sem cartão de crédito. Planos mensais escaláveis consoante a dimensão do negócio. Para saber mais: geral@fixalead.com.</div>
-      </div>
-      <div class="faq-item reveal d2">
-        <div class="faq-q">Como é feita a implementação?</div>
-        <div class="faq-a">Começa com um diagnóstico comercial — fontes de leads, processo de acompanhamento, características do sector. A partir daí configuramos tudo. Nas primeiras semanas acompanhamos activamente para garantir resultados mensuráveis.</div>
-      </div>
-      <div class="faq-item reveal">
-        <div class="faq-q">Como funciona a IA do FixaLead?</div>
-        <div class="faq-a">A IA lê o perfil completo do lead — interesse, urgência, canal, etapa e historial — e produz a mensagem adequada. Primeiro contacto, follow-up, proposta, reactivação, objecções. Em Português de Portugal.</div>
-      </div>
-      <div class="faq-item reveal d1">
-        <div class="faq-q">Funciona para que tipo de negócios?</div>
-        <div class="faq-a">Academias, clínicas dentárias, estética, lojas, imobiliárias e crossfit. Cada sector tem campos, fontes e lógica de análise próprios — porque o processo de uma clínica dentária é diferente do de uma imobiliária.</div>
-      </div>
-      <div class="faq-item reveal d2">
-        <div class="faq-q">Posso cancelar a qualquer momento?</div>
-        <div class="faq-a">Sim, sem penalização. Sem contratos de permanência, sem taxas de saída. Um email para geral@fixalead.com é suficiente. Preferimos que fiques pelos resultados — não por contrato.</div>
-      </div>
+      <div class="faq-item reveal"><div class="faq-q">O que é o FixaLead?</div><div class="faq-a">Sistema de gestão e conversão de leads com IA para negócios locais em Portugal. Desenhamos a estratégia e acompanhamos a implementação — não te entregamos apenas software.</div></div>
+      <div class="faq-item reveal d1"><div class="faq-q">Quanto custa?</div><div class="faq-a">Primeira semana sem custos e sem cartão de crédito. Planos mensais a partir daí. Para saber mais: geral@fixalead.com.</div></div>
+      <div class="faq-item reveal d2"><div class="faq-q">Como é feita a implementação?</div><div class="faq-a">Começa com um diagnóstico comercial. Configuramos tudo e nas primeiras semanas acompanhamos activamente até os resultados serem evidentes.</div></div>
+      <div class="faq-item reveal"><div class="faq-q">Como funciona a IA?</div><div class="faq-a">A IA lê o perfil completo do lead — interesse, urgência, canal, etapa e historial — e produz a mensagem certa. Em Português de Portugal.</div></div>
+      <div class="faq-item reveal d1"><div class="faq-q">Para que tipo de negócios?</div><div class="faq-a">Academias, clínicas dentárias, estética, lojas, imobiliárias e crossfit. Cada sector tem campos e lógica próprios.</div></div>
+      <div class="faq-item reveal d2"><div class="faq-q">Posso cancelar?</div><div class="faq-a">Sim, a qualquer momento, sem penalização. Um email para geral@fixalead.com é suficiente. Preferimos que fiques pelos resultados — não por contrato.</div></div>
     </div>
   </div>
 </div>
 
-<!-- CTA -->
+<!-- ══ CTA FINAL — FOTO FULL BLEED ══ -->
 <div class="cta-section">
-  <div class="cta-inner">
-    <div class="cta-tag">O próximo passo é uma conversa</div>
-    <h2>Vamos analisar<br>o teu processo comercial.</h2>
-    <p>Em 5–7 dias tens um sistema operacional — construído à medida do teu negócio, não adaptado de um template genérico.</p>
-    <div class="cta-btns">
-      <a href="https://app.fixalead.com" class="btn-cta-white">Entrar no sistema →</a>
-      <a href="mailto:geral@fixalead.com" class="btn-cta-ghost">Falar connosco</a>
+  <div class="cta-photo-bg"></div>
+  <div class="cta-content">
+    <span class="cta-kicker reveal">O próximo passo é uma conversa</span>
+    <h2 class="reveal d1">Vamos analisar o teu negócio.</h2>
+    <p class="reveal d2">Em 5–7 dias tens um sistema operacional — construído à medida, não adaptado de um template genérico.</p>
+    <div class="cta-btns reveal d3">
+      <a href="https://app.fixalead.com" class="btn-dark" rel="noopener noreferrer">Entrar no sistema →</a>
+      <a href="mailto:geral@fixalead.com" class="btn-outline">Falar connosco</a>
     </div>
-    <div class="cta-note">✓ Primeira semana gratuita &nbsp;·&nbsp; ✓ Sem compromisso &nbsp;·&nbsp; ✓ Suporte incluído</div>
-    <div class="cta-steps">
-      <div class="cta-step"><span>1</span>Confirmar</div>
-      <div class="cta-arrow">→</div>
-      <div class="cta-step"><span>2</span>Configurar</div>
-      <div class="cta-arrow">→</div>
-      <div class="cta-step"><span>3</span>Lançar</div>
-      <div class="cta-arrow">→</div>
-      <div class="cta-step"><span>4</span>Crescer</div>
-    </div>
+    <div class="cta-note reveal d4">✓ Primeira semana gratuita &nbsp;·&nbsp; ✓ Sem compromisso &nbsp;·&nbsp; ✓ Suporte incluído</div>
   </div>
 </div>
 
-<!-- CONTACTO -->
-<div id="contacto" style="padding:80px 5%;background:linear-gradient(135deg,var(--g-soft) 0%,var(--bg2) 60%,#fff 100%);">
-  <div style="max-width:640px;margin:0 auto;text-align:center;">
-    <div class="sec-label reveal">Contacto</div>
-    <h2 class="sec-h reveal d1" style="margin-bottom:12px;">Conta-nos o teu negócio.</h2>
-    <p class="sec-sub reveal d2" style="margin-bottom:40px;">Conta-nos o teu negócio e o que queres melhorar. Analisamos e respondemos em 24 horas.</p>
+<!-- ══ CONTACTO ══ -->
+<div id="contacto" class="contact-outer">
+  <div class="contact-inner">
+    <div class="kicker reveal" style="justify-content:center;text-align:center;">Contacto</div>
+    <h2 class="sh reveal d1" style="text-align:center;">Conta-nos o teu negócio.</h2>
+    <p style="font-size:16px;color:var(--text2);text-align:center;margin:0 auto 0;line-height:1.7;" class="reveal d2">Respondemos em menos de 24 horas.</p>
     <form class="contact-form reveal d3" onsubmit="submitContacto(event)">
       <div class="cf-row">
-        <div class="cf-field">
-          <label class="cf-label">Nome</label>
-          <input id="cf-nome" type="text" class="cf-input" placeholder="O teu nome" required>
-        </div>
-        <div class="cf-field">
-          <label class="cf-label">Tipo de negócio</label>
-          <select id="cf-sector" class="cf-input">
-            <option value="">Seleccionar...</option>
-            <option>Academia / Ginásio</option>
-            <option>Clínica Dentária</option>
-            <option>Estética</option>
-            <option>Loja & Comércio</option>
-            <option>Imobiliária</option>
-            <option>Outro</option>
-          </select>
-        </div>
+        <div class="cf-field"><label class="cf-label" for="cf-nome">Nome</label><input id="cf-nome" type="text" class="cf-input" placeholder="O teu nome" required maxlength="100"></div>
+        <div class="cf-field"><label class="cf-label" for="cf-sector">Tipo de negócio</label><select id="cf-sector" class="cf-input"><option value="">Seleccionar...</option><option>Academia / Ginásio</option><option>Clínica Dentária</option><option>Estética</option><option>Loja &amp; Comércio</option><option>Imobiliária</option><option>Outro</option></select></div>
       </div>
-      <div class="cf-field">
-        <label class="cf-label">Email ou telemóvel</label>
-        <input id="cf-contacto" type="text" class="cf-input" placeholder="Para respondermos" required>
-      </div>
-      <div class="cf-field">
-        <label class="cf-label">O que queres melhorar? <span style="font-weight:400;color:var(--text3)">(opcional)</span></label>
-        <textarea id="cf-msg" class="cf-input" rows="3" placeholder="Captação de leads, follow-up, relatórios..."></textarea>
-      </div>
+      <div class="cf-field"><label class="cf-label" for="cf-contacto">Email ou telemóvel</label><input id="cf-contacto" type="text" class="cf-input" placeholder="Para respondermos" required maxlength="100"></div>
+      <div class="cf-field"><label class="cf-label" for="cf-msg">O que queres melhorar? <span style="font-weight:400;color:var(--text3)">(opcional)</span></label><textarea id="cf-msg" class="cf-input" rows="3" placeholder="Captação de leads, follow-up, relatórios..." maxlength="2000"></textarea></div>
       <button type="submit" class="cf-btn" id="cf-submit">Enviar mensagem →</button>
-      <div id="cf-ok" style="display:none;margin-top:16px;font-size:14px;color:var(--g);font-weight:600;">✓ Mensagem enviada! Respondemos em menos de 24 horas.</div>
+      <div id="cf-ok" style="display:none;margin-top:16px;font-size:14px;color:var(--g);font-weight:600;text-align:center;">✓ Mensagem enviada! Respondemos em menos de 24 horas.</div>
     </form>
   </div>
 </div>
 
-<!-- FOOTER -->
-<footer>
+<!-- ══ FOOTER ══ -->
+<footer class="footer">
   <div class="footer-grid">
-    <div class="footer-brand-col">
-      <div class="f-brand">Fixa<span>Lead</span></div>
-      <p class="footer-tagline">Consultoria de implementação e gestão de leads para negócios locais em Portugal. Estratégia, sistema e acompanhamento — tudo incluído.</p>
-      <a href="mailto:geral@fixalead.com" class="footer-email">✉ geral@fixalead.com</a>
+    <div>
+      <a href="#" class="footer-brand">Fixa<span>Lead</span></a>
+      <p class="footer-tagline">Consultoria de implementação e gestão de leads para negócios locais em Portugal.</p>
+      <a href="mailto:geral@fixalead.com" class="footer-mail">✉ geral@fixalead.com</a>
     </div>
-    <div class="footer-links-col">
-      <div class="footer-col-title">Produto</div>
-      <a href="#como-funciona">Como funciona</a>
-      <a href="#funcionalidades">Funcionalidades</a>
-      <a href="#sectores">Sectores</a>
-      <a href="https://app.fixalead.com">Entrar na conta</a>
+    <div>
+      <div class="footer-col-h">Produto</div>
+      <div class="footer-links">
+        <a href="#como">Como funciona</a>
+        <a href="#funcionalidades">Funcionalidades</a>
+        <a href="#sectores">Sectores</a>
+        <a href="https://app.fixalead.com" rel="noopener noreferrer">Entrar na conta</a>
+      </div>
     </div>
-    <div class="footer-links-col">
-      <div class="footer-col-title">Sectores</div>
-      <a href="#sectores">Academias & Ginásios</a>
-      <a href="#sectores">Clínicas Dentárias</a>
-      <a href="#sectores">Estética</a>
-      <a href="#sectores">Lojas & Comércio</a>
-      <a href="#sectores">Imobiliária</a>
+    <div>
+      <div class="footer-col-h">Sectores</div>
+      <div class="footer-links">
+        <a href="#sectores">Academias & Ginásios</a>
+        <a href="#sectores">Clínicas Dentárias</a>
+        <a href="#sectores">Estética</a>
+        <a href="#sectores">Lojas & Comércio</a>
+        <a href="#sectores">Imobiliária</a>
+      </div>
     </div>
-    <div class="footer-links-col">
-      <div class="footer-col-title">Começa agora</div>
-      <a href="https://app.fixalead.com" class="footer-cta-btn">Entrar no sistema →</a>
-      <div class="footer-guarantee">✓ Primeira semana gratuita<br>✓ Sem cartão de crédito<br>✓ Suporte incluído</div>
+    <div>
+      <div class="footer-col-h">Começa agora</div>
+      <a href="https://app.fixalead.com" class="footer-cta" rel="noopener noreferrer">Entrar no sistema →</a>
+      <div class="footer-guar">✓ Primeira semana gratuita<br>✓ Sem cartão de crédito<br>✓ Suporte incluído</div>
     </div>
   </div>
   <div class="footer-bottom">
-    <div class="f-copy">© 2026 FixaLead — Todos os direitos reservados</div>
-    <div class="footer-made">Feito em Portugal 🇵🇹</div>
+    <div class="footer-copy">© 2026 FixaLead — Todos os direitos reservados</div>
+    <div class="footer-copy">Feito em Portugal 🇵🇹</div>
   </div>
 </footer>
 
 <script>
-// Reveals
-const obs = new IntersectionObserver(entries => {
-  entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('on'); });
-}, {threshold:0.1});
-document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
-
-// Sector tabs
-function showSec(id, el){
-  document.querySelectorAll('.sec-content').forEach(c => c.classList.remove('on'));
-  document.querySelectorAll('.sec-tab').forEach(t => t.classList.remove('on'));
-  document.getElementById('sec-'+id).classList.add('on');
-  el.classList.add('on');
-}
+'use strict';
+function escHtml(s){if(!s)return'';return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;').replace(/'/g,'&#39;');}
+function showToast(msg,dur){const t=document.getElementById('notif-toast');if(!t)return;t.textContent=msg;t.classList.add('show');setTimeout(()=>t.classList.remove('show'),dur||3500);}
+const _obs=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('on');});},{threshold:0.08});
+document.querySelectorAll('.reveal').forEach(el=>_obs.observe(el));
+function showSec(id,el){const ok=['fitness','dentario','estetica','loja','imobiliaria'];if(!ok.includes(id))return;document.querySelectorAll('.sec-content').forEach(c=>c.classList.remove('on'));document.querySelectorAll('.sec-tab').forEach(t=>t.classList.remove('on'));const target=document.getElementById('sec-'+id);if(target)target.classList.add('on');if(el)el.classList.add('on');}
+const _rl={k:'fl_ct',max:3,win:300000,check(){try{const r=sessionStorage.getItem(this.k);const d=r?JSON.parse(r):{c:0,t:Date.now()};const now=Date.now();if(now-d.t>this.win){d.c=0;d.t=now;}if(d.c>=this.max)return false;d.c++;sessionStorage.setItem(this.k,JSON.stringify(d));return true;}catch(e){return true;}}};
+function _valContact(c){return/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(c)||/^[\d\s\+\(\)\-]{7,}$/.test(c);}
+function submitContacto(e){e.preventDefault();if(!_rl.check()){showToast('⚠️ Demasiados envios. Tenta em 5 minutos.');return;}const nome=escHtml((document.getElementById('cf-nome')?.value||'').trim());const sector=escHtml((document.getElementById('cf-sector')?.value||'').trim());const contacto=(document.getElementById('cf-contacto')?.value||'').trim();const msg=escHtml((document.getElementById('cf-msg')?.value||'').trim());if(!nome||nome.length<2){showToast('Por favor, introduz o teu nome.');return;}if(!contacto||!_valContact(contacto)){showToast('Por favor, introduz um email ou telemóvel válido.');return;}const btn=document.getElementById('cf-submit');const ok=document.getElementById('cf-ok');if(btn){btn.disabled=true;btn.textContent='A enviar…';}const sub=encodeURIComponent('FixaLead — Contacto de '+nome);const body=encodeURIComponent('Nome: '+nome+'\nSector: '+(sector||'—')+'\nContacto: '+contacto+'\nMensagem: '+(msg||'—')+'\n\n— fixalead.com');window.location.href='mailto:geral@fixalead.com?subject='+sub+'&body='+body;setTimeout(()=>{if(ok)ok.style.display='block';if(btn)btn.style.display='none';['cf-nome','cf-contacto','cf-msg'].forEach(id=>{const el=document.getElementById(id);if(el)el.value='';});const sel=document.getElementById('cf-sector');if(sel)sel.selectedIndex=0;},800);}
+const PK='fl_push_dismissed';
+function closePushBanner(){const b=document.getElementById('push-banner');if(b)b.classList.remove('show');try{sessionStorage.setItem(PK,'1');}catch(e){}}
+function requestPushPermission(){if(!('Notification' in window)){showToast('O teu browser não suporta notificações.');closePushBanner();return;}Notification.requestPermission().then(p=>{closePushBanner();if(p==='granted'){showToast('✅ Notificações activadas!');try{localStorage.setItem('fl_push_granted','1');}catch(e){}setTimeout(()=>{try{new Notification('FixaLead 🎯',{body:'Vais receber alertas de novos leads em tempo real!',icon:'/favicon.ico'});}catch(e){}},1000);}else{showToast('Notificações não activadas.');}}).catch(()=>{showToast('Erro ao activar notificações.');closePushBanner();});}
+function initPush(){if(!('Notification' in window))return;if(Notification.permission==='granted')return;try{if(sessionStorage.getItem(PK)||localStorage.getItem('fl_push_granted'))return;}catch(e){}setTimeout(()=>{const b=document.getElementById('push-banner');if(b)b.classList.add('show');},8000);}
+document.addEventListener('DOMContentLoaded',initPush);
 </script>
 </body>
 </html>
