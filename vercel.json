@@ -1,5 +1,13 @@
 {
   "cleanUrls": true,
+  "redirects": [
+    { "source": "/leads/lisboa",            "destination": "/lisboa",            "permanent": true },
+    { "source": "/leads/cascais",           "destination": "/cascais",           "permanent": true },
+    { "source": "/leads/leiria",            "destination": "/leiria",            "permanent": true },
+    { "source": "/leads/torres-vedras",     "destination": "/torres-vedras",     "permanent": true },
+    { "source": "/leads/caldas-da-rainha",  "destination": "/caldas-da-rainha",  "permanent": true },
+    { "source": "/leads/louriha",           "destination": "/louriha",           "permanent": true }
+  ],
   "rewrites": [
     { "source": "/admin", "destination": "/admin.html" },
     { "source": "/form",  "destination": "/form.html" }
